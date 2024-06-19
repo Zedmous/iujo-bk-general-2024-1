@@ -1,18 +1,19 @@
 # Nombre de la API
-
+BK-GENERAL-2024-1
 ## Introducción
 Breve descripción de la API y su propósito.
-
+api que lleva los registros administrativos de la empresa IMPERIAL donde su gestion es turismo.
 ## Requisitos previos
-- Node.js versión 20.11.0
+- Node.js versión 20.14.0
 - TypeScript versión 5.4.5
-- ORM 
 - Express
 - JWT
 - Base de datos: Mysql 
 - ORM: Sequelize
-- Metodología de Ramas de git: Git Flow fe
+- Metodología de Ramas de git: Git Flow
+### Documentación de las Apis
 - Postman
+- Swagger
 ## Instalación y configuración
 Pasos:
 
