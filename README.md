@@ -21,6 +21,7 @@ Pasos:
 2. Apuntar al directorio en la consola al proyecto con el comando `cd iujo-bk-general-2024-1`.
 2. Instalar las dependencias necesarias con el comando `npm install`.
 3. Ejecutar el servidor de desarrollo con el comando `npm run dev`.
+4. Ejercutar el servidor de produccion con el comando `npm run start`
 
 ## Autenticación
 Descripción del método de autenticación utilizado. JWT
@@ -28,12 +29,4 @@ Descripción del método de autenticación utilizado. JWT
 ## Endpoints de la API
 
 ### GET /endpoint1
-Descripción del endpoint.
-
-**Parámetros:**
-- `param1`: descripción (requerido)
-- `param2`: descripción (opcional)
-
-**Ejemplo de solicitud:**
-```typescript
-// Ejemplo en TypeScript
+Descripción del endpoint

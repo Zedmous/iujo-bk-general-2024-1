@@ -1,10 +1,4 @@
-console.log("hola mundo");
-interface persona{
-    nombre:string,
-    edad:number
-}
-let persona1:persona = {
-    nombre:"pedro",
-    edad:20
-}
-console.log(persona1);
+import 'dotenv/config'
+import { Server } from './server/server'
+const server = new Server()
+server.listen();
