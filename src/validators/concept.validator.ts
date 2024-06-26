@@ -2,12 +2,12 @@ import { body, param } from "express-validator";
 
 class conceptvalidator {
   public validaconcept = [
-    body("test_name").notEmpty().withMessage("Test Name is required"),
-    body("test_name").isString().withMessage("Test Name must be string"),
-    body("test_age").notEmpty().withMessage("Test Age is required"),
-    body("test_age").isNumeric().withMessage("Test Age must be numeric"),
-    body("status").notEmpty().withMessage("Test Status is required"),
-    body("status").isBoolean().withMessage("The status must be boolean."),
+    body("concept-nombrededucciones").notEmpty().withMessage("Name is required"),
+    body("concept-nombrededucciones").isString().withMessage("Name must be string"),
+    body("value-assignment").notEmpty().withMessage("value assignment is required"),
+    body("value-assignment").isFloat().withMessage("value assignment must be float"),
+    body("tipe-concept").notEmpty().withMessage("The tipe-concept is required"),
+    body("tipe-concept").isString().withMessage("The tipe-concept must be string."),
   ];
 }
 export default conceptvalidator;
