@@ -13,6 +13,7 @@ export class Server {
     this.paths = {
       tests: this.pre + "/tests",
       //users: this.pre+ "/users"
+      concept: this.pre + "/concept",
     };
 
     this.connectDB();
@@ -26,8 +27,9 @@ export class Server {
     this.app.use(express.static("public"));
   }
   routes() {
-    const { testRoute } = routes;
+    const { testRoute, concept } = routes;
     this.app.use(this.paths.tests, testRoute);
+    this.app.use(this.paths.concept, concept);
   }
   async connectDB() {
     //conexion a la base de datos

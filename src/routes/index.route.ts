@@ -1,8 +1,10 @@
-import testRoute from "./test.route";
+import testRoute from "./concept.route";
+import concept from "./concept.route";
 
 
 const routes={
-    testRoute
+    testRoute,
+    concept
 }
 
 export default routes;
