@@ -41,19 +41,19 @@ export const conceptPost = async () => {
     }
 }
 export class ConceptService {
-    private concepts: concept[] = [];
+    private concepts: concepts[] = [];
   
     constructor() {}
   
-    getConcepts(): concept[] {
+    getConcepts(): concepts[] {
       return this.concepts;
     }
   
-    getConceptById(id: number): concept | undefined {
+    getConceptById(id: number): concepts | undefined {
       return this.concepts.find((concept) => concept.id === id);
     }
   
-    addConcept(concept: concept): void {
+    addConcept(concept: concepts): void {
       this.concepts.push(concept);
     }
   
@@ -64,7 +64,7 @@ export class ConceptService {
       }
     }
   
-    editConcept(id: number, updatedConcept: Concept): void {
+    editConcept(id: number, updatedConcept: Concepts): void {
       const index = this.concepts.findIndex((concept) => concept.id === id);
       if (index !== -1) {
         this.concepts[index] = updatedConcept;

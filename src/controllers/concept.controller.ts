@@ -36,12 +36,12 @@ export class ConceptController {
   };
 
   addConcept = (req: Request, res: Response) => {
-    const { idconcepto, nombrededucciones, valorasignaciones, tipoconcepto } = req.body;
+    const { idconcetp, namedeductions, value_assignment, tipe_concept } = req.body;
     const newConcept = {
-      idconcepto,
-      nombrededucciones,
-      valorasignaciones,
-      tipoconcepto
+      idconcetp,
+      namedeductions,
+      value_assignment,
+      tipe_concept
     };
     this.conceptService.addConcept(newConcept);
     return res.status(201).json({ message: "Concepto agregado exitosamente" });
@@ -55,12 +55,12 @@ export class ConceptController {
 
   editConcept = (req: Request, res: Response) => {
     const { id } = req.params;
-    const { idconcepto, nombrededucciones, valorasignaciones, tipoconcepto } = req.body;
+    const { idconcetp, namedeductions, value_assignment, tipe_concept } = req.body;
     const updatedConcept = {
-      idconcepto,
-      nombrededucciones,
-      valorasignaciones,
-      tipoconcepto
+      idconcetp,
+      namedeductions,
+      value_assignment,
+      tipe_concept
     };
     this.conceptService.editConcept(Number(id), updatedConcept);
     return res.status(200).json({ message: "Concepto editado exitosamente" });
