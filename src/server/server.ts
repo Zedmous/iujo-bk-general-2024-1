@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import routes from "../routes/index.route";
+import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
   private port: string | number;
@@ -31,6 +32,9 @@ export class Server {
   }
   async connectDB() {
     //conexion a la base de datos
+    await db.authenticate().then(() => {
+      console.log("Conexión exitosa a la base de datos");
+    });
   }
 
   listen() {
