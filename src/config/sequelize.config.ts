@@ -7,6 +7,8 @@ const dbName: string | undefined = process.env.DATABASE_NAME
 const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : "";
+
+  //instanciamos el obejto sequelize
 const db = new Sequelize(dbName, "root", dbPassword, {
   dialect: "mysql",
   host: "localhost",

@@ -1,6 +1,6 @@
-import { body, param } from "express-validator";
+import { body } from "express-validator";
 
-class testValidator {
+class TestValidator {
   public validateTest = [
     body("test_name").notEmpty().withMessage("Test Name is required"),
     body("test_name").isString().withMessage("Test Name must be string"),
@@ -10,4 +10,4 @@ class testValidator {
     body("status").isBoolean().withMessage("The status must be boolean."),
   ];
 }
-export default testValidator;
+export { TestValidator };
