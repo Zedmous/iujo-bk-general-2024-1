@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { TestController } from "../controllers/test.controller";
-import TestValidator from "../validators/test.validators";
 import { validateFields } from "../middlewares";
+import { TestController } from "../controllers";
+import { TestValidator } from "../validators";
 const testValidator = new TestValidator();
 const router = Router();
 const testController=new TestController();

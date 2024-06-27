@@ -1,8 +1,7 @@
 import testRoute from "./test.route";
+import roleRoute from "./role.route";
 
-
-const routes={
-    testRoute
+export {
+    testRoute,
+    roleRoute
 }
-
-export default routes;
