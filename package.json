@@ -23,6 +23,7 @@
     "express": "^4.19.2",
     "express-validator": "^7.1.0",
     "nodemon": "^3.1.4",
+    "mysql2": "^3.10.1",
     "sequelize": "^6.37.3"
   }
 }

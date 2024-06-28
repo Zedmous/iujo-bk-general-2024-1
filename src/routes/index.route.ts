@@ -1,10 +1,9 @@
-import testRoute from "./concept.route";
+import testRoute from "./test.route";
+import roleRoute from "./role.route";
 import concept from "./concept.route";
 
-
-const routes={
+export {
     testRoute,
+    roleRoute,
     concept
 }
-
-export default routes;
