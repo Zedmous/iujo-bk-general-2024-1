@@ -10,3 +10,4 @@ router.get("/:id", troomController.one);
 router.post("/",troomValidator.validateTroom,validateFields, troomController.createTroom);
 router.put("/:id",troomValidator.validateTroom,validateFields, troomController.updateTroom);
 router.delete("/:id", troomController.deleteTroom);
+export default router;

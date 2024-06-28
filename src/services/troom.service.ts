@@ -3,7 +3,7 @@ import { TroomInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    const troom = await Role.findAll();
+    const troom = await Troom.findAll();
     return {
       message: `Type Room exitoso`,
       status: 200,
@@ -25,7 +25,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
  
-    const troom = await Role.findOne({ where: { id } }); // Busca el TRoom con id 'id'
+    const troom = await Troom.findOne({ where: { id } }); // Busca el TRoom con id 'id'
     if (troom === null) {
       console.log("No encontrado");
       return {
@@ -93,7 +93,7 @@ export const update = async (id: number, data: TroomInterface) => {
       message: `Actualización del Type Room exitoso`,
       status: 200,
       data: {
-        troom,
+        
       },
     };
   } catch (error) {
@@ -106,7 +106,7 @@ export const update = async (id: number, data: TroomInterface) => {
 };
 export const deleted = async (id: number, data: TroomInterface) => {
   try {
-    //consultas Borrado logito TRoom
+    //consultas Borrado logito T
     const troom = await Troom.update(
       {
         status: false,
@@ -124,7 +124,7 @@ export const deleted = async (id: number, data: TroomInterface) => {
       message: `Eliminación del Type Room exitoso`,
       status: 200,
       data: {
-        troom,
+        
       },
     };
   } catch (error) {
