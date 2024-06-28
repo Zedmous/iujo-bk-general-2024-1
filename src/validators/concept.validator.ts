@@ -10,4 +10,4 @@ class conceptvalidator {
     body("tipe-concept").isString().withMessage("The tipe-concept must be string."),
   ];
 }
-export default conceptvalidator;
+export {conceptvalidator};
