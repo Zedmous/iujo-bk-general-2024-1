@@ -1,13 +1,13 @@
 import { DataTypes } from "sequelize";
 
-const RoleModel = {
+const TroomModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
   name: {
-    type: DataTypes.STRING(25),
+    type: DataTypes.STRING(50),
     allowNull: false,
     unique: true,
   },
@@ -20,4 +20,4 @@ const RoleModel = {
   }
 };
 
-export { RoleModel };
+export { TroomModel };
