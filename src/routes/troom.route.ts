@@ -5,9 +5,8 @@ import { TroomValidator } from "../validators";
 const troomValidator = new TroomValidator();
 const router = Router();
 const troomController = new TroomController();
-router.get("/", troomController.all);//http://localhost:3800/api/roles
-router.get("/:id", troomController.one);//http://localhost:3800/api/roles/1
-router.post("/",troomValidator.validateTroom,validateFields, troomController.createTroom);//http://localhost:3800/api/roles
-router.put("/:id",troomValidator.validateTroom,validateFields, troomController.updateTroom);//http://localhost:3800/api/roles/1
-router.delete("/:id", troomController.deleteTroom);//http://localhost:3800/api/roles/1
-export default router;
+router.get("/", troomController.all)
+router.get("/:id", troomController.one);
+router.post("/",troomValidator.validateTroom,validateFields, troomController.createTroom);
+router.put("/:id",troomValidator.validateTroom,validateFields, troomController.updateTroom);
+router.delete("/:id", troomController.deleteTroom);

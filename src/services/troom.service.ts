@@ -3,12 +3,6 @@ import { TroomInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
-        where: {
-          status: true,
-        },
-      });*/
     const troom = await Role.findAll();
     return {
       message: `Type Room exitoso`,
@@ -30,8 +24,8 @@ export const getAll = async () => {
 
 export const getOne = async (id: number) => {
   try {
-    //consultas a la base de datos van aca
-    const troom = await Role.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+ 
+    const troom = await Role.findOne({ where: { id } }); // Busca el TRoom con id 'id'
     if (troom === null) {
       console.log("No encontrado");
       return {
@@ -59,7 +53,7 @@ export const getOne = async (id: number) => {
 };
 export const create = async (data: TroomInterface) => {
   try {
-    //consultas a la base de datos van aca
+    //consultas Crear TRomm
     const troom = await Troom.create({
       ...data,
     });
@@ -82,7 +76,7 @@ export const create = async (data: TroomInterface) => {
 
 export const update = async (id: number, data: TroomInterface) => {
   try {
-    //consultas a la base de datos van aca
+    //consultas Buscar TRoom
     const troom = await Troom.update(
       {
         ...data,
@@ -112,7 +106,7 @@ export const update = async (id: number, data: TroomInterface) => {
 };
 export const deleted = async (id: number, data: TroomInterface) => {
   try {
-    //consultas a la base de datos van aca
+    //consultas Borrado logito TRoom
     const troom = await Troom.update(
       {
         status: false,
