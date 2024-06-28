@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel } from "../models";
+import { RoleModel, UserModel, conceptsModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -18,6 +18,7 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
+const concept = db.define('concept',conceptsModel);
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });

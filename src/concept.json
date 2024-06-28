@@ -1,0 +1,17 @@
+[
+    {
+      "idconcept": 1,
+      "namedeductions": "Deducción 1",
+      "value_assignment": "100",
+      "tipe_concept": "Deducción"
+    },
+    {
+      "idconcept": 2,
+      "namedeductions": "Deducción 2",
+      "value_assignment": "200",
+      "tipe_concept": "Deducción"
+    }
+
+
+  ]
+  
