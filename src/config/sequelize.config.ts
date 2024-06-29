@@ -22,7 +22,11 @@ const Table = db.define('table',TableModel)
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
-//Table.belongsTo(T_Table, {foreingKey: '????'})
+//Table.belongsTo(tipoMesa, {foreingKey: 'tipoMesaId'})
+//tipoMesa.hasMany(Table, foreingKey: 'tipoMesaID')
+//falta la tabla tipo de mesa asi que mientras hice una
+//relacion improvisada para tener una idea (cabe destacar que 
+//debe hacerce con el patron ya establecido en el ejemplo de roles)
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
