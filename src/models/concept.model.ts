@@ -1,20 +1,20 @@
 import { DataTypes } from "sequelize";
 
-const conceptsModel = {
-  idconcepts: {
+const ConceptModel = {
+  id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  namedeductions: {
+  name: {
     type: DataTypes.STRING(50),
   },
-  valueassignment: {
+  values: {
     type: DataTypes.FLOAT(10, 2),
   },
-  tipeconcept: {
-    type: DataTypes.STRING(50),
+  type: {
+    type: DataTypes.ENUM('deducciones', 'asignaciones'), 
   },
 };
 
-export { conceptsModel };
+export { ConceptModel };
