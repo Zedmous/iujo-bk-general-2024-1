@@ -1,6 +1,6 @@
 import { body, param } from "express-validator";
 
-class conceptvalidator {
+class ConceptValidator {
   public validaconcept = [
     body("concept-name").notEmpty().withMessage("Name is required"),
     body("concept-name").isString().withMessage("Name must be string"),
@@ -10,4 +10,4 @@ class conceptvalidator {
     body("tipe-concept").isString().withMessage("The tipe-concept must be string."),
   ];
 }
-export {conceptvalidator};
+export {ConceptValidator};
