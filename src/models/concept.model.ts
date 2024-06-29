@@ -13,7 +13,7 @@ const ConceptModel = {
     type: DataTypes.FLOAT(10, 2),
   },
   type: {
-    type: DataTypes.ENUM('deducciones', 'asignaciones'), 
+    type: DataTypes.ENUM('D', 'A'), 
   },
 };
 

@@ -1,4 +1,4 @@
-export interface conceptinterface{
+export interface ConceptInterface{
     idconcepts?:number;
     namedeductions:string;
     valueassignment:number;

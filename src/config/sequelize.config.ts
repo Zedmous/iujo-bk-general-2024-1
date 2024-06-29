@@ -36,4 +36,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role,  db };
+export  { User, Role,  db, concept };

@@ -1,7 +1,7 @@
 import { body, param } from "express-validator";
 
 class ConceptValidator {
-  public validaconcept = [
+  public validateconcept = [
     body("concept-name").notEmpty().withMessage("Name is required"),
     body("concept-name").isString().withMessage("Name must be string"),
     body("value-assignment").notEmpty().withMessage("value assignment is required"),
