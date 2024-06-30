@@ -1,6 +1,10 @@
 import { Sequelize } from "sequelize";
+<<<<<<< HEAD
 import { RoleModel, UserModel, TroomModel } from "../models";
 
+=======
+import { locationsModel, RoleModel, UserModel } from "../models";
+>>>>>>> 1f6c1d21f110046bea7f744e1e07c14d3b118216
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -15,7 +19,12 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
-//CREAMOS LAS TABLAS DE LA BASE DE DATOS
+// ... other code (database connection setup)
+
+const Locations = db.define('locations', locationsModel);
+
+// Sync the Locations model to create the table
+Locations.sync();
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
@@ -37,4 +46,9 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
+<<<<<<< HEAD
 export  { User, Role, Troom, db };
+=======
+
+export { Locations,User, Role, db };
+>>>>>>> 1f6c1d21f110046bea7f744e1e07c14d3b118216
