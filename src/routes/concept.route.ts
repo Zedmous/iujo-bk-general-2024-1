@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { ConceptController } from "../controllers/concept.controller";
+import conceptvalidator from "../validators/concept.validator";
+import { validateFields } from "../middlewares";
+const Conceptvalidator = new conceptvalidator();
+const router = Router();
+const conceptController=new ConceptController();
+router.get("/", conceptController.getconcept);
+router.post("/",Conceptvalidator.validaconcept,validateFields, conceptController.posconcept);
+router.put("/:id",Conceptvalidator.validaconcept,validateFields, conceptController.posconcept);
+router.delete("/:id", conceptController.posconcept);
+export default router;
