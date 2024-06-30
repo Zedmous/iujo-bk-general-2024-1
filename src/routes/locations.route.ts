@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { validateFields } from "../middlewares";
 import { LocationsController } from "../controllers";
-import { LocationsValidator } from "../validators";
+import { LocationsValidator } from "../validators/locations.validators";
 const locationsValidator = new LocationsValidator();
 const router = Router();
 const locationsController=new LocationsController();

@@ -1,10 +1,6 @@
 import express from "express";
 import cors from "cors";
-<<<<<<< HEAD
-import { roleRoute, testRoute , troomRoute } from "../routes/index.route";
-=======
-import { locationsRoute, testRoute, roleRoute } from "../routes/index.route";
->>>>>>> 1f6c1d21f110046bea7f744e1e07c14d3b118216
+import { locationsRoute, roleRoute, testRoute , troomRoute, RoomsRoute } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
@@ -17,13 +13,10 @@ export class Server {
     this.pre = "/api";
     this.paths = {
       tests: this.pre + "/tests",
-<<<<<<< HEAD
-      roles: this.pre+ "/roles",
-      troom: this.pre+ "/troom"
-=======
+      troom: this.pre+ "/troom",
       locations: this.pre+ "/locations",
-      roles: this.pre+ "/roles"
->>>>>>> 1f6c1d21f110046bea7f744e1e07c14d3b118216
+      roles: this.pre+ "/roles",
+      rooms: this.pre+ "/rooms"
     };
 
     this.connectDB();
@@ -38,12 +31,10 @@ export class Server {
   }
   routes() {
     //this.app.use(this.paths.tests, testRoute );
-<<<<<<< HEAD
     this.app.use(this.paths.troom, troomRoute);
-=======
     this.app.use(this.paths.locations, locationsRoute);
->>>>>>> 1f6c1d21f110046bea7f744e1e07c14d3b118216
     this.app.use(this.paths.roles, roleRoute);
+    this.app.use(this.paths.rooms, RoomsRoute);
     
   }
   async connectDB() {

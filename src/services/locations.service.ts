@@ -1,5 +1,5 @@
-import { Locations } from "../config";
-import { LocationsInterface } from "../interfaces";
+import { Locations } from "../config/";
+import { LocationsInterface } from "../interfaces/locations.interface";
 
 export const getAll = async () => {
   try {

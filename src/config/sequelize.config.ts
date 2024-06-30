@@ -1,10 +1,6 @@
 import { Sequelize } from "sequelize";
-<<<<<<< HEAD
-import { RoleModel, UserModel, TroomModel } from "../models";
-
-=======
-import { locationsModel, RoleModel, UserModel } from "../models";
->>>>>>> 1f6c1d21f110046bea7f744e1e07c14d3b118216
+import {locationsModel, RoleModel, UserModel, TroomModel} from "../models";
+import {RoomsModel} from "../models/rooms.models"
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -28,10 +24,19 @@ Locations.sync();
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
-const Troom = db.define('troom',TroomModel)
+const Troom = db.define('troom',TroomModel);
+const Room = db.define('rooms',RoomsModel);
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
+
+Troom.hasMany(Room, {foreignKey: 'type_id'});
+Room.belongsTo(Troom, {foreignKey: 'type_id'});
+
+Locations.hasMany(Room, {foreignKey: 'location_id'});
+Room.belongsTo(Locations, {foreignKey: 'location_id'});
+
+
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -46,9 +51,5 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-<<<<<<< HEAD
-export  { User, Role, Troom, db };
-=======
 
-export { Locations,User, Role, db };
->>>>>>> 1f6c1d21f110046bea7f744e1e07c14d3b118216
+export  {Locations,User, Role, Troom, Room, db };
