@@ -11,7 +11,7 @@ export const getAll = async () => {
       });*/
     const suppliers = await Supplier.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `FindAll Supplier exitoso`,
       status: 200,
       data: {
         suppliers,
@@ -65,7 +65,7 @@ export const create = async (data: SupplierInterface) => {
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Creacion de Supplier exitoso`,
       status: 200,
       data: {
         supplier,
