@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel } from "../models";
+import { RoleModel, TableModel, UserModel} from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -18,9 +18,15 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
+const Table = db.define('table',TableModel)
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
+//Table.belongsTo(tipoMesa, {foreingKey: 'tipoMesaId'})
+//tipoMesa.hasMany(Table, foreingKey: 'tipoMesaID')
+//falta la tabla tipo de mesa asi que mientras hice una
+//relacion improvisada para tener una idea (cabe destacar que 
+//debe hacerce con el patron ya establecido en el ejemplo de roles)
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -35,4 +41,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role,  db };
+export  { User, Role, Table,  db };
