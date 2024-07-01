@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel } from "../models";
+import { ProductModel, RoleModel, UserModel } from "../models";
+import { categoryProductModel } from "../models/categoryProduct.model";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -18,9 +19,14 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
+const Product = db.define('products',ProductModel);
+const categoryProduct = db.define('categoryProducts',categoryProductModel);
+
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
+
+categoryProduct.hasMany(Product, { foreignKey: 'categoryProduct' });
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -35,4 +41,10 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role,  db };
+export  { 
+  User,
+   Role, 
+   categoryProduct,
+   Product,
+   db 
+  };
