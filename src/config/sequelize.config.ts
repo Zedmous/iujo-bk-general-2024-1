@@ -8,21 +8,16 @@ const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : "";
 
-  //instanciamos el obejto sequelize
+//instanciamos el obejto sequelize
 const db = new Sequelize(dbName, "root", dbPassword, {
   dialect: "mysql",
   host: "localhost",
 });
 
-// ... other code (database connection setup)
-
-const Locations = db.define('locations', locationsModel);
-
-// Sync the Locations model to create the table
-Locations.sync();
-
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
+const Locations = db.define('locations', locationsModel);
+
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
