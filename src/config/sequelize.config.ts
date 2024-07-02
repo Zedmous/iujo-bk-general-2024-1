@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel } from "../models";
+import { RoleModel, UserModel, AccountModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -8,16 +8,23 @@ const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : "";
 
-  //instanciamos el obejto sequelize
-const db = new Sequelize(dbName, "root", dbPassword, {
+  //instanciamos el objeto sequelize
+const db = new Sequelize(dbName, "root", dbPassword, 
+{
   dialect: "mysql",
   host: "localhost",
 });
+
+db.authenticate()
+  .then(() => console.log('Conexión establecida exitosamente.'))
+  .catch(err => console.error('No se pudo conectar a la base de datos:', err));
 
 //CREAMOS LAS TABLAS DE LA BASE DE DATOS
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
+const Account = db.define('accounts', AccountModel);
+
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
@@ -35,4 +42,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role,  db };
+export  { User, Role, Account,  db };

@@ -57,6 +57,7 @@ export const getOne = async (id: number) => {
     };
   }
 };
+
 export const create = async (data: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
