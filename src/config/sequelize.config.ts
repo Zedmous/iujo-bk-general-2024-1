@@ -1,9 +1,6 @@
 import { Sequelize } from "sequelize";
 import { RoleModel, UserModel, RequirementsModel,locationsModel } from "../models";
 
-import {  RoleModel, UserModel } from "../models";
-
-
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
   : "";
