@@ -35,14 +35,14 @@ export const getOne = async (id: number) => {
     if (locations === null) {
       console.log("No encontrado");
       return {
-        message: `Locations no encontrado`,
+        message: `Direccion no encontrado`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Locations encontrado`,
+        message: `Direccion encontrado`,
         status: 200,
         data: {
           locations,
@@ -65,7 +65,7 @@ export const create = async (data: LocationsInterface) => {
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Creacion de direccion exitosa`,
       status: 200,
       data: {
         locations,
