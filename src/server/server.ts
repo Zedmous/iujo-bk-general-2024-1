@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { locationsRoute, testRoute, roleRoute } from "../routes/index.route";
+import { roleRoute, testRoute, requirementsRoute,locationsRoute } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
@@ -13,8 +13,9 @@ export class Server {
     this.pre = "/api";
     this.paths = {
       tests: this.pre + "/tests",
-      locations: this.pre+ "/locations",
-      roles: this.pre+ "/roles"
+      roles: this.pre+ "/roles",
+      requirements: this.pre+ "/requirements",
+      locations: this.pre+ "/locations"
     };
 
     this.connectDB();
@@ -31,6 +32,7 @@ export class Server {
     //this.app.use(this.paths.tests, testRoute );
     this.app.use(this.paths.locations, locationsRoute);
     this.app.use(this.paths.roles, roleRoute);
+    this.app.use(this.paths.requirements, requirementsRoute);
   }
   async connectDB() {
     //conexion a la base de datos
