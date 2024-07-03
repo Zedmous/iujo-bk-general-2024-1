@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, productRoute, categoryProductRoute, testRoute } from "../routes/index.route";
+import { roleRoute, productRoute, product_categoriesRoute, testRoute } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
@@ -14,7 +14,7 @@ export class Server {
     this.paths = {
       tests: this.pre + "/tests",
       roles: this.pre+ "/roles",
-      categoryProducts: this.pre+ "/categoryproducts",
+      product_categories: this.pre+ "/product_categories",
       products: this.pre+ "/products"
     };
 
@@ -32,7 +32,7 @@ export class Server {
     //this.app.use(this.paths.tests, testRoute );
     this.app.use(this.paths.roles, roleRoute);
     this.app.use(this.paths.products, productRoute);
-    this.app.use(this.paths.categoryProducts, categoryProductRoute);
+    this.app.use(this.paths.product_categoriess, product_categoriesRoute);
   }
   async connectDB() {
     //conexion a la base de datos
