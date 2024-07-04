@@ -18,7 +18,7 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
-const schedules = db.define('schedules', SchedulesModel);
+const Schedules = db.define('schedules', SchedulesModel);
 
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
@@ -38,4 +38,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role, schedules,  db };
+export  { User, Role, Schedules,  db };
