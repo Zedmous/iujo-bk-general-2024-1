@@ -1,5 +1,5 @@
 import { Category } from "../config";
-import { categoryProductsInterface } from "../interfaces/category.products.interface";
+import { productCategoriesInterface } from "../interfaces/productCategories.interface";
 
 export const getAll = async () => {
   try {
@@ -52,7 +52,7 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: categoryProductsInterface) => {
+export const create = async (data: productCategoriesInterface) => {
   try {
     //consultas a la base de datos van aca
     const categoryProducts = await Category.create({
@@ -75,7 +75,7 @@ export const create = async (data: categoryProductsInterface) => {
   }
 };
 
-export const update = async (id: number, data: categoryProductsInterface) => {
+export const update = async (id: number, data: productCategoriesInterface) => {
   try {
     //consultas a la base de datos van aca
     const categoryProducts = await Category.update(
@@ -105,7 +105,7 @@ export const update = async (id: number, data: categoryProductsInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: categoryProductsInterface) => {
+export const deleted = async (id: number, data: productCategoriesInterface) => {
   try {
     //consultas a la base de datos van aca
     const categoryProducts = await Category.update(

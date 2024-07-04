@@ -1,15 +1,15 @@
-import { Inventary } from "../config";
-import { inventaryInterface } from "../interfaces/inventary.products.interface";
+import { Inventory } from "../config";
+import { inventoryInterface } from "../interfaces/inventory.interface";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    const inventaryProducts  = await Inventary.findAll();
+    const inventoryProducts  = await Inventory.findAll();
     return {
-      message: `Successful inventary connection`,
+      message: `Successful inventory connection`,
       status: 200,
       data: {
-        inventaryProducts ,
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -26,8 +26,8 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const inventaryProducts  = await Inventary.findOne({ where: { id } });
-    if (inventaryProducts  === null) {
+    const inventoryProducts  = await Inventory.findOne({ where: { id } });
+    if (inventoryProducts  === null) {
       console.log("Not found");
       return {
         message: `Inventary not found`,
@@ -37,10 +37,10 @@ export const getOne = async (id: number) => {
       };
     } else {
       return {
-        message: `Inventary found`,
+        message: `Inventory found`,
         status: 200,
         data: {
-          inventaryProducts ,
+          inventoryProducts ,
         },
       };
     }
@@ -52,18 +52,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: inventaryInterface) => {
+export const create = async (data: inventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const inventaryProducts  = await Inventary.create({
+    const inventoryProducts  = await Inventory.create({
       ...data,
     });
 
     return {
-      message: `Successful inventary creation`,
+      message: `Successful inventory creation`,
       status: 200,
       data: {
-        inventaryProducts ,
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -75,10 +75,10 @@ export const create = async (data: inventaryInterface) => {
   }
 };
 
-export const update = async (id: number, data: inventaryInterface) => {
+export const update = async (id: number, data: inventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const inventaryProducts  = await Inventary.update(
+    const inventoryProducts  = await Inventory.update(
       {
         ...data,
       },
@@ -91,10 +91,10 @@ export const update = async (id: number, data: inventaryInterface) => {
     );
 
     return {
-      message: `Successful inventary update`,
+      message: `Successful inventory update`,
       status: 200,
       data: {
-        inventaryProducts ,
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -105,10 +105,10 @@ export const update = async (id: number, data: inventaryInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: inventaryInterface) => {
+export const deleted = async (id: number, data: inventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const inventaryProducts = await Inventary.update(
+    const inventoryProducts = await Inventory.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -122,10 +122,10 @@ export const deleted = async (id: number, data: inventaryInterface) => {
     );
 
     return {
-      message: `Elimination of successful inventary`,
+      message: `Elimination of successful inventory`,
       status: 200,
       data: {
-        inventaryProducts ,
+        inventoryProducts ,
       },
     };
   } catch (error) {

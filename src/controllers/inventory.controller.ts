@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/categoryProducts.service";
-export class categoryProductsController {
+import { create, deleted, getAll, getOne, update } from "../services/inventory.service";
+export class inventoryController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {
@@ -19,14 +19,14 @@ export class categoryProductsController {
       data,
     });
   };
-  createCategoryProducts = async (req: Request, res: Response) => {
+  createInventory = async (req: Request, res: Response) => {
     const { status, message, data } = await create(req.body);
     return res.status(status).json({
       message,
       data,
     });
   };
-  updateCategoryProducts = async (req: Request, res: Response) => {
+  updateInventory = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await update(parseInt(id) as number,req.body);
     return res.status(status).json({
@@ -35,7 +35,7 @@ export class categoryProductsController {
     });
   };
 
-  deleteCategoryProducts = async (req: Request, res: Response) => {
+  deleteInventory = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await deleted(parseInt(id) as number,req.body);
     return res.status(status).json({

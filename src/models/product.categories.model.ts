@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const categoryProductsModel = {
+const productCategoriesModel = {
     code_category: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -11,4 +11,4 @@ const categoryProductsModel = {
     },
   };
   
-export { categoryProductsModel };
+export { productCategoriesModel };
