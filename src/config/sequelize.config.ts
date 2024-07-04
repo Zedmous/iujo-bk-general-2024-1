@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel } from "../models";
+import { RoleModel, UserModel, areaModel, locationModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -18,9 +18,15 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
+const area = db.define('area', areaModel);
+const location = db.define('location', locationModel);
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
+area.belongsTo(inventory, { foreignKey: 'code_inventory'});
+area.belongsTo(location, { foreignKey: 'code_location'});
+location.hasMany(area, {foreignKey: 'code_location'});
+
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -28,6 +34,7 @@ const syncModels = async () => {
   try {
     //await User.sync({ alter: true });
     //await Role.sync({ alter: true });
+    //await area.sync({ alter: true });
   } catch (error) {
     console.error(error);
   }
@@ -35,4 +42,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role,  db };
+export  { User, Role, area, location, db };
