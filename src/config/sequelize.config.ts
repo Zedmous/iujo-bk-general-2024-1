@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel, RequirementsModel,locationsModel,AttractionsStatusModel } from "../models";
+import { RoleModel, UserModel, RequirementsModel,locationsModel,AttractionsStatusModel, ConceptModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -15,6 +15,7 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
+const Concept = db.define('concepts',ConceptModel);
 const AttractionsStatus = db.define('attractions_status', AttractionsStatusModel)
 const Requirements = db.define('requirements', RequirementsModel);
 const Locations = db.define('locations', locationsModel);
@@ -22,8 +23,6 @@ const Locations = db.define('locations', locationsModel);
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
 
-
-// Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
@@ -34,4 +33,4 @@ const syncModels = async () => {
   }
 };
 syncModels();
-export  { User, Role,Locations, Requirements,AttractionsStatus,  db };
+export  { User, Role,Locations, Requirements,AttractionsStatus, Concept,db };

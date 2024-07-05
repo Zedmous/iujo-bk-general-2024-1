@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, testRoute, requirementsRoute,locationsRoute, AttractionsStatusRoute } from "../routes/index.route";
+import { roleRoute, requirementsRoute,locationsRoute, attractionsStatusRoute,conceptsRoute  } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
@@ -29,10 +29,11 @@ export class Server {
     this.app.use(express.json());
     this.app.use(express.static("public"));
   }
-  routes() {
+  routes() {   
+    this.app.use(this.paths.concept, conceptsRoute);
     this.app.use(this.paths.locations, locationsRoute);
     this.app.use(this.paths.roles, roleRoute);
-    this.app.use(this.paths.attractionStatus, AttractionsStatusRoute)
+    this.app.use(this.paths.attractionStatus, attractionsStatusRoute)
     this.app.use(this.paths.requirements, requirementsRoute);
   }
   async connectDB() {
