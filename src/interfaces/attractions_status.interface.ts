@@ -1,6 +1,6 @@
-export interface StatusInterface{
+export interface AttractionsStatusInterface{
     id?:number;
-    attraction_status:string;
+    name:string;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;

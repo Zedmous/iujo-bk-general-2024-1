@@ -1,13 +1,13 @@
 import { DataTypes } from "sequelize";
 
-const StatusModel = {
+const AttractionsStatusModel = {
     
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-    attraction_status: {
+    name: {
         type: DataTypes.STRING(45),
         allowNull: false,
         unique: true,
@@ -21,4 +21,4 @@ const StatusModel = {
     }
 };
 
-export { StatusModel };
+export { AttractionsStatusModel };

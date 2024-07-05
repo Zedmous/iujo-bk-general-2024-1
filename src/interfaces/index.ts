@@ -1,2 +1,2 @@
 export * from './role.interface'
-export * from './status.interface'
+export * from './attractions_status.interface'

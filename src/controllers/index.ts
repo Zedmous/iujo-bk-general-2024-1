@@ -1,3 +1,3 @@
 export * from './role.controller';
 export * from './test.controller';
-export * from './status.controller';
+export * from './attractions_status.controller';

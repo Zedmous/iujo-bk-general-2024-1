@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/status.service";
+import { create, deleted, getAll, getOne, update } from "../services/attractions_status.service";
 
-export class StatusController {
+export class AttractionsStatusController {
     constructor() { }
 
     all = async (req: Request, res: Response) => {

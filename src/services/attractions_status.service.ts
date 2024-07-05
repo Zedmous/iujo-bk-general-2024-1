@@ -1,14 +1,14 @@
-import { Status } from "../config";
-import { StatusInterface } from "../interfaces";
+import { AttractionsStatus } from "../config";
+import { AttractionsStatusInterface } from "../interfaces";
 
 export const getAll = async () => {
     try {
-        const statuses = await Status.findAll();
+        const attractionsStatus = await AttractionsStatus.findAll();
         return {
             message: `Lista de estados`,
             status: 200,
             data: {
-                statuses,
+                attractionsStatus,
             },
         };
     } catch (error) {
@@ -23,8 +23,8 @@ export const getAll = async () => {
 
 export const getOne = async (id: number) => {
     try {
-        const statuses = await Status.findOne({ where: { id } });
-        if (statuses === null) {
+        const attractionsStatus = await AttractionsStatus.findOne({ where: { id } });
+        if (attractionsStatus === null) {
             console.log("No encontrado");
             return {
                 message: `Estado no encontrado`,
@@ -37,7 +37,7 @@ export const getOne = async (id: number) => {
                 message: `Estado encontrado`,
                 status: 200,
                 data: {
-                    statuses,
+                    attractionsStatus,
                 },
             };
         }
@@ -49,9 +49,9 @@ export const getOne = async (id: number) => {
         };
     }
 };
-export const create = async (data: StatusInterface) => {
+export const create = async (data: AttractionsStatusInterface) => {
     try {
-        const statuses = await Status.create({
+        const attractionsStatus = await AttractionsStatus.create({
             ...data,
         });
 
@@ -59,7 +59,7 @@ export const create = async (data: StatusInterface) => {
             message: `Se ha creado el estado`,
             status: 200,
             data: {
-                statuses,
+                attractionsStatus,
             },
         };
     } catch (error) {
@@ -71,9 +71,9 @@ export const create = async (data: StatusInterface) => {
     }
 };
 
-export const update = async (id: number, data: StatusInterface) => {
+export const update = async (id: number, data: AttractionsStatusInterface) => {
     try {
-        const statuses = await Status.update(
+        const attractionsStatus = await AttractionsStatus.update(
             {
                 ...data,
             },
@@ -89,7 +89,7 @@ export const update = async (id: number, data: StatusInterface) => {
             message: `Se ha actualizado el estado`,
             status: 200,
             data: {
-                statuses,
+                attractionsStatus,
             },
         };
     } catch (error) {
@@ -100,9 +100,9 @@ export const update = async (id: number, data: StatusInterface) => {
         };
     }
 };
-export const deleted = async (id: number, data: StatusInterface) => {
+export const deleted = async (id: number, data: AttractionsStatusInterface) => {
     try {
-        const statuses = await Status.update(
+        const attractionsStatus = await AttractionsStatus.update(
             {
                 status: false,
                 deletedAt: new Date(),
@@ -119,7 +119,7 @@ export const deleted = async (id: number, data: StatusInterface) => {
             message: `Se ha eliminado el estado`,
             status: 200,
             data: {
-                statuses,
+                attractionsStatus,
             },
         };
     } catch (error) {
