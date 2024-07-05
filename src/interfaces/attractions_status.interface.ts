@@ -1,8 +1,8 @@
-export interface ConceptInterface{
+export interface AttractionsStatusInterface{
     id?:number;
     name:string;
-    type:string;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;
+    status?:boolean;
 }
