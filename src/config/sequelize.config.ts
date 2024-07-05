@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel, AttractionsStatusModel  } from "../models";
+import { RoleModel, UserModel, RequirementsModel,locationsModel,AttractionsStatusModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -8,17 +8,17 @@ const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : "";
 
-  //instanciamos el obejto sequelize
+//instanciamos el obejto sequelize
 const db = new Sequelize(dbName, "root", dbPassword, {
   dialect: "mysql",
   host: "localhost",
 });
 
-//CREAMOS LAS TABLAS DE LA BASE DE DATOS
-
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
 const AttractionsStatus = db.define('attractions_status', AttractionsStatusModel)
+const Requirements = db.define('requirements', RequirementsModel);
+const Locations = db.define('locations', locationsModel);
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
@@ -36,5 +36,4 @@ const syncModels = async () => {
 };
 
 syncModels();
-//export default db;
-export  { User, Role, AttractionsStatus, db };
+export  { User, Role,Locations, Requirements,AttractionsStatus,  db };
