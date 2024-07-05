@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, testRoute, requirementsRoute,locationsRoute } from "../routes/index.route";
+import { roleRoute, testRoute, requirementsRoute,locationsRoute, AttractionsStatusRoute } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
@@ -13,9 +13,10 @@ export class Server {
     this.pre = "/api";
     this.paths = {
       tests: this.pre + "/tests",
-      roles: this.pre+ "/roles",
+      roles: this.pre + "/roles",
+      attractionStatus: this.pre + "/attractionstatus",
       requirements: this.pre+ "/requirements",
-      locations: this.pre+ "/locations"
+      locations: this.pre+ "/locations",
     };
 
     this.connectDB();
@@ -31,12 +32,13 @@ export class Server {
   routes() {
     this.app.use(this.paths.locations, locationsRoute);
     this.app.use(this.paths.roles, roleRoute);
+    this.app.use(this.paths.attractionStatus, AttractionsStatusRoute)
     this.app.use(this.paths.requirements, requirementsRoute);
   }
   async connectDB() {
     await db.authenticate().then(() => {
       console.log("Conexión exitosa a la base de datos");
-    }).catch((error:any)=>{
+    }).catch((error: any) => {
       console.log("No se pudo conectar a la base de datos")
     });
   }
