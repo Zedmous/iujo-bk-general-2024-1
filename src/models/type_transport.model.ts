@@ -1,16 +1,16 @@
 import { DataTypes } from "sequelize";
 
-const TTransport = {
-  id_metodo: {
+const TypeTransportModel = {
+  id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  tipo_transporte: {
+  name: {
     type: DataTypes.STRING(50),
     allowNull: false,
     unique: true,
   }
 };
 
-export { TTransport };
+export { TypeTransportModel };

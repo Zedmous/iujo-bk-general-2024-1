@@ -1,2 +1,2 @@
 export * from './role.interface'
-export * from './tipTransp.interface'
+export * from './type_transport.interface'

@@ -1,3 +1,3 @@
 export * from './test.validators'
 export * from './role.validators'
-export * from './tipTransp.validators'
+export * from './type_transport.validators'

@@ -1,3 +1,3 @@
 export * from './role.controller';
 export * from './test.controller';
-export * from './tipTransp.controller';
+export * from './type_transport.controller';

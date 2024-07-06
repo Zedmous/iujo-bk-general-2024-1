@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from '../services/tiptransport.services';
+import { create, deleted, getAll, getOne, update } from '../services/type_transport.services';
 
-export class tipTranspController {
+export class TypeTransportController {
     constructor() {}
   
     all = async (req: Request, res: Response) => {
@@ -20,14 +20,14 @@ export class tipTranspController {
         data,
       });
     };
-    createtipTransp = async (req: Request, res: Response) => {
+    createtypeTransport = async (req: Request, res: Response) => {
       const { status, message, data } = await create(req.body);
       return res.status(status).json({
         message,
         data,
       });
     };
-    updatetipTransp = async (req: Request, res: Response) => {
+    updatetypeTransport = async (req: Request, res: Response) => {
       const {id}=req.params
       const { status, message, data } = await update(parseInt(id) as number,req.body);
       return res.status(status).json({
@@ -36,7 +36,7 @@ export class tipTranspController {
       });
     };
   
-    deletetipTransp = async (req: Request, res: Response) => {
+    deletetypeTransport = async (req: Request, res: Response) => {
       const {id}=req.params
       const { status, message, data } = await deleted(parseInt(id) as number,req.body);
       return res.status(status).json({

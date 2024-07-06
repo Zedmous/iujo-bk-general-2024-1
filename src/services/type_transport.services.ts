@@ -1,5 +1,5 @@
-import {tipTransport} from "../config/";
-import { TipTransp } from "../interfaces";
+import {TypeTransport} from "../config/";
+import { TypeTransportInterface } from "../interfaces";
 
 export const getAll = async () => {
     try {
@@ -9,12 +9,12 @@ export const getAll = async () => {
             status: true,
           },
         });*/
-      const tiptransp = await tipTransport.findAll();
+      const typeptransport = await TypeTransport.findAll();
       return {
         message: `tipo de transporte conseguido`,
         status: 200,
         data: {
-            tiptransp,
+          typeptransport,
         },
       };
     } catch (error) {
@@ -26,11 +26,11 @@ export const getAll = async () => {
     }
   };
 
-  export const getOne = async (id_metodo: number) => {
+  export const getOne = async (id: number) => {
     try {
       //consultas a la base de datos van aca
-      const tiptransp = await tipTransport.findOne({ where: { id_metodo } }); // Busca el proyecto con título 'Mi Título'
-      if (tiptransp === null) {
+      const typetransport = await TypeTransport.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+      if (typetransport === null) {
         console.log("No encontrado");
         return {
           message: `Tipo de Transporte no encontrado`,
@@ -43,7 +43,7 @@ export const getAll = async () => {
           message: `Tipo de Transporte encontrado`,
           status: 200,
           data: {
-            tiptransp,
+            typetransport,
           },
         };
       }
@@ -56,10 +56,10 @@ export const getAll = async () => {
     }
   };
 
-  export const create = async (data: TipTransp) => {
+  export const create = async (data: TypeTransportInterface) => {
     try {
       //consultas a la base de datos van aca
-      const tiptransp = await tipTransport.create({
+      const typetransport = await TypeTransport.create({
         ...data,
       });
   
@@ -67,7 +67,7 @@ export const getAll = async () => {
         message: `Creacion de Tipo de Transporte exitoso`,
         status: 200,
         data: {
-            tiptransp,
+          typetransport,
         },
       };
     } catch (error) {
@@ -79,16 +79,16 @@ export const getAll = async () => {
     }
   };
 
-  export const update = async (id_metodo: number, data: TipTransp) => {
+  export const update = async (id: number, data: TypeTransportInterface) => {
     try {
       //consultas a la base de datos van aca
-      const tiptransp = await tipTransport.update(
+      const typetransport = await TypeTransport.update(
         {
           ...data,
         },
         {
           where: {
-            id_metodo,
+            id,
           },
           returning: true,
         }
@@ -98,7 +98,7 @@ export const getAll = async () => {
         message: `Actualización del Tipo de Transporte exitoso`,
         status: 200,
         data: {
-            tiptransp,
+          typetransport,
         },
       };
     } catch (error) {
@@ -110,17 +110,17 @@ export const getAll = async () => {
     }
   };
 
-  export const deleted = async (id_metodo: number, data: TipTransp) => {
+  export const deleted = async (id: number, data: TypeTransportInterface) => {
     try {
       //consultas a la base de datos van aca
-      const tiptransp = await tipTransport.update(
+      const typetransport = await TypeTransport.update(
         {
           status: false,
           deletedAt: new Date(),
         },
         {
           where: {
-            id_metodo,
+            id,
           },
           returning: true,
         }
@@ -130,7 +130,7 @@ export const getAll = async () => {
         message: `Eliminación de Tipo de Transporte exitoso`,
         status: 200,
         data: {
-            tiptransp,
+          typetransport,
         },
       };
     } catch (error) {
