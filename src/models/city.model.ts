@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const StateModel = {
+const CityModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -20,4 +20,4 @@ const StateModel = {
   },
 };
 
-export { StateModel };
+export { CityModel };
