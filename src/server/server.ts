@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, testRoute } from "../routes/index.route";
+import { roleRoute, requirementsRoute,locationsRoute, attractionsStatusRoute,conceptsRoute  } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
@@ -9,11 +9,14 @@ export class Server {
   private paths: any;
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || 3800;
+    this.port = process.env.PORT || 3880;
     this.pre = "/api";
     this.paths = {
       tests: this.pre + "/tests",
-      roles: this.pre+ "/roles"
+      roles: this.pre + "/roles",
+      attractionStatus: this.pre + "/attractionstatus",
+      requirements: this.pre+ "/requirements",
+      locations: this.pre+ "/locations",
     };
 
     this.connectDB();
@@ -26,15 +29,17 @@ export class Server {
     this.app.use(express.json());
     this.app.use(express.static("public"));
   }
-  routes() {
-    //this.app.use(this.paths.tests, testRoute );
+  routes() {   
+    this.app.use(this.paths.concept, conceptsRoute);
+    this.app.use(this.paths.locations, locationsRoute);
     this.app.use(this.paths.roles, roleRoute);
+    this.app.use(this.paths.attractionStatus, attractionsStatusRoute)
+    this.app.use(this.paths.requirements, requirementsRoute);
   }
   async connectDB() {
-    //conexion a la base de datos
     await db.authenticate().then(() => {
       console.log("Conexión exitosa a la base de datos");
-    }).catch((error:any)=>{
+    }).catch((error: any) => {
       console.log("No se pudo conectar a la base de datos")
     });
   }
