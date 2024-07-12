@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute,productCategoryRoute, inventoryRoute, customerRoute  } from "../routes/index.route";
+
+import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute,productCategoryRoute, inventoryRoute, customerRoute, typeRoomRoute  } from "../routes/index.route";
 
 
 import { db } from "../config/sequelize.config";
@@ -19,11 +20,12 @@ export class Server {
       locations: this.pre+ "/locations",
       suppliers: this.pre+ "/suppliers",
       users: this.pre+ "/users",
-      attractionStatus: this.pre + "/attractionstatus",
+      attractions_statuses: this.pre + "/attractions_statuses",
       concepts: this.pre+ "/concepts",
       product_categories: this.pre+ "/product_categories",
       inventories: this.pre+ "/inventories",
       customers: this.pre+ "/customers",
+      type_rooms: this.pre+ "/type_rooms",
     };
 
     this.connectDB();
@@ -39,15 +41,16 @@ export class Server {
     
   routes() {
     this.app.use(this.paths.roles, roleRoute);
-    this.app.use(this.paths.locations, locationRoute);
     this.app.use(this.paths.requirements, requirementRoute);
+    this.app.use(this.paths.locations, locationRoute);
     this.app.use(this.paths.suppliers, supplierRoute);
     this.app.use(this.paths.users, userRoute);
-    this.app.use(this.paths.attractionStatus, attractionStatusRoute);
+    this.app.use(this.paths.attractions_statuses, attractionStatusRoute);
     this.app.use(this.paths.concepts, conceptRoute);
     this.app.use(this.paths.product_categories, productCategoryRoute);
     this.app.use(this.paths.inventories, inventoryRoute);
     this.app.use(this.paths.customers, customerRoute);
+    this.app.use(this.paths.type_rooms, typeRoomRoute);
   }
   async connectDB() {
     await db.authenticate().then(() => {

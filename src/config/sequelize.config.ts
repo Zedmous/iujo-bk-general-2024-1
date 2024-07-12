@@ -11,6 +11,7 @@ import {
   InventoryModel, 
   ProductCategoryModel,
   CustomerModel,
+  TypeRoomModel
 
 } from "../models";
 
@@ -28,6 +29,7 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 //CREAMOS LAS TABLAS DE LA BASE DE DATOS
 
+
 const UserDB = db.define("users", UserModel);
 const RoleDB = db.define("roles", RoleModel);
 const ProductCategoryDB = db.define('product_categories',ProductCategoryModel);
@@ -38,6 +40,7 @@ const LocationDB = db.define("locations", LocationModel);
 const ConceptDB = db.define("concepts", ConceptModel);
 const AttractionsStatusDB = db.define("attractions_statuses",AttractionsStatusModel);
 const CustomerDB = db.define("customers",CustomerModel);
+const TypeRoomDB = db.define('room_types',TypeRoomModel);
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
@@ -52,6 +55,5 @@ const syncModels = async () => {
   }
 };
 syncModels();
-//export default db;
 
-export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,ProductCategoryDB, InventoryDB,CustomerDB, db };
+export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,ProductCategoryDB, InventoryDB,CustomerDB,TypeRoomDB, db };

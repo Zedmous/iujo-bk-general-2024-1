@@ -8,3 +8,4 @@ export * from './requirements.controller';
 export * from './supplier.controller';
 export * from './user.controller';
 export * from './customer.controller';
+export * from './type_room.controller';
