@@ -6,6 +6,6 @@ import requirementsRoute from "./requirements.route";
 export {
     testRoute,
     roleRoute,
-    requirementsRoute
+    requirementsRoute,
     locationsRoute
 }
