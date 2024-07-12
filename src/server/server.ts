@@ -12,11 +12,11 @@ export class Server {
     this.port = process.env.PORT || 3880;
     this.pre = "/api";
     this.paths = {
-      tests: this.pre + "/tests",
       roles: this.pre + "/roles",
       attractionStatus: this.pre + "/attractionstatus",
       requirements: this.pre+ "/requirements",
       locations: this.pre+ "/locations",
+      concepts: this.pre+ "/concepts",
     };
 
     this.connectDB();
@@ -30,11 +30,15 @@ export class Server {
     this.app.use(express.static("public"));
   }
   routes() {   
-    this.app.use(this.paths.concept, conceptsRoute);
-    this.app.use(this.paths.locations, locationsRoute);
     this.app.use(this.paths.roles, roleRoute);
-    this.app.use(this.paths.attractionStatus, attractionsStatusRoute)
+    this.app.use(this.paths.attractionStatus, attractionsStatusRoute);
     this.app.use(this.paths.requirements, requirementsRoute);
+    this.app.use(this.paths.locations, locationsRoute);
+    this.app.use(this.paths.concepts, conceptsRoute);
+    
+    
+    
+    
   }
   async connectDB() {
     await db.authenticate().then(() => {
