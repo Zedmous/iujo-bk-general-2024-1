@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute,productCategoryRoute, inventoryRoute  } from "../routes/index.route";
+import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute,productCategoryRoute, inventoryRoute, customerRoute  } from "../routes/index.route";
 
 
 import { db } from "../config/sequelize.config";
@@ -23,6 +23,7 @@ export class Server {
       concepts: this.pre+ "/concepts",
       product_categories: this.pre+ "/product_categories",
       inventories: this.pre+ "/inventories",
+      customers: this.pre+ "/customers",
     };
 
     this.connectDB();
@@ -46,6 +47,7 @@ export class Server {
     this.app.use(this.paths.concepts, conceptRoute);
     this.app.use(this.paths.product_categories, productCategoryRoute);
     this.app.use(this.paths.inventories, inventoryRoute);
+    this.app.use(this.paths.customers, customerRoute);
   }
   async connectDB() {
     await db.authenticate().then(() => {

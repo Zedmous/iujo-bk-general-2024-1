@@ -7,7 +7,7 @@ import supplierRoute from "./supplier.route";
 import userRoute from "./user.route";
 import productCategoryRoute from "./product_category.route";
 import inventoryRoute from "./inventory.route";
-
+import customerRoute from "./customer.route";
 
 
 export {
@@ -19,7 +19,8 @@ export {
     conceptRoute,
     attractionStatusRoute,
     productCategoryRoute,
-    inventoryRoute
+    inventoryRoute,
+    customerRoute
 }
     
 
