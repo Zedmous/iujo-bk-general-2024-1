@@ -1,8 +1,11 @@
-import testRoute from "./test.route";
+
 import roleRoute from "./role.route";
+import supplierRoute from "./supplier.route";
 import userRoute from "./user.route";
+
 export {
-    testRoute,
     roleRoute,
+    supplierRoute,
     userRoute
+
 }

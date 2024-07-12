@@ -1,4 +1,4 @@
-import { User } from "../config";
+import { UserDB } from "../config";
 import { UserInterface } from "../interfaces";
 
 export const getAll = async () => {
@@ -9,7 +9,7 @@ export const getAll = async () => {
           status: true,
         },
       });*/
-    const users = await User.findAll();
+    const users = await UserDB.findAll();
 
     if(users.length==0){
       return {
@@ -41,7 +41,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const user = await User.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    const user = await UserDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
     if (user === null) {
       console.log("No encontrado");
       return {
@@ -70,7 +70,7 @@ export const getOne = async (id: number) => {
 export const create = async (data: UserInterface) => {
   try {
     //consultas a la base de datos van aca
-    const user = await User.create({
+    const user = await UserDB.create({
       name:data.name,
       email:data.email,
       password:data.password,
@@ -97,7 +97,7 @@ export const create = async (data: UserInterface) => {
 export const update = async (id: number, data: UserInterface) => {
   try {
     //consultas a la base de datos van aca
-    const user = await User.update(
+    const user = await UserDB.update(
       {
         name:data.name,
         email:data.email,
@@ -130,7 +130,7 @@ export const update = async (id: number, data: UserInterface) => {
 export const deleted = async (id: number, data: UserInterface) => {
   try {
     //consultas a la base de datos van aca
-    const user = await User.update(
+    const user = await UserDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -162,7 +162,7 @@ export const deleted = async (id: number, data: UserInterface) => {
 export const getByEmail = async (data: UserInterface) => {
   try {
     //consultas a la base de datos van aca
-    const user:UserInterface|any = await User.findOne({ where: { email:data.email } })
+    const user:UserInterface|any = await UserDB.findOne({ where: { email:data.email } })
     if (!user) {
       return {
         message: `Usuario no encontrado`,
