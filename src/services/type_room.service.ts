@@ -1,20 +1,14 @@
-import { RoleDB } from "../config";
-import { RoleInterface } from "../interfaces";
+import { TypeRoomDB } from "../config";
+import { TypeRoomInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const roles = await RoleDB.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const roles = await RoleDB.findAll();
+    const troom = await TypeRoomDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `Type Room exitoso`,
       status: 200,
       data: {
-        roles,
+        troom,
       },
     };
   } catch (error) {
@@ -30,22 +24,22 @@ export const getAll = async () => {
 
 export const getOne = async (id: number) => {
   try {
-    //consultas a la base de datos van aca
-    const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (role === null) {
+ 
+    const troom = await TypeRoomDB.findOne({ where: { id } }); // Busca el TRoom con id 'id'
+    if (troom === null) {
       console.log("No encontrado");
       return {
-        message: `Role no encontrado`,
+        message: `Type Room encontrado`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `Type Room encontrado`,
         status: 200,
         data: {
-          role,
+          troom,
         },
       };
     }
@@ -57,18 +51,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: RoleInterface) => {
+export const create = async (data: TypeRoomInterface) => {
   try {
-    //consultas a la base de datos van aca
-    const role = await RoleDB.create({
+    //consultas Crear TRomm
+    const troom = await TypeRoomDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Creacion de Type Room exitoso`,
       status: 200,
       data: {
-        role,
+        troom,
       },
     };
   } catch (error) {
@@ -80,10 +74,10 @@ export const create = async (data: RoleInterface) => {
   }
 };
 
-export const update = async (id: number, data: RoleInterface) => {
+export const update = async (id: number, data: TypeRoomInterface) => {
   try {
-    //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    //consultas Buscar TRoom
+    const troom = await TypeRoomDB.update(
       {
         ...data,
       },
@@ -96,10 +90,10 @@ export const update = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Actualización del Type Room exitoso`,
       status: 200,
       data: {
-        role,
+        
       },
     };
   } catch (error) {
@@ -110,10 +104,10 @@ export const update = async (id: number, data: RoleInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: RoleInterface) => {
+export const deleted = async (id: number, data: TypeRoomInterface) => {
   try {
-    //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    //consultas Borrado logito T
+    const troom = await TypeRoomDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +121,10 @@ export const deleted = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Eliminación del Rol exitoso`,
+      message: `Eliminación del Type Room exitoso`,
       status: 200,
       data: {
-        role,
+        
       },
     };
   } catch (error) {

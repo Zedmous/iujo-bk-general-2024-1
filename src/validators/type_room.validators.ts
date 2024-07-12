@@ -1,9 +1,9 @@
 import { body } from "express-validator";
 
-class TroomValidator {
-  public validateTroom = [
+class TypeRoomValidator {
+  public validateTypeRoom = [
     body("name").notEmpty().withMessage("Type Room Name is required"),
     body("name").isString().withMessage("Type Room Name must be string"),
   ];
 }
-export { TroomValidator };
+export { TypeRoomValidator };

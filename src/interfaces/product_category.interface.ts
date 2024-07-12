@@ -1,7 +1,6 @@
-export interface RoleInterface{
+export interface ProductCategoryInterface{
     id?:number;
     name:string;
-    status?:boolean;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;

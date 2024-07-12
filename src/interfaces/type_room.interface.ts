@@ -1,4 +1,5 @@
-export interface RoleInterface{
+
+export interface TypeRoomInterface{
     id?:number;
     name:string;
     status?:boolean;

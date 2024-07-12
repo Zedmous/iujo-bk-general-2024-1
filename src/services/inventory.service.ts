@@ -1,14 +1,15 @@
-import { Role, Troom } from "../config";
-import { TroomInterface } from "../interfaces";
+import { InventoryDB } from "../config";
+import { InventoryInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    const troom = await Troom.findAll();
+    //consultas a la base de datos van aca
+    const inventoryProducts  = await InventoryDB.findAll();
     return {
-      message: `Type Room exitoso`,
+      message: `Successful inventory connection`,
       status: 200,
       data: {
-        troom,
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -24,22 +25,22 @@ export const getAll = async () => {
 
 export const getOne = async (id: number) => {
   try {
- 
-    const troom = await Troom.findOne({ where: { id } }); // Busca el TRoom con id 'id'
-    if (troom === null) {
-      console.log("No encontrado");
+    //consultas a la base de datos van aca
+    const inventoryProducts  = await InventoryDB.findOne({ where: { id } });
+    if (inventoryProducts  === null) {
+      console.log("Not found");
       return {
-        message: `Type Room encontrado`,
+        message: `Inventary not found`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Type Room encontrado`,
+        message: `Inventory found`,
         status: 200,
         data: {
-          troom,
+          inventoryProducts ,
         },
       };
     }
@@ -51,18 +52,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: TroomInterface) => {
+export const create = async (data: InventoryInterface) => {
   try {
-    //consultas Crear TRomm
-    const troom = await Troom.create({
+    //consultas a la base de datos van aca
+    const inventoryProducts  = await InventoryDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Type Room exitoso`,
+      message: `Successful inventory creation`,
       status: 200,
       data: {
-        troom,
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -74,10 +75,10 @@ export const create = async (data: TroomInterface) => {
   }
 };
 
-export const update = async (id: number, data: TroomInterface) => {
+export const update = async (id: number, data: InventoryInterface) => {
   try {
-    //consultas Buscar TRoom
-    const troom = await Troom.update(
+    //consultas a la base de datos van aca
+    const inventoryProducts  = await InventoryDB.update(
       {
         ...data,
       },
@@ -90,10 +91,10 @@ export const update = async (id: number, data: TroomInterface) => {
     );
 
     return {
-      message: `Actualización del Type Room exitoso`,
+      message: `Successful inventory update`,
       status: 200,
       data: {
-        
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -104,10 +105,10 @@ export const update = async (id: number, data: TroomInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: TroomInterface) => {
+export const deleted = async (id: number, data: InventoryInterface) => {
   try {
-    //consultas Borrado logito T
-    const troom = await Troom.update(
+    //consultas a la base de datos van aca
+    const inventoryProducts = await InventoryDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -121,10 +122,10 @@ export const deleted = async (id: number, data: TroomInterface) => {
     );
 
     return {
-      message: `Eliminación del Type Room exitoso`,
+      message: `Elimination of successful inventory`,
       status: 200,
       data: {
-        
+        inventoryProducts ,
       },
     };
   } catch (error) {

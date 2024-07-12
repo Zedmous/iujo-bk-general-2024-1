@@ -1,8 +1,7 @@
-
-export interface TroomInterface{
+export interface ConceptInterface{
     id?:number;
     name:string;
-    status?:boolean;
+    type:string;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;

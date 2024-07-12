@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const TroomModel = {
+const ProductCategoryModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -16,8 +16,8 @@ const TroomModel = {
   },
   status: {
     type: DataTypes.BOOLEAN,
-    default: true,
-  }
+    defaultValue: true,
+  },
 };
 
-export { TroomModel };
+export { ProductCategoryModel };
