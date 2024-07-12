@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const RequirementsModel = {
+const RequirementModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -20,4 +20,4 @@ const RequirementsModel = {
   }
 };
 
-export { RequirementsModel };
+export { RequirementModel };

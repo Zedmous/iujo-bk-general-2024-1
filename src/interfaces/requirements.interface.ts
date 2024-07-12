@@ -1,5 +1,4 @@
-
-export interface RequirementsInterface{
+export interface RequirementInterface{
     id?:number;
     requirement:string;
     createdAt:Date;

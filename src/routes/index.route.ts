@@ -1,11 +1,14 @@
-import testRoute from "./test.route";
-import locationsRoute from "./locations.route";
+import locationRoute from "./locations.route";
+import requirementRoute from "./requirements.route";
 import roleRoute from "./role.route";
-import requirementsRoute from "./requirements.route";
+import supplierRoute from "./supplier.route";
+import userRoute from "./user.route";
 
 export {
-    testRoute,
     roleRoute,
-    requirementsRoute,
-    locationsRoute
+    requirementRoute,
+    locationRoute,
+    supplierRoute,
+    userRoute
+
 }

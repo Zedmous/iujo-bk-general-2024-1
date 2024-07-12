@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel, RequirementsModel,locationsModel } from "../models";
+import { RoleModel, UserModel,SupplierModel, RequirementModel,LocationModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -14,24 +14,27 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
-const User = db.define('users',UserModel);
-const Role = db.define('roles',RoleModel);
-const Requirements = db.define('requirements', RequirementsModel);
-const Locations = db.define('locations', locationsModel);
+//CREAMOS LAS TABLAS DE LA BASE DE DATOS
+
+const UserDB = db.define('users',UserModel);
+const RoleDB = db.define('roles',RoleModel);
+const SupplierDB = db.define('supplier',SupplierModel);
+const RequirementDB = db.define('requirements', RequirementModel);
+const LocationDB = db.define('locations', LocationModel);
 // Relaciones
-Role.hasMany(User, { foreignKey: 'role_id' });
-User.belongsTo(Role, { foreignKey: 'role_id' });
+RoleDB.hasMany(UserDB, { foreignKey: 'role_id' });
+UserDB.belongsTo(RoleDB, { foreignKey: 'role_id' });
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
-    //await User.sync({ alter: true });
-    //await Role.sync({ alter: true });
+
   } catch (error) {
     console.error(error);
   }
 };
 
 syncModels();
-export  { User, Role,Locations, Requirements,  db };
+
+export  { UserDB, RoleDB, SupplierDB,LocationDB, RequirementDB,  db };
