@@ -5,3 +5,5 @@ export * from './attractions_status.model';
 export * from './requirements.model';
 export * from './concept.model';
 export * from './supplier.model';
+export * from './product_category.model';
+export * from './inventory.model';
