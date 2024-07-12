@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel, supplierModel } from "../models";
+import { RoleModel, UserModel, SupplierModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -16,19 +16,18 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 //CREAMOS LAS TABLAS DE LA BASE DE DATOS
 
-const User = db.define('users',UserModel);
-const Role = db.define('roles',RoleModel);
-const Supplier = db.define('supplier',supplierModel);
+const UserDB = db.define('users',UserModel);
+const RoleDB = db.define('roles',RoleModel);
+const SupplierDB = db.define('supplier',SupplierModel);
 // Relaciones
-Role.hasMany(User, { foreignKey: 'role_id' });
-User.belongsTo(Role, { foreignKey: 'role_id' });
+RoleDB.hasMany(UserDB, { foreignKey: 'role_id' });
+UserDB.belongsTo(RoleDB, { foreignKey: 'role_id' });
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
-    //await User.sync({ alter: true });
-    //await Role.sync({ alter: true });
+
   } catch (error) {
     console.error(error);
   }
@@ -36,4 +35,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role, Supplier,  db };
+export  { UserDB, RoleDB, SupplierDB,  db };

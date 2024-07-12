@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { create, deleted, getAll, getOne, update } from "../services/supplier.service";
-export class supplierController {
+export class SupplierController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {

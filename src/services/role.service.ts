@@ -1,15 +1,15 @@
-import { Role } from "../config";
+import { RoleDB } from "../config";
 import { RoleInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
+    /*const roles = await RoleDB.findAll({
         where: {
           status: true,
         },
       });*/
-    const roles = await Role.findAll();
+    const roles = await RoleDB.findAll();
     return {
       message: `C de Rol exitoso`,
       status: 200,
@@ -31,7 +31,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const role = await Role.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
     if (role === null) {
       console.log("No encontrado");
       return {
@@ -60,7 +60,7 @@ export const getOne = async (id: number) => {
 export const create = async (data: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await Role.create({
+    const role = await RoleDB.create({
       ...data,
     });
 
@@ -83,7 +83,7 @@ export const create = async (data: RoleInterface) => {
 export const update = async (id: number, data: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await Role.update(
+    const role = await RoleDB.update(
       {
         ...data,
       },
@@ -113,7 +113,7 @@ export const update = async (id: number, data: RoleInterface) => {
 export const deleted = async (id: number, data: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await Role.update(
+    const role = await RoleDB.update(
       {
         status: false,
         deletedAt: new Date(),

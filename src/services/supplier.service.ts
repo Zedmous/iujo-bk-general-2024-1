@@ -1,4 +1,4 @@
-import { Supplier } from "../config";
+import { SupplierDB } from "../config";
 import { SupplierInterface } from "../interfaces";
 
 export const getAll = async () => {
@@ -9,7 +9,7 @@ export const getAll = async () => {
           status: true,
         },
       });*/
-    const suppliers = await Supplier.findAll();
+    const suppliers = await SupplierDB.findAll();
     return {
       message: `FindAll Supplier exitoso`,
       status: 200,
@@ -31,18 +31,18 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const supplier = await Supplier.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    const supplier = await SupplierDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
     if (supplier === null) {
       console.log("No encontrado");
       return {
-        message: `Supplier no encontrado`,
+        message: `SupplierDB no encontrado`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Supplier encontrado`,
+        message: `SupplierDB encontrado`,
         status: 200,
         data: {
           supplier,
@@ -60,7 +60,7 @@ export const getOne = async (id: number) => {
 export const create = async (data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const supplier = await Supplier.create({
+    const supplier = await SupplierDB.create({
       ...data,
     });
 
@@ -83,7 +83,7 @@ export const create = async (data: SupplierInterface) => {
 export const update = async (id: number, data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const supplier = await Supplier.update(
+    const supplier = await SupplierDB.update(
       {
         ...data,
       },
@@ -113,7 +113,7 @@ export const update = async (id: number, data: SupplierInterface) => {
 export const deleted = async (id: number, data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const supplier = await Supplier.update(
+    const supplier = await SupplierDB.update(
       {
         status: false,
         deletedAt: new Date(),
