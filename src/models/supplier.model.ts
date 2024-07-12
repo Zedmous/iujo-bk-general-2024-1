@@ -16,7 +16,7 @@ const supplierModel = {
         allowNull: false
     },
     name: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING(30),
         allowNull: false,
         unique: true,
     },
