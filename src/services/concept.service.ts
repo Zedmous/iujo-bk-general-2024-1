@@ -1,11 +1,11 @@
-import { Concept } from "../config";
+import { ConceptDB } from "../config";
 import { ConceptInterface } from "../interfaces";
 
 export const getAll = async () => {
     try {
       //consultas a la base de datos van aca
 
-      const concepts = await Concept.findAll();
+      const concepts = await ConceptDB.findAll();
       return {
         message: `Conceptos encontrados`,
         status: 200,
@@ -24,7 +24,7 @@ export const getAll = async () => {
   export const getOne = async (id: number) => {
     try {
       //consultas a la base de datos van aca
-      const concepts = await Concept.findOne({ where: { id } }); 
+      const concepts = await ConceptDB.findOne({ where: { id } }); 
       if (concepts === null) {
         console.log("No encontrado");
         return {
@@ -53,7 +53,7 @@ export const getAll = async () => {
   export const create = async (data: ConceptInterface) => {
     try {
       //consultas a la base de datos van aca
-      const concepts = await Concept.create({
+      const concepts = await ConceptDB.create({
         ...data,
       });
   
@@ -75,7 +75,7 @@ export const getAll = async () => {
   export const update = async (id: number, data: ConceptInterface) => {
     try {
       //consultas a la base de datos van aca
-      const concepts = await Concept.update(
+      const concepts = await ConceptDB.update(
         {
           ...data,
         },
@@ -105,7 +105,7 @@ export const getAll = async () => {
   export const deleted = async (id: number, data: ConceptInterface) => {
     try {
       //consultas a la base de datos van aca
-      const concepts = await Concept.update(
+      const concepts = await ConceptDB.update(
         {
           status: false,
           deletedAt: new Date(),

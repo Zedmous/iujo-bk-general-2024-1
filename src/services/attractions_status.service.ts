@@ -1,9 +1,9 @@
-import { AttractionsStatus } from "../config";
+import { AttractionsStatusDB } from "../config";
 import { AttractionsStatusInterface } from "../interfaces";
 
 export const getAll = async () => {
     try {
-        const attractionsStatus = await AttractionsStatus.findAll();
+        const attractionsStatus = await AttractionsStatusDB.findAll();
         return {
             message: `Lista de estados`,
             status: 200,
@@ -23,7 +23,7 @@ export const getAll = async () => {
 
 export const getOne = async (id: number) => {
     try {
-        const attractionsStatus = await AttractionsStatus.findOne({ where: { id } });
+        const attractionsStatus = await AttractionsStatusDB.findOne({ where: { id } });
         if (attractionsStatus === null) {
             console.log("No encontrado");
             return {
@@ -51,7 +51,7 @@ export const getOne = async (id: number) => {
 };
 export const create = async (data: AttractionsStatusInterface) => {
     try {
-        const attractionsStatus = await AttractionsStatus.create({
+        const attractionsStatus = await AttractionsStatusDB.create({
             ...data,
         });
 
@@ -73,7 +73,7 @@ export const create = async (data: AttractionsStatusInterface) => {
 
 export const update = async (id: number, data: AttractionsStatusInterface) => {
     try {
-        const attractionsStatus = await AttractionsStatus.update(
+        const attractionsStatus = await AttractionsStatusDB.update(
             {
                 ...data,
             },
@@ -102,7 +102,7 @@ export const update = async (id: number, data: AttractionsStatusInterface) => {
 };
 export const deleted = async (id: number, data: AttractionsStatusInterface) => {
     try {
-        const attractionsStatus = await AttractionsStatus.update(
+        const attractionsStatus = await AttractionsStatusDB.update(
             {
                 status: false,
                 deletedAt: new Date(),

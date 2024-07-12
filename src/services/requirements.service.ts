@@ -1,9 +1,9 @@
-import { Requirements } from "../config";
-import { RequirementsInterface } from "../interfaces";
+import { RequirementDB } from "../config";
+import { RequirementInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    const requirements = await Requirements.findAll();
+    const requirements = await RequirementDB.findAll();
     return {
       message: `Lista de requerimientos`,
       status: 200,
@@ -23,7 +23,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const requirement = await Requirements.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    const requirement = await RequirementDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
     if (requirement === null) {
       console.log("No encontrado");
       return {
@@ -50,10 +50,10 @@ export const getOne = async (id: number) => {
   }
 };
 
-export const create = async (data: RequirementsInterface) => {
+export const create = async (data: RequirementInterface) => {
   try {
     //consultas a la base de datos van aca
-    const requirement = await Requirements.create({
+    const requirement = await RequirementDB.create({
       ...data,
     });
 
@@ -73,10 +73,10 @@ export const create = async (data: RequirementsInterface) => {
   }
 };
 
-export const update = async (id: number, data: RequirementsInterface) => {
+export const update = async (id: number, data: RequirementInterface) => {
   try {
     //consultas a la base de datos van aca
-    const requirement = await Requirements.update(
+    const requirement = await RequirementDB.update(
       {
         ...data,
       },
@@ -104,10 +104,10 @@ export const update = async (id: number, data: RequirementsInterface) => {
   }
 };
 
-export const deleted = async (id: number, data: RequirementsInterface) => {
+export const deleted = async (id: number, data: RequirementInterface) => {
   try {
     //consultas a la base de datos van aca
-    const requirement = await Requirements.update(
+    const requirement = await RequirementDB.update(
       {
         status: false,
         deletedAt: new Date(),

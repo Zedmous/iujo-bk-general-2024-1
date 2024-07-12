@@ -1,5 +1,4 @@
-
-export interface LocationsInterface{
+export interface LocationInterface{
     id?:number;
     name:string;
     latitude:number;

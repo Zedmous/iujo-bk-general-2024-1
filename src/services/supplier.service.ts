@@ -1,20 +1,20 @@
-import { RoleDB } from "../config";
-import { RoleInterface } from "../interfaces";
+import { SupplierDB } from "../config";
+import { SupplierInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const roles = await RoleDB.findAll({
+    /*const roles = await Role.findAll({
         where: {
           status: true,
         },
       });*/
-    const roles = await RoleDB.findAll();
+    const suppliers = await SupplierDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `FindAll Supplier exitoso`,
       status: 200,
       data: {
-        roles,
+        suppliers,
       },
     };
   } catch (error) {
@@ -31,21 +31,21 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (role === null) {
+    const supplier = await SupplierDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    if (supplier === null) {
       console.log("No encontrado");
       return {
-        message: `Role no encontrado`,
+        message: `SupplierDB no encontrado`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `SupplierDB encontrado`,
         status: 200,
         data: {
-          role,
+          supplier,
         },
       };
     }
@@ -57,18 +57,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: RoleInterface) => {
+export const create = async (data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.create({
+    const supplier = await SupplierDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Creacion de Supplier exitoso`,
       status: 200,
       data: {
-        role,
+        supplier,
       },
     };
   } catch (error) {
@@ -80,10 +80,10 @@ export const create = async (data: RoleInterface) => {
   }
 };
 
-export const update = async (id: number, data: RoleInterface) => {
+export const update = async (id: number, data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    const supplier = await SupplierDB.update(
       {
         ...data,
       },
@@ -96,10 +96,10 @@ export const update = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Actualización del Supplier exitoso`,
       status: 200,
       data: {
-        role,
+        supplier,
       },
     };
   } catch (error) {
@@ -110,10 +110,10 @@ export const update = async (id: number, data: RoleInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: RoleInterface) => {
+export const deleted = async (id: number, data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    const supplier = await SupplierDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +127,10 @@ export const deleted = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Eliminación del Rol exitoso`,
+      message: `Eliminación del Supplier exitoso`,
       status: 200,
       data: {
-        role,
+        supplier,
       },
     };
   } catch (error) {

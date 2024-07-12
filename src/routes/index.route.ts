@@ -1,15 +1,19 @@
-import testRoute from "./test.route";
-import locationsRoute from "./locations.route";
+import locationRoute from "./locations.route";
+import requirementRoute from "./requirements.route";
 import roleRoute from "./role.route";
-import conceptsRoute from "./concept.route";
-import attractionsStatusRoute from "./attractions_status.route";
-import requirementsRoute from "./requirements.route";
+import conceptRoute from "./concept.route";
+import attractionStatusRoute from "./attractions_status.route";
+import supplierRoute from "./supplier.route";
+import userRoute from "./user.route";
 
 export {
-    testRoute,
+    requirementRoute,
+    locationRoute,
+    supplierRoute,
+    userRoute,
     roleRoute,
-    conceptsRoute,
-    attractionsStatusRoute ,
-    requirementsRoute,
-    locationsRoute
+    conceptRoute,
+    attractionStatusRoute
 }
+    
+

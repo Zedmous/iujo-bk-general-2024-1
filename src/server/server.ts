@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, requirementsRoute,locationsRoute, attractionsStatusRoute,conceptsRoute  } from "../routes/index.route";
+import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute  } from "../routes/index.route";
+
+
 import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
@@ -12,10 +14,12 @@ export class Server {
     this.port = process.env.PORT || 3880;
     this.pre = "/api";
     this.paths = {
-      roles: this.pre + "/roles",
-      attractionStatus: this.pre + "/attractionstatus",
+      roles: this.pre+ "/roles",
       requirements: this.pre+ "/requirements",
       locations: this.pre+ "/locations",
+      suppliers: this.pre+ "/suppliers",
+      users: this.pre+ "/users",
+      attractionStatus: this.pre + "/attractionstatus",
       concepts: this.pre+ "/concepts",
     };
 
@@ -29,16 +33,15 @@ export class Server {
     this.app.use(express.json());
     this.app.use(express.static("public"));
   }
-  routes() {   
+    
+  routes() {
+    this.app.use(this.paths.locations, locationRoute);
     this.app.use(this.paths.roles, roleRoute);
-    this.app.use(this.paths.attractionStatus, attractionsStatusRoute);
-    this.app.use(this.paths.requirements, requirementsRoute);
-    this.app.use(this.paths.locations, locationsRoute);
-    this.app.use(this.paths.concepts, conceptsRoute);
-    
-    
-    
-    
+    this.app.use(this.paths.requirements, requirementRoute);
+    this.app.use(this.paths.suppliers, supplierRoute);
+    this.app.use(this.paths.users, userRoute);
+    this.app.use(this.paths.attractionStatus, attractionStatusRoute);
+    this.app.use(this.paths.concepts, conceptRoute);
   }
   async connectDB() {
     await db.authenticate().then(() => {
