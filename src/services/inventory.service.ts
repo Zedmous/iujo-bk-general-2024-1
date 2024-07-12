@@ -1,20 +1,15 @@
-import { RoleDB } from "../config";
-import { RoleInterface } from "../interfaces";
+import { InventoryDB } from "../config";
+import { InventoryInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const roles = await RoleDB.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const roles = await RoleDB.findAll();
+    const inventoryProducts  = await InventoryDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `Successful inventory connection`,
       status: 200,
       data: {
-        roles,
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -31,21 +26,21 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (role === null) {
-      console.log("No encontrado");
+    const inventoryProducts  = await InventoryDB.findOne({ where: { id } });
+    if (inventoryProducts  === null) {
+      console.log("Not found");
       return {
-        message: `Role no encontrado`,
+        message: `Inventary not found`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `Inventory found`,
         status: 200,
         data: {
-          role,
+          inventoryProducts ,
         },
       };
     }
@@ -57,18 +52,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: RoleInterface) => {
+export const create = async (data: InventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.create({
+    const inventoryProducts  = await InventoryDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Successful inventory creation`,
       status: 200,
       data: {
-        role,
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -80,10 +75,10 @@ export const create = async (data: RoleInterface) => {
   }
 };
 
-export const update = async (id: number, data: RoleInterface) => {
+export const update = async (id: number, data: InventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    const inventoryProducts  = await InventoryDB.update(
       {
         ...data,
       },
@@ -96,10 +91,10 @@ export const update = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Successful inventory update`,
       status: 200,
       data: {
-        role,
+        inventoryProducts ,
       },
     };
   } catch (error) {
@@ -110,10 +105,10 @@ export const update = async (id: number, data: RoleInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: RoleInterface) => {
+export const deleted = async (id: number, data: InventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    const inventoryProducts = await InventoryDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +122,10 @@ export const deleted = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Eliminación del Rol exitoso`,
+      message: `Elimination of successful inventory`,
       status: 200,
       data: {
-        role,
+        inventoryProducts ,
       },
     };
   } catch (error) {
