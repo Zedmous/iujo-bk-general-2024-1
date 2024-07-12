@@ -1,8 +1,8 @@
-export interface RoleInterface{
+export interface AttractionsStatusInterface{
     id?:number;
     name:string;
-    status?:boolean;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;
+    status?:boolean;
 }

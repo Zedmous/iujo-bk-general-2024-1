@@ -11,7 +11,7 @@ export const getAll = async () => {
       });*/
     const locations = await LocationDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `Consulta de Ubicación exitosa`,
       status: 200,
       data: {
         locations,
@@ -26,8 +26,6 @@ export const getAll = async () => {
   }
 };
 
-
-
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
@@ -35,14 +33,14 @@ export const getOne = async (id: number) => {
     if (locations === null) {
       console.log("No encontrado");
       return {
-        message: `Direccion no encontrado`,
+        message: `Ubicación no encontrada`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Direccion encontrado`,
+        message: `Ubicación encontrada`,
         status: 200,
         data: {
           locations,
@@ -65,7 +63,7 @@ export const create = async (data: LocationInterface) => {
     });
 
     return {
-      message: `Creacion de direccion exitosa`,
+      message: `Creacion de ubicación exitosa`,
       status: 200,
       data: {
         locations,
@@ -96,7 +94,7 @@ export const update = async (id: number, data: LocationInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Actualización de ubicación exitosa`,
       status: 200,
       data: {
         locations,
@@ -127,7 +125,7 @@ export const deleted = async (id: number, data: LocationInterface) => {
     );
 
     return {
-      message: `Eliminación del Rol exitoso`,
+      message: `Eliminación de ubicación exitosa`,
       status: 200,
       data: {
         locations,
