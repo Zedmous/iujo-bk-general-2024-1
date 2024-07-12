@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const UserModel = {
+const LocationModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -8,30 +8,24 @@ const UserModel = {
   },
   name: {
     type: DataTypes.STRING(50),
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING(50),
     allowNull: false,
     unique: true,
-    validate: {
-      isEmail: true,
-      notEmpty: true,
-    },
   },
-  password: {
-    type: DataTypes.STRING(400),
+  latitude: {
+    type: DataTypes.DECIMAL(10, 8), 
+    allowNull: false,
   },
-  role_id: {
-    type: DataTypes.INTEGER,
+  longitude: {
+    type: DataTypes.DECIMAL(11, 8), 
+    allowNull: false,
   },
   deletedAt: {
     type: DataTypes.DATE,
   },
   status: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true,
-  },
+    default: true,
+  }
 };
 
-export { UserModel };
+export { LocationModel };
