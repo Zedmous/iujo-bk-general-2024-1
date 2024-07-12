@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel, RequirementsModel,locationsModel,AttractionsStatusModel, ConceptModel } from "../models";
+import { RoleModel, UserModel, TypeRequest, RequirementsModel,locationsModel,AttractionsStatusModel, ConceptModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -26,11 +26,11 @@ User.belongsTo(Role, { foreignKey: 'role_id' });
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
-    //await User.sync({ alter: true });
-    //await Role.sync({ alter: true });
+   
+  
   } catch (error) {
     console.error(error);
   }
 };
 syncModels();
-export  { User, Role,Locations, Requirements,AttractionsStatus, Concept,db };
+export  { User, Role,Locations, TypeRequest, Requirements,AttractionsStatus, Concept,db };
