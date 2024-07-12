@@ -1,7 +1,7 @@
 
 export interface RequirementsInterface{
     id?:number;
-    requirement:string;
+    name:string;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;

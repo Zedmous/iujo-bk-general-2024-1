@@ -2,8 +2,8 @@ import { body } from "express-validator";
 
 class RequirementsValidator {
   public validateRequirements = [
-    body("requirement").notEmpty().withMessage("Requirement is required"),
-    body("requirement").isString().withMessage("Requirement must be string"),
+    body("name").notEmpty().withMessage("Requirement is required"),
+    body("name").isString().withMessage("Requirement must be string"),
   ];
 }
 export { RequirementsValidator };

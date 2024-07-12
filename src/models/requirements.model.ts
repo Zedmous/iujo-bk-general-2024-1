@@ -6,7 +6,7 @@ const RequirementsModel = {
     autoIncrement: true,
     primaryKey: true,
   },
-  requirement: {
+  name: {
     type: DataTypes.STRING(50),
     allowNull: false,
     unique: true,
