@@ -1,8 +1,7 @@
-export interface inventoryInterface{
-    code_inventory?:number;
-    name:string;
+export interface InventoryInterface{
+    id:number;
     stock_products:number;
-    code_products:number;
+    product_id:number;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;

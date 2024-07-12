@@ -1,10 +1,10 @@
-import { Inventory } from "../config";
-import { inventoryInterface } from "../interfaces/inventory.interface";
+import { InventoryDB } from "../config";
+import { InventoryInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    const inventoryProducts  = await Inventory.findAll();
+    const inventoryProducts  = await InventoryDB.findAll();
     return {
       message: `Successful inventory connection`,
       status: 200,
@@ -26,7 +26,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const inventoryProducts  = await Inventory.findOne({ where: { id } });
+    const inventoryProducts  = await InventoryDB.findOne({ where: { id } });
     if (inventoryProducts  === null) {
       console.log("Not found");
       return {
@@ -52,10 +52,10 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: inventoryInterface) => {
+export const create = async (data: InventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const inventoryProducts  = await Inventory.create({
+    const inventoryProducts  = await InventoryDB.create({
       ...data,
     });
 
@@ -75,10 +75,10 @@ export const create = async (data: inventoryInterface) => {
   }
 };
 
-export const update = async (id: number, data: inventoryInterface) => {
+export const update = async (id: number, data: InventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const inventoryProducts  = await Inventory.update(
+    const inventoryProducts  = await InventoryDB.update(
       {
         ...data,
       },
@@ -105,10 +105,10 @@ export const update = async (id: number, data: inventoryInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: inventoryInterface) => {
+export const deleted = async (id: number, data: InventoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const inventoryProducts = await Inventory.update(
+    const inventoryProducts = await InventoryDB.update(
       {
         status: false,
         deletedAt: new Date(),

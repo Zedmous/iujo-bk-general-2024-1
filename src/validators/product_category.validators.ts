@@ -1,8 +1,8 @@
 import { body } from "express-validator";
 
-class categoryProductsValidator {
+class ProductCategoryValidator {
   public validateCategoryProducts = [
     body("name").isString().withMessage("Category Name must be string"),
   ];
 }
-export { categoryProductsValidator };
+export { ProductCategoryValidator };

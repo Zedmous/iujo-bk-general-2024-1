@@ -1,22 +1,23 @@
 import { DataTypes } from "sequelize";
 
-const inventoryModel = {
-    code_inventary: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-    },
-    name: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        unique: true,
-    },
-    stock_products: {
-        type: DataTypes.INTEGER,
-      },
-      code_products: {
-        type: DataTypes.INTEGER,
-      },
+const InventoryModel = {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  stock_products: {
+    type: DataTypes.INTEGER,
+  },
+  product_id: {
+    type: DataTypes.INTEGER,
+  },
+  area_id: {
+    type: DataTypes.INTEGER,
+  },
+  deletedAt: {
+    type: DataTypes.DATE,
+  },
 };
 
-export { inventoryModel };
+export { InventoryModel };

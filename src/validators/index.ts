@@ -1,4 +1,3 @@
-export * from './test.validators';
 export * from './role.validators';
-export * from './productCategories.validators';
+export * from './product_category.validators';
 export * from './inventory.validators';

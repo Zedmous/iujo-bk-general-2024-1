@@ -1,11 +1,9 @@
-import testRoute from "./test.route";
 import roleRoute from "./role.route";
-import productCategoriesRoute from "./productCategories.route";
-import inventory from "./inventory.route";
+import productCategoryRoute from "./product_category.route";
+import inventoryRoute from "./inventory.route";
 
 export {
-    testRoute,
     roleRoute,
-    productCategoriesRoute,
-    inventory
+    productCategoryRoute,
+    inventoryRoute
 }

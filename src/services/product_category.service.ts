@@ -1,10 +1,10 @@
-import { Category } from "../config";
-import { productCategoriesInterface } from "../interfaces/productCategories.interface";
+import { ProductCategoryDB } from "../config";
+import { ProductCategoryInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    const categoryProducts = await Category.findAll();
+    const categoryProducts = await ProductCategoryDB.findAll();
     return {
       message: `All categories successful`,
       status: 200,
@@ -26,8 +26,8 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const categoryProducts = await Category.findOne({ where: { id } });
-    if (Category === null) {
+    const categoryProducts = await ProductCategoryDB.findOne({ where: { id } });
+    if (categoryProducts === null) {
       console.log("Not Found");
       return {
         message: `Category product not found`,
@@ -52,10 +52,10 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: productCategoriesInterface) => {
+export const create = async (data: ProductCategoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const categoryProducts = await Category.create({
+    const categoryProducts = await ProductCategoryDB.create({
       ...data,
     });
 
@@ -75,10 +75,10 @@ export const create = async (data: productCategoriesInterface) => {
   }
 };
 
-export const update = async (id: number, data: productCategoriesInterface) => {
+export const update = async (id: number, data: ProductCategoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const categoryProducts = await Category.update(
+    const categoryProducts = await ProductCategoryDB.update(
       {
         ...data,
       },
@@ -105,10 +105,10 @@ export const update = async (id: number, data: productCategoriesInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: productCategoriesInterface) => {
+export const deleted = async (id: number, data: ProductCategoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const categoryProducts = await Category.update(
+    const categoryProducts = await ProductCategoryDB.update(
       {
         status: false,
         deletedAt: new Date(),

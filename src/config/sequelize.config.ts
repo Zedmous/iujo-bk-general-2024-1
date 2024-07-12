@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize";
-import { productCategoriesModel } from "../models/product.categories.model";
-import { inventoryModel } from "../models/inventory.model";
-import { RoleModel, UserModel } from "../models";
+
+import { InventoryModel, ProductCategoryModel, RoleModel, UserModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -20,8 +19,8 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
-const Category = db.define('category_products',productCategoriesModel);
-const Inventory = db.define('inventary',inventoryModel);
+const ProductCategoryDB = db.define('product_categories',ProductCategoryModel);
+const InventoryDB = db.define('inventories',InventoryModel);
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
@@ -40,4 +39,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role,  db, Category, Inventory };
+export  { User, Role,  db, ProductCategoryDB, InventoryDB };

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { create, deleted, getAll, getOne, update } from "../services/inventory.service";
-export class inventoryController {
+export class InventoryController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {

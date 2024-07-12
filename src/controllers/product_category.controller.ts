@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/productCategories.service";
-export class categoryProductsController {
+import { create, deleted, getAll, getOne, update } from "../services/product_category.service";
+export class ProductCategoryController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {
