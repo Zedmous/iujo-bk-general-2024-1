@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 
-const areaModel = {
-  code_area: {
+const AreaModel = {
+  id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
@@ -11,12 +11,16 @@ const areaModel = {
     allowNull: false,
     unique: true,
   },
-  code_inventory: {
+  location_id: {
     type: DataTypes.INTEGER,
   },
-  code_location: {
-    type: DataTypes.INTEGER,
-  }
+  deletedAt: {
+    type: DataTypes.DATE,
+  },
+  status: {
+    type: DataTypes.BOOLEAN,
+    default: true,
+  },
 };
 
-export { areaModel };
+export { AreaModel };

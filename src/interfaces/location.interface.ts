@@ -1,9 +1,9 @@
-
-export interface locationInterface{
-    code_location?:number;
+export interface LocationInterface{
+    id?:number;
     name:string;
-    address:string;
-    description:string;
+    latitude:number;
+    longitude:number;
+    status?:boolean;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;

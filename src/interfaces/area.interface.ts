@@ -1,9 +1,10 @@
 
-export interface areaInterface{
-    code_area?:number;
+export interface AreaInterface{
+    id?:number;
     name:string;
-    code_inventory:number;
-    code_location:number;
+    inventory_id:number;
+    location_id:number;
+    status?:boolean;
     createdAt:Date;
     updatedAt:Date;
     deletedAt:Date;

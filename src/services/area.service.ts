@@ -1,20 +1,15 @@
-import { area } from "../config";
-import { areaInterface } from "../interfaces/area.interface";
+import { AreaDB } from "../config";
+import { AreaInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const areas = await area.findAll();
+    
+    const Areas = await  AreaDB.findAll();
     return {
-      message: `Successful areas connection`,
+      message: `Successful Areas connection`,
       status: 200,
       data: {
-        areas,
+        Areas,
       },
     };
   } catch (error) {
@@ -31,7 +26,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const areas = await area.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    const area = await  AreaDB.findOne({ where: { id } });
     if (area === null) {
       console.log("No encontrado");
       return {
@@ -45,7 +40,7 @@ export const getOne = async (id: number) => {
         message: `Areas found`,
         status: 200,
         data: {
-          areas,
+          area,
         },
       };
     }
@@ -58,18 +53,17 @@ export const getOne = async (id: number) => {
   }
 };
 
-export const create = async (data: areaInterface) => {
+export const create = async (data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const areas = await area.create({
+    const Areas = await  AreaDB.create({
       ...data,
     });
-
     return {
       message: `Areas created`,
       status: 200,
       data: {
-        areas,
+        Areas,
       },
     };
   } catch (error) {
@@ -81,10 +75,10 @@ export const create = async (data: areaInterface) => {
   }
 };
 
-export const update = async (id: number, data: areaInterface) => {
+export const update = async (id: number, data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const areas = await area.update(
+    const Areas = await  AreaDB.update(
       {
         ...data,
       },
@@ -100,7 +94,7 @@ export const update = async (id: number, data: areaInterface) => {
       message: `Areas updated successfully`,
       status: 200,
       data: {
-        areas,
+        Areas,
       },
     };
   } catch (error) {
@@ -112,10 +106,10 @@ export const update = async (id: number, data: areaInterface) => {
   }
 };
 
-export const deleted = async (id: number, data: areaInterface) => {
+export const deleted = async (id: number, data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const areas = await area.update(
+    const Areas = await  AreaDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -132,7 +126,7 @@ export const deleted = async (id: number, data: areaInterface) => {
       message: `Area Deleted`,
       status: 200,
       data: {
-        areas,
+        Areas,
       },
     };
   } catch (error) {

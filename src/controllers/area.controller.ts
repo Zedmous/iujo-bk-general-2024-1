@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { create, deleted, getAll, getOne, update } from "../services/area.service";
-export class areaController {
+export class AreaController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {

@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 
-const locationModel = {
-  code_location: {
+const ProductCategoryModel = {
+  id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
@@ -11,12 +11,13 @@ const locationModel = {
     allowNull: false,
     unique: true,
   },
-  address: {
-    type: DataTypes.STRING(50),
+  deletedAt: {
+    type: DataTypes.DATE,
   },
-  description: {
-    type: DataTypes.STRING(50),
-  }
+  status: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
 };
 
-export { locationModel };
+export { ProductCategoryModel };
