@@ -1,5 +1,6 @@
 export * from './staff.controller';
 export * from './role.controller';
+export * from './transport_type.controller';
 export * from './table_type.controller';
 export * from './table.controller';
 export * from './area.controller';

@@ -16,6 +16,7 @@ import {
   tableRoute,
   tableTypeRoute,
   roomTypeRoute,
+  transportTypeRoute
 } from "../routes/index.route";
 
 import { db } from "../config/sequelize.config";
@@ -44,6 +45,7 @@ export class Server {
       staffs: this.pre + "/staffs",
       tables: this.pre + "/tables",
       table_types: this.pre + "/table_types",
+      transport_types: this.pre+ "/transport_types"
     };
 
     this.connectDB();
@@ -59,6 +61,7 @@ export class Server {
 
   routes() {
     this.app.use(this.paths.roles, roleRoute);
+    this.app.use(this.paths.transport_types, transportTypeRoute);
     this.app.use(this.paths.table_types, tableTypeRoute);
     this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.requirements, requirementRoute);

@@ -1,3 +1,4 @@
+
 export * from './table_type.interface'
 export * from './table.interface'
 export * from './staff.interface'
@@ -13,3 +14,4 @@ export * from './product_category.interface'
 export * from './inventory.interface'
 export * from './customer.interface'
 export * from './room_type.interface'
+export * from './transport_type.interface'

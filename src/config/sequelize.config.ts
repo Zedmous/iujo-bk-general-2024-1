@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 
+
 import {
   RoleModel,
   UserModel,
@@ -15,7 +16,8 @@ import {
   AreaModel,
   StaffModel,
   TableModel,
-  TableTypeModel
+  TableTypeModel,
+  TransportTypeModel
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -30,6 +32,9 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   dialect: "mysql",
   host: "localhost",
 });
+
+
+
 
 // CREAMOS LAS TABLAS
 const UserDB = db.define("users", UserModel);
@@ -50,6 +55,7 @@ const AreaDB = db.define("areas", AreaModel);
 const StaffDB = db.define('staffs',StaffModel);
 const TableDB = db.define('tables',TableModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
+const TransportTypeDB = db.define('transport_types',TransportTypeModel);
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
@@ -80,5 +86,6 @@ export {
   StaffDB,
   TableDB,
   TableTypeDB,
+  TransportTypeDB,
   db,
 };

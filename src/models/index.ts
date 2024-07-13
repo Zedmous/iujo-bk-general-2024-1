@@ -2,6 +2,7 @@ export * from './staff.model';
 export * from './locations.model';
 export * from './user.model';
 export * from './role.model';
+export * from './transport_type.model';
 export * from './table_type.model';
 export * from './table.model';
 export * from './area.model';

@@ -1,4 +1,3 @@
-
 export * from './area.validators';
 export * from './attractions_status.validators';
 export * from './customer.validators';
@@ -14,3 +13,4 @@ export * from './table_type.validators'
 export * from './table.validators'
 export * from './room_type.validators';
 export * from './user.validators';
+export * from './transport_type.validators'
