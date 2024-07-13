@@ -10,18 +10,10 @@ const TableOrderDetailModel = {
     orderId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'orders',
-        key: 'orderId'
-      }
     },
     dishId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'dishes',
-        key: 'dishId'
-      }
     },
     quantity: {
       type: DataTypes.INTEGER,

@@ -22,10 +22,6 @@ const TableDishModel = {
     categoryId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'categories',
-        key: 'categoryId'
-      }
     },
 };
 
