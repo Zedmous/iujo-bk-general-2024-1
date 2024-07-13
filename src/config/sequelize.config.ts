@@ -1,5 +1,21 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, TableModel, UserModel} from "../models";
+
+import {
+  RoleModel,
+  UserModel,
+  SupplierModel,
+  RequirementModel,
+  LocationModel,
+  AttractionsStatusModel,
+  ConceptModel,
+  InventoryModel,
+  ProductCategoryModel,
+  CustomerModel,
+  TypeRoomModel,
+  AreaModel,
+  StaffModel,
+  TableModel
+} from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -14,19 +30,29 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
-//CREAMOS LAS TABLAS DE LA BASE DE DATOS
 
-const User = db.define('users',UserModel);
-const Role = db.define('roles',RoleModel);
-const Table = db.define('table',TableModel)
+
+// CREAMOS LAS TABLAS
+const UserDB = db.define("users", UserModel);
+const RoleDB = db.define("roles", RoleModel);
+const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
+const InventoryDB = db.define("inventories", InventoryModel);
+const SupplierDB = db.define("suppliers", SupplierModel);
+const RequirementDB = db.define("requirements", RequirementModel);
+const LocationDB = db.define("locations", LocationModel);
+const ConceptDB = db.define("concepts", ConceptModel);
+const AttractionsStatusDB = db.define(
+  "attractions_statuses",
+  AttractionsStatusModel
+);
+const CustomerDB = db.define("customers", CustomerModel);
+const TypeRoomDB = db.define("room_types", TypeRoomModel);
+const AreaDB = db.define("areas", AreaModel);
+const StaffDB = db.define('staffs',StaffModel);
+const TableDB = db.define('tables',TableModel);
 // Relaciones
-Role.hasMany(User, { foreignKey: 'role_id' });
-User.belongsTo(Role, { foreignKey: 'role_id' });
-//Table.belongsTo(tipoMesa, {foreingKey: 'tipoMesaId'})
-//tipoMesa.hasMany(Table, foreingKey: 'tipoMesaID')
-//falta la tabla tipo de mesa asi que mientras hice una
-//relacion improvisada para tener una idea (cabe destacar que 
-//debe hacerce con el patron ya establecido en el ejemplo de roles)
+RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
+UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -38,7 +64,22 @@ const syncModels = async () => {
     console.error(error);
   }
 };
-
 syncModels();
-//export default db;
-export  { User, Role, Table,  db };
+
+export {
+  UserDB,
+  RoleDB,
+  SupplierDB,
+  LocationDB,
+  RequirementDB,
+  AttractionsStatusDB,
+  ConceptDB,
+  ProductCategoryDB,
+  InventoryDB,
+  CustomerDB,
+  TypeRoomDB,
+  AreaDB,
+  StaffDB,
+  TableDB,
+  db,
+};

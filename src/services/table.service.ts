@@ -1,9 +1,9 @@
-import { Table } from "../config";
+import { TableDB } from "../config";
 import { TableInterface } from "../interfaces";
 
 export const getAll = async () => {
     try{
-        const table = await Table.findAll();
+        const table = await TableDB.findAll();
         return{
             message: 'Consulta de mesas exitoso',
             status: 200,
@@ -22,7 +22,7 @@ export const getAll = async () => {
 
 export const getOne = async (id: number) => {
     try{
-        const table = await Table.findOne({where: { id }});
+        const table = await TableDB.findOne({where: { id }});
         if (table === null) {
             console.log("No encontrado");
             return {
@@ -52,7 +52,7 @@ export const getOne = async (id: number) => {
 
 export const create = async (data: TableInterface) => {
     try{
-        const table = await Table.create({
+        const table = await TableDB.create({
             ...data,
         });
         return{
@@ -73,7 +73,7 @@ export const create = async (data: TableInterface) => {
 
 export const update = async (id: number, data: TableInterface) => {
     try{
-        const table = await Table.update(
+        const table = await TableDB.update(
             {
                 ...data,
             },
@@ -103,14 +103,18 @@ export const update = async (id: number, data: TableInterface) => {
 
 export const deleted = async (id: number, data: TableInterface) => {
     try{
-        const table = await Table.destroy(
+        const table = await TableDB.update(
             {
-                where: {
-                id: id,
-                }
-                //agregar la confirmacion de la eliminacion
+              status: false,
+              deletedAt: new Date(),
+            },
+            {
+              where: {
+                id,
+              },
+              returning: true,
             }
-        );
+          );
 
         return {
             message: 'Eliminacion de Mesa exitosa',

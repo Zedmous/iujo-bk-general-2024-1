@@ -1,8 +1,12 @@
 export interface TableInterface{
     id?:number;
-    number_table:number;
-    capacitance?:number;
-    location:number;
-    type_table:number;
-    available?:boolean;
+    name:string;
+    capacitance:number;
+    location_id:number;
+    table_type_id:number;
+    status?:boolean;
+    createdAt:Date;
+    updatedAt:Date;
+    deletedAt:Date;
 }
+
