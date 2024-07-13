@@ -17,7 +17,13 @@ import {
   StaffModel,
   TableModel,
   TableTypeModel,
-  TransportTypeModel
+  TransportTypeModel,
+  TableCategoryModel,
+  TableCustomerModel,
+  TableDishModel,
+  TableLocationModel,
+  TableOrderDetailModel,
+  TableOrderModel,
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -56,6 +62,12 @@ const StaffDB = db.define('staffs',StaffModel);
 const TableDB = db.define('tables',TableModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
 const TransportTypeDB = db.define('transport_types',TransportTypeModel);
+const TableCategoryDB = db.define("table_category", TableCategoryModel);
+const TableCustomerDB = db.define("table_customers", TableCustomerModel);
+const TableDishDB = db.define("table_dishes", TableDishModel);
+const TableLocationDB = db.define("table_locations", TableLocationModel);
+const TableOrderDetailDB = db.define("table_order_details", TableOrderDetailModel);
+const TableOrderDB = db.define("table_orders", TableOrderModel);
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
@@ -87,5 +99,11 @@ export {
   TableDB,
   TableTypeDB,
   TransportTypeDB,
+  TableCategoryDB,
+  TableCustomerDB,
+  TableDishDB,
+  TableLocationDB,
+  TableOrderDetailDB,
+  TableOrderDB,
   db,
 };
