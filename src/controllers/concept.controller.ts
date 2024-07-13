@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from '../services/type_transport.services';
-
-export class TypeTransportController {
+import { create, deleted, getAll, getOne, update } from "../services/concept.service";
+export class ConceptController {
+ 
     constructor() {}
   
     all = async (req: Request, res: Response) => {
@@ -20,14 +20,14 @@ export class TypeTransportController {
         data,
       });
     };
-    createtypeTransport = async (req: Request, res: Response) => {
+    createConcept = async (req: Request, res: Response) => {
       const { status, message, data } = await create(req.body);
       return res.status(status).json({
         message,
         data,
       });
     };
-    updatetypeTransport = async (req: Request, res: Response) => {
+    updateConcept = async (req: Request, res: Response) => {
       const {id}=req.params
       const { status, message, data } = await update(parseInt(id) as number,req.body);
       return res.status(status).json({
@@ -36,7 +36,7 @@ export class TypeTransportController {
       });
     };
   
-    deletetypeTransport = async (req: Request, res: Response) => {
+    deleteConcept = async (req: Request, res: Response) => {
       const {id}=req.params
       const { status, message, data } = await deleted(parseInt(id) as number,req.body);
       return res.status(status).json({

@@ -1,20 +1,16 @@
-import {TypeTransport} from "../config/";
-import { TypeTransportInterface } from "../interfaces";
+import { ConceptDB } from "../config";
+import { ConceptInterface } from "../interfaces";
 
 export const getAll = async () => {
     try {
       //consultas a la base de datos van aca
-      /*const roles = await Role.findAll({
-          where: {
-            status: true,
-          },
-        });*/
-      const typeptransport = await TypeTransport.findAll();
+
+      const concepts = await ConceptDB.findAll();
       return {
-        message: `tipo de transporte conseguido`,
+        message: `Conceptos encontrados`,
         status: 200,
         data: {
-          typeptransport,
+          concepts,
         },
       };
     } catch (error) {
@@ -25,25 +21,24 @@ export const getAll = async () => {
       };
     }
   };
-
   export const getOne = async (id: number) => {
     try {
       //consultas a la base de datos van aca
-      const typetransport = await TypeTransport.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-      if (typetransport === null) {
+      const concepts = await ConceptDB.findOne({ where: { id } }); 
+      if (concepts === null) {
         console.log("No encontrado");
         return {
-          message: `Tipo de Transporte no encontrado`,
+          message: `Concepto no encontrado`,
           status: 404,
           data: {
           },
         };
       } else {
         return {
-          message: `Tipo de Transporte encontrado`,
+          message: `Concepto encontrado`,
           status: 200,
           data: {
-            typetransport,
+            concepts,
           },
         };
       }
@@ -55,19 +50,18 @@ export const getAll = async () => {
       };
     }
   };
-
-  export const create = async (data: TypeTransportInterface) => {
+  export const create = async (data: ConceptInterface) => {
     try {
       //consultas a la base de datos van aca
-      const typetransport = await TypeTransport.create({
+      const concepts = await ConceptDB.create({
         ...data,
       });
   
       return {
-        message: `Creacion de Tipo de Transporte exitoso`,
+        message: `Creacion de concepto exitoso`,
         status: 200,
         data: {
-          typetransport,
+          concepts,
         },
       };
     } catch (error) {
@@ -78,11 +72,10 @@ export const getAll = async () => {
       };
     }
   };
-
-  export const update = async (id: number, data: TypeTransportInterface) => {
+  export const update = async (id: number, data: ConceptInterface) => {
     try {
       //consultas a la base de datos van aca
-      const typetransport = await TypeTransport.update(
+      const concepts = await ConceptDB.update(
         {
           ...data,
         },
@@ -95,10 +88,10 @@ export const getAll = async () => {
       );
   
       return {
-        message: `Actualización del Tipo de Transporte exitoso`,
+        message: `Actualización del concepto exitoso`,
         status: 200,
         data: {
-          typetransport,
+          concepts,
         },
       };
     } catch (error) {
@@ -109,11 +102,10 @@ export const getAll = async () => {
       };
     }
   };
-
-  export const deleted = async (id: number, data: TypeTransportInterface) => {
+  export const deleted = async (id: number, data: ConceptInterface) => {
     try {
       //consultas a la base de datos van aca
-      const typetransport = await TypeTransport.update(
+      const concepts = await ConceptDB.update(
         {
           status: false,
           deletedAt: new Date(),
@@ -127,10 +119,10 @@ export const getAll = async () => {
       );
   
       return {
-        message: `Eliminación de Tipo de Transporte exitoso`,
+        message: `Eliminación del concepto exitoso`,
         status: 200,
         data: {
-          typetransport,
+          concepts,
         },
       };
     } catch (error) {
@@ -141,3 +133,5 @@ export const getAll = async () => {
       };
     }
   };
+  
+  
