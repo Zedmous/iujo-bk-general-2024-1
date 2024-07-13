@@ -5,12 +5,16 @@ export * from './concept.validators';
 export * from './inventory.validators';
 export * from './location.validators';
 export * from './product_category.validators';
+export * from './product.validators';
+export * from './room_type.validators';
 export * from './requirements.validators';
 export * from './role.validators';
 export * from './staff.validators'
 export * from './supplier.validators';
+export * from './transport_type.validators';
 export * from './table_type.validators'
 export * from './table.validators'
-export * from './room_type.validators';
 export * from './user.validators';
-export * from './transport_type.validators'
+
+
+

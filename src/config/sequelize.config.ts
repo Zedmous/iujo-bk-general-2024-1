@@ -8,6 +8,7 @@ import {
   RequirementModel,
   LocationModel,
   AttractionsStatusModel,
+  ProductModel,
   ConceptModel,
   InventoryModel,
   ProductCategoryModel,
@@ -33,9 +34,6 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
-
-
-
 // CREAMOS LAS TABLAS
 const UserDB = db.define("users", UserModel);
 const RoleDB = db.define("roles", RoleModel);
@@ -56,10 +54,10 @@ const StaffDB = db.define('staffs',StaffModel);
 const TableDB = db.define('tables',TableModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
 const TransportTypeDB = db.define('transport_types',TransportTypeModel);
+const ProductDB = db.define('products',ProductModel);
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
-
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
@@ -70,6 +68,8 @@ const syncModels = async () => {
   }
 };
 syncModels();
+//export default db;
+
 export {
   UserDB,
   RoleDB,
@@ -87,5 +87,6 @@ export {
   TableDB,
   TableTypeDB,
   TransportTypeDB,
+  ProductDB,
   db,
 };
