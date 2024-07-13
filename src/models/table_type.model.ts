@@ -6,8 +6,8 @@ const TTableModel = {
         autoIncrement: true,
         primaryKey: true,
     },
-    type_table_name:{
-        type: DataTypes.VARCHAR,
+    name:{
+        type: DataTypes.STRING,
         defaultValue: true,
     }
 };

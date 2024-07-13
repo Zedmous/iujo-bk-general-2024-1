@@ -17,14 +17,11 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 // Creamos las tablas de la base de datos
 const User = db.define("users", UserModel);
 const Role = db.define("roles", RoleModel);
-const TTable = db.define("tipo_mesa", TTableModel); // Nombre de la tabla: "tipo_mesa"
+const TableTypeDB = db.define("table_types", TTableModel); // Nombre de la tabla: "tipo_mesa"
 
 // Relaciones (modificación)
 Role.hasMany(User, { foreignKey: "role_id" });
 User.belongsTo(Role, { foreignKey: "role_id" });
-
-Table.belongsTo(TTable, { foreignKey: "tipo_mesa_id" }); // Relación entre Table y TTable
-TTable.hasMany(Table, { foreignKey: "tipo_mesa_id" });
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -41,4 +38,4 @@ const syncModels = async () => {
 
 syncModels();
 
-export { User, Role, Table, TTable, db };
+export { User, Role, TableTypeDB, db };

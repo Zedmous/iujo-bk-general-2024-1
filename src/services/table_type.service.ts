@@ -1,14 +1,14 @@
-import { TTable } from "../config"; // Import TTable model from config
+import { TableTypeDB } from "../config"; // Import TTable model from config
 import { TTablesInterface } from "../interfaces"; // Import TTablesInterface
 
 export const getAllTTables = async () => {
   try {
-    const tTables = await TTable.findAll(); // Fetch all TTables
+    const table_types = await TableTypeDB.findAll(); // Fetch all TTables
     return {
       message: 'Consulta de tipos de mesas exitosa',
       status: 200,
       data: {
-        tTables,
+        table_types,
       },
     };
   } catch (error) {
@@ -22,13 +22,13 @@ export const getAllTTables = async () => {
 
 export const getOneTTable = async (id: number) => {
   try {
-    const tTable = await TTable.findOne({ where: { id } }); // Find by ID
-    if (!tTable) {
+    const table_type = await TableTypeDB.findOne({ where: { id } }); // Find by ID
+    if (!table_type) {
       return {
         message: 'Tipo de mesa no encontrado',
         status: 404,
         data: {
-          tTable: null,
+          table_type: null,
         },
       };
     }
@@ -36,7 +36,7 @@ export const getOneTTable = async (id: number) => {
       message: 'Tipo de mesa encontrado',
       status: 200,
       data: {
-        tTable,
+        table_type,
       },
     };
   } catch (error) {
@@ -50,12 +50,14 @@ export const getOneTTable = async (id: number) => {
 
 export const createTTable = async (data: TTablesInterface) => {
   try {
-    const newTTable = await TTable.create(data); // Create new TTable
+    const table_type = await TableTypeDB.create({
+      ...data,
+    }); // Create new TTable
     return {
       message: 'Creación de tipo de mesa exitosa',
       status: 200,
       data: {
-        newTTable,
+        table_type,
       },
     };
   } catch (error) {
@@ -69,13 +71,13 @@ export const createTTable = async (data: TTablesInterface) => {
 
 export const updateTTable = async (id: number, newData: TTablesInterface) => {
   try {
-    const updatedTTable = await TTable.update(newData, { where: { id } }); // Update by ID
-    if (!updatedTTable[0]) {
+    const table_type = await TableTypeDB.update(newData, { where: { id } }); // Update by ID
+    if (!table_type[0]) {
       return {
         message: 'Tipo de mesa no encontrado para actualizar',
         status: 404,
         data: {
-          updatedTTable: null,
+          table_type: null,
         },
       };
     }
@@ -83,7 +85,7 @@ export const updateTTable = async (id: number, newData: TTablesInterface) => {
       message: 'Actualización de tipo de mesa exitosa',
       status: 200,
       data: {
-        updatedTTable: updatedTTable[0], // Updated TTable
+        table_type: table_type[0], // Updated TTable
       },
     };
   } catch (error) {
@@ -97,21 +99,23 @@ export const updateTTable = async (id: number, newData: TTablesInterface) => {
 
 export const deleteTTable = async (id: number) => {
   try {
-    const deletedTTable = await TTable.destroy({ where: { id } }); // Delete by ID
-    if (!deletedTTable) {
-      return {
-        message: 'Tipo de mesa no encontrado para eliminar',
-        status: 404,
-        data: {
-          deletedTTable: null,
+    const table_type = await TableTypeDB.update(
+      {
+        status: false,
+        deletedAt: new Date(),
+      },
+      {
+        where: {
+          id,
         },
-      };
-    }
+        returning: true,
+      }
+    );
     return {
       message: 'Eliminación de tipo de mesa exitosa',
       status: 200,
       data: {
-        deletedTTable: id, // Deleted TTable ID
+        table_type: table_type, // Deleted TTable ID
       },
     };
   } catch (error) {

@@ -1,2 +1,2 @@
 export * from './role.interface'
-export * from './TTables.interface'
+export * from './table_type.interface'

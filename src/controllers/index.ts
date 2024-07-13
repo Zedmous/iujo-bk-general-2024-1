@@ -1,3 +1,2 @@
 export * from './role.controller';
-export * from './test.controller';
-export * from './TTables.controller';
+export * from './table_type.controller';

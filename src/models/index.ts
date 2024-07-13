@@ -1,3 +1,3 @@
 export * from './user.model';
 export * from './role.model';
-export * from './TTables.model';
+export * from './table_type.model';

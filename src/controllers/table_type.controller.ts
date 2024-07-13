@@ -1,8 +1,13 @@
 import { Request, Response } from "express";
-import {getAllTTables,getOneTTable,createTTable, updateTTable,  deleteTTable,
-} from "../services/TTables.service"; // Import functions from TTables.service
+import {
+  getAllTTables,
+  getOneTTable,
+  createTTable,
+  updateTTable,
+  deleteTTable,
+} from "../services/table_type.service"; // Import functions from TTables.service
 
-export class TTablesController {
+export class TableTypeController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {
@@ -15,7 +20,9 @@ export class TTablesController {
 
   one = async (req: Request, res: Response) => {
     const { id } = req.params; // Extract ID from params
-    const { status, message, data } = await getOneTTable(parseInt(id) as number); // Use getOneTTable
+    const { status, message, data } = await getOneTTable(
+      parseInt(id) as number
+    ); // Use getOneTTable
     return res.status(status).json({
       message,
       data,
@@ -44,7 +51,9 @@ export class TTablesController {
 
   deleteTTable = async (req: Request, res: Response) => {
     const { id } = req.params; // Extract ID from params
-    const { status, message, data } = await deleteTTable(parseInt(id) as number); // Use deleteTTable
+    const { status, message, data } = await deleteTTable(
+      parseInt(id) as number
+    ); // Use deleteTTable
     return res.status(status).json({
       message,
       data,

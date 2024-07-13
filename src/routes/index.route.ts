@@ -1,10 +1,8 @@
-import testRoute from "./test.route";
 import roleRoute from "./role.route";
-import tableRoute from "./TTables.route";
+import tableRoute from "./table_type.route";
 
 
 export {
-    testRoute,
     roleRoute,
-    TTablesRoute
+    tableRoute
 }
