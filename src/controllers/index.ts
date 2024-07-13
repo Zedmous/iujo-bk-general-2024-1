@@ -1,5 +1,7 @@
-export * from './locations.controller';
+
 export * from './role.controller';
+export * from './area.controller';
+export * from './locations.controller';
 export * from './product_category.controller';
 export * from './inventory.controller';
 export * from './concept.controller';

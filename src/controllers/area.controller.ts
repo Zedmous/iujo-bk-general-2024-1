@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/locations.service";
-export class LocationController {
+import { create, deleted, getAll, getOne, update } from "../services/area.service";
+export class AreaController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {
@@ -19,14 +19,14 @@ export class LocationController {
       data,
     });
   };
-  createLocations = async (req: Request, res: Response) => {
+  createArea = async (req: Request, res: Response) => {
     const { status, message, data } = await create(req.body);
     return res.status(status).json({
       message,
       data,
     });
   };
-  updateLocations = async (req: Request, res: Response) => {
+  updateArea = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await update(parseInt(id) as number,req.body);
     return res.status(status).json({
@@ -35,7 +35,7 @@ export class LocationController {
     });
   };
 
-  deleteLocations = async (req: Request, res: Response) => {
+  deleteArea = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await deleted(parseInt(id) as number,req.body);
     return res.status(status).json({

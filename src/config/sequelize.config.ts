@@ -8,11 +8,11 @@ import {
   LocationModel,
   AttractionsStatusModel,
   ConceptModel,
-  InventoryModel, 
+  InventoryModel,
   ProductCategoryModel,
   CustomerModel,
-  TypeRoomModel
-
+  TypeRoomModel,
+  AreaModel,
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -29,22 +29,26 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 //CREAMOS LAS TABLAS DE LA BASE DE DATOS
 
+// Relaciones
 
 const UserDB = db.define("users", UserModel);
 const RoleDB = db.define("roles", RoleModel);
-const ProductCategoryDB = db.define('product_categories',ProductCategoryModel);
-const InventoryDB = db.define('inventories',InventoryModel);
-const SupplierDB = db.define("supplier", SupplierModel);
+const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
+const InventoryDB = db.define("inventories", InventoryModel);
+const SupplierDB = db.define("suppliers", SupplierModel);
 const RequirementDB = db.define("requirements", RequirementModel);
 const LocationDB = db.define("locations", LocationModel);
 const ConceptDB = db.define("concepts", ConceptModel);
-const AttractionsStatusDB = db.define("attractions_statuses",AttractionsStatusModel);
-const CustomerDB = db.define("customers",CustomerModel);
-const TypeRoomDB = db.define('room_types',TypeRoomModel);
+const AttractionsStatusDB = db.define(
+  "attractions_statuses",
+  AttractionsStatusModel
+);
+const CustomerDB = db.define("customers", CustomerModel);
+const TypeRoomDB = db.define("room_types", TypeRoomModel);
+const AreaDB = db.define("areas", AreaModel);
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
-
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -56,4 +60,18 @@ const syncModels = async () => {
 };
 syncModels();
 
-export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,ProductCategoryDB, InventoryDB,CustomerDB,TypeRoomDB, db };
+export {
+  UserDB,
+  RoleDB,
+  SupplierDB,
+  LocationDB,
+  RequirementDB,
+  AttractionsStatusDB,
+  ConceptDB,
+  ProductCategoryDB,
+  InventoryDB,
+  CustomerDB,
+  TypeRoomDB,
+  AreaDB,
+  db,
+};

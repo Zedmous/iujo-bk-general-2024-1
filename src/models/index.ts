@@ -1,6 +1,7 @@
 export * from './locations.model';
 export * from './user.model';
 export * from './role.model';
+export * from './area.model';
 export * from './type_room.model';
 export * from './attractions_status.model';
 export * from './requirements.model';

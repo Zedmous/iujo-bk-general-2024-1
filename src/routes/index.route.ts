@@ -1,4 +1,5 @@
 import roleRoute from "./role.route";
+import areaRoute from "./area.route";
 import locationRoute from "./locations.route";
 import requirementRoute from "./requirements.route";
 import conceptRoute from "./concept.route";
@@ -21,7 +22,8 @@ export {
     productCategoryRoute,
     inventoryRoute,
     customerRoute,
-    typeRoomRoute
+    typeRoomRoute,
+    areaRoute,
 }
     
 

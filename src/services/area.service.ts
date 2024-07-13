@@ -1,20 +1,15 @@
-import { RoleDB } from "../config";
-import { RoleInterface } from "../interfaces";
+import { AreaDB } from "../config";
+import { AreaInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const roles = await RoleDB.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const roles = await RoleDB.findAll();
+    
+    const Areas = await  AreaDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `Successful Areas connection`,
       status: 200,
       data: {
-        roles,
+        Areas,
       },
     };
   } catch (error) {
@@ -31,21 +26,21 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (role === null) {
+    const area = await  AreaDB.findOne({ where: { id } });
+    if (area === null) {
       console.log("No encontrado");
       return {
-        message: `Role no encontrado`,
+        message: `Areas not found`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `Areas found`,
         status: 200,
         data: {
-          role,
+          area,
         },
       };
     }
@@ -57,18 +52,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: RoleInterface) => {
+
+export const create = async (data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.create({
+    const Areas = await  AreaDB.create({
       ...data,
     });
-
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Areas created`,
       status: 200,
       data: {
-        role,
+        Areas,
       },
     };
   } catch (error) {
@@ -80,10 +75,10 @@ export const create = async (data: RoleInterface) => {
   }
 };
 
-export const update = async (id: number, data: RoleInterface) => {
+export const update = async (id: number, data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    const Areas = await  AreaDB.update(
       {
         ...data,
       },
@@ -96,10 +91,10 @@ export const update = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Areas updated successfully`,
       status: 200,
       data: {
-        role,
+        Areas,
       },
     };
   } catch (error) {
@@ -110,10 +105,11 @@ export const update = async (id: number, data: RoleInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: RoleInterface) => {
+
+export const deleted = async (id: number, data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    const Areas = await  AreaDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,13 +123,14 @@ export const deleted = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Eliminación del Rol exitoso`,
+      message: `Area Deleted`,
       status: 200,
       data: {
-        role,
+        Areas,
       },
     };
   } catch (error) {
+    console.log(error);
     return {
       message: `Contact the administrator: error`,
       status: 500,
