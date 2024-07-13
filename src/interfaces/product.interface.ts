@@ -1,11 +1,11 @@
-import { DecimalDataType } from "sequelize";
-
 export interface ProductInterface{
     id?:number;
     name:string;
-    categoryProduct:number;
-    salePrice:DecimalDataType;
-    productCost:DecimalDataType;
+    product_category_id:number;
+    price:number;
+    cost:number;
     createdAt:Date;
-    active?:boolean;
+    updatedAt:Date;
+    deletedAt:Date;
+    status?:boolean;
 }

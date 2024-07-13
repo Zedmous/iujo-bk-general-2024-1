@@ -7,7 +7,7 @@ const RoleModel = {
     primaryKey: true,
   },
   name: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING(25),
     allowNull: false,
     unique: true,
   },
@@ -16,8 +16,8 @@ const RoleModel = {
   },
   status: {
     type: DataTypes.BOOLEAN,
-    default: true,
-  }
+    defaultValue: true,
+  }, 
 };
 
 export { RoleModel };

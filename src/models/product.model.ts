@@ -11,14 +11,14 @@ const ProductModel = {
     allowNull: false,
     unique: true,
   },
-  categoryProduct: {
+  product_category_id: {
     type: DataTypes.INTEGER,
   },
-  salePrice: {
+  price: {
     type: DataTypes.DECIMAL,
     allowNull: false,
   },
-  productCost: {
+  cost: {
     type: DataTypes.DECIMAL,
   },
   createdAt:{
@@ -27,7 +27,7 @@ const ProductModel = {
   deletedAt: {
     type: DataTypes.DATE,
   },
-  active: {
+  status: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },

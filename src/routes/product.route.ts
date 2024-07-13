@@ -2,9 +2,8 @@ import { Router } from "express";
 import { validateFields } from "../middlewares";
 import { ProductController } from "../controllers";
 import { ProductValidator } from "../validators";
-
-const productValidator = new ProductValidator();
 const router = Router();
+const productValidator = new ProductValidator();
 const productController=new ProductController();
 router.get("/", productController.all);//http://localhost:3800/api/products
 router.get("/:id", productController.one);//http://localhost:3800/api/products/1

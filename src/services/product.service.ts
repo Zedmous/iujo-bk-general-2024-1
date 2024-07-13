@@ -1,20 +1,20 @@
-import { Product } from "../config";
+import { ProductDB } from "../config";
 import { ProductInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const Products = await Product.findAll({
+    /*const Products = await ProductDB.findAll({
         where: {
           status: true,
         },
       });*/
-    const Products = await Product.findAll();
+    const products = await ProductDB.findAll();
     return {
       message: `Conexion productos exitoso`,
       status: 200,
       data: {
-        Products,
+        products,
       },
     };
   } catch (error) {
@@ -31,8 +31,8 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const Products = await Product.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (Product === null) {
+    const products = await ProductDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    if (products === null) {
       console.log("No encontrado");
       return {
         message: `Product no encontrado`,
@@ -45,7 +45,7 @@ export const getOne = async (id: number) => {
         message: `Product encontrado`,
         status: 200,
         data: {
-          Product,
+          products,
         },
       };
     }
@@ -60,7 +60,7 @@ export const getOne = async (id: number) => {
 export const create = async (data: ProductInterface) => {
   try {
     //consultas a la base de datos van aca
-    const Products = await Product.create({
+    const products = await ProductDB.create({
       ...data,
     });
 
@@ -68,7 +68,7 @@ export const create = async (data: ProductInterface) => {
       message: `Creacion de Product exitoso`,
       status: 200,
       data: {
-        Product,
+        products,
       },
     };
   } catch (error) {
@@ -83,7 +83,7 @@ export const create = async (data: ProductInterface) => {
 export const update = async (id: number, data: ProductInterface) => {
   try {
     //consultas a la base de datos van aca
-    const Products = await Product.update(
+    const products = await ProductDB.update(
       {
         ...data,
       },
@@ -99,7 +99,7 @@ export const update = async (id: number, data: ProductInterface) => {
       message: `Actualización de Producto exitoso`,
       status: 200,
       data: {
-        Product,
+        products,
       },
     };
   } catch (error) {
@@ -113,7 +113,7 @@ export const update = async (id: number, data: ProductInterface) => {
 export const deleted = async (id: number, data: ProductInterface) => {
   try {
     //consultas a la base de datos van aca
-    const Products = await Product.update(
+    const products = await ProductDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -130,7 +130,7 @@ export const deleted = async (id: number, data: ProductInterface) => {
       message: `Eliminación del producto exitoso`,
       status: 200,
       data: {
-        Product,
+        products,
       },
     };
   } catch (error) {
