@@ -1,3 +1,4 @@
+import staffRoute from "./staff.route";
 import roleRoute from "./role.route";
 import areaRoute from "./area.route";
 import locationRoute from "./locations.route";
@@ -24,6 +25,7 @@ export {
     customerRoute,
     typeRoomRoute,
     areaRoute,
+    staffRoute
 }
     
 

@@ -1,4 +1,4 @@
-
+export * from './staff.controller';
 export * from './role.controller';
 export * from './area.controller';
 export * from './locations.controller';

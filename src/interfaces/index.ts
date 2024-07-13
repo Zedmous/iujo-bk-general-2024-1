@@ -1,3 +1,4 @@
+export * from './staff.interface'
 export * from './role.interface'
 export * from './area.interface'
 export * from './concept.interface'
