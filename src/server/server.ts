@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute,productCategoryRoute, inventoryRoute, customerRoute, typeRoomRoute,areaRoute,staffRoute  } from "../routes/index.route";
+import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute,productCategoryRoute, inventoryRoute, customerRoute, typeRoomRoute,areaRoute,staffRoute,tableRoute  } from "../routes/index.route";
 
 
 import { db } from "../config/sequelize.config";
@@ -15,7 +15,7 @@ export class Server {
     this.pre = "/api";
     this.paths = {
       roles: this.pre+ "/roles",
-      areas: this.pre + "/area",
+      areas: this.pre + "/areas",
       requirements: this.pre+ "/requirements",
       locations: this.pre+ "/locations",
       suppliers: this.pre+ "/suppliers",
@@ -26,7 +26,8 @@ export class Server {
       inventories: this.pre+ "/inventories",
       customers: this.pre+ "/customers",
       type_rooms: this.pre+ "/type_rooms",
-      staff: this.pre+ "/staff",
+      staffs: this.pre+ "/staffs",
+      tables: this.pre+ "/tables",
     };
 
     this.connectDB();
@@ -42,6 +43,7 @@ export class Server {
     
   routes() {
     this.app.use(this.paths.roles, roleRoute);
+    this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.requirements, requirementRoute);
     this.app.use(this.paths.locations, locationRoute);
     this.app.use(this.paths.suppliers, supplierRoute);
@@ -53,7 +55,7 @@ export class Server {
     this.app.use(this.paths.customers, customerRoute);
     this.app.use(this.paths.type_rooms, typeRoomRoute);
     this.app.use(this.paths.areas, areaRoute);
-    this.app.use(this.paths.staff, staffRoute);
+    this.app.use(this.paths.staffs, staffRoute);
   }
   async connectDB() {
     await db.authenticate().then(() => {

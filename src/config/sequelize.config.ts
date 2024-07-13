@@ -13,7 +13,8 @@ import {
   CustomerModel,
   TypeRoomModel,
   AreaModel,
-  StaffModel
+  StaffModel,
+  TableModel
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -29,10 +30,9 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
-//CREAMOS LAS TABLAS DE LA BASE DE DATOS
 
 
-// Relaciones
+// CREAMOS LAS TABLAS
 const UserDB = db.define("users", UserModel);
 const RoleDB = db.define("roles", RoleModel);
 const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
@@ -49,6 +49,7 @@ const CustomerDB = db.define("customers", CustomerModel);
 const TypeRoomDB = db.define("room_types", TypeRoomModel);
 const AreaDB = db.define("areas", AreaModel);
 const StaffDB = db.define('staffs',StaffModel);
+const TableDB = db.define('tables',TableModel);
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
@@ -63,8 +64,6 @@ const syncModels = async () => {
     console.error(error);
   }
 };
-
-
 syncModels();
 
 export {
@@ -81,5 +80,6 @@ export {
   TypeRoomDB,
   AreaDB,
   StaffDB,
+  TableDB,
   db,
 };

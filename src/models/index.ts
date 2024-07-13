@@ -2,6 +2,7 @@ export * from './staff.model';
 export * from './locations.model';
 export * from './user.model';
 export * from './role.model';
+export * from './table.model';
 export * from './area.model';
 export * from './type_room.model';
 export * from './attractions_status.model';
