@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const locationsModel = {
+const LocationModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -28,4 +28,4 @@ const locationsModel = {
   }
 };
 
-export { locationsModel };
+export { LocationModel };

@@ -1,12 +1,12 @@
 import { DataTypes } from "sequelize";
 
-const RequirementsModel = {
+const RequirementModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  requirement: {
+  name: {
     type: DataTypes.STRING(50),
     allowNull: false,
     unique: true,
@@ -20,4 +20,4 @@ const RequirementsModel = {
   }
 };
 
-export { RequirementsModel };
+export { RequirementModel };
