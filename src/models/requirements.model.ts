@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const StateModel = {
+const RequirementModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -11,13 +11,13 @@ const StateModel = {
     allowNull: false,
     unique: true,
   },
+  deletedAt: {
+    type: DataTypes.DATE,
+  },
   status: {
     type: DataTypes.BOOLEAN,
     default: true,
-  },
-  id_pais: {
-    type: DataTypes.INTEGER,
-  },
+  }
 };
 
-export { StateModel };
+export { RequirementModel };

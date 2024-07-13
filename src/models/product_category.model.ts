@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const CountryModel = {
+const ProductCategoryModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -11,10 +11,13 @@ const CountryModel = {
     allowNull: false,
     unique: true,
   },
+  deletedAt: {
+    type: DataTypes.DATE,
+  },
   status: {
     type: DataTypes.BOOLEAN,
-    default: true,
+    defaultValue: true,
   },
 };
 
-export { CountryModel };
+export { ProductCategoryModel };

@@ -15,7 +15,7 @@ const CityModel = {
     type: DataTypes.BOOLEAN,
     default: true,
   },
-  id_state: {
+  state_id: {
     type: DataTypes.INTEGER,
   },
 };

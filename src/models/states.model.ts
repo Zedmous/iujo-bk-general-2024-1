@@ -15,7 +15,7 @@ const StateModel = {
     type: DataTypes.BOOLEAN,
     default: true,
   },
-  id_pais: {
+  country_id: {
     type: DataTypes.INTEGER,
   },
 };
