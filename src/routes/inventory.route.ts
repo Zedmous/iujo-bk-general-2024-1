@@ -1,0 +1,13 @@
+import { Router } from "express";
+import { validateFields } from "../middlewares";
+import { InventoryController } from "../controllers";
+import { InventoryValidator } from "../validators";
+const router = Router();
+const inventoryValidator = new InventoryValidator();
+const inventoryController=new InventoryController();
+router.get("/", inventoryController.all);
+router.get("/:id", inventoryController.one);
+router.post("/",inventoryValidator.validateInventory,validateFields, inventoryController.createInventory);
+router.put("/:id",inventoryValidator.validateInventory,validateFields, inventoryController.updateInventory);
+router.delete("/:id", inventoryController.deleteInventory);
+export default router;
