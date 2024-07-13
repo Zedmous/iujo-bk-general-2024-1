@@ -1,5 +1,5 @@
 import { TableTypeDB } from "../config"; // Import TTable model from config
-import { TTablesInterface } from "../interfaces"; // Import TTablesInterface
+import { TableTypeInterface } from "../interfaces"; // Import TableTypeInterface
 
 export const getAllTTables = async () => {
   try {
@@ -48,7 +48,7 @@ export const getOneTTable = async (id: number) => {
   }
 };
 
-export const createTTable = async (data: TTablesInterface) => {
+export const createTTable = async (data: TableTypeInterface) => {
   try {
     const table_type = await TableTypeDB.create({
       ...data,
@@ -69,7 +69,7 @@ export const createTTable = async (data: TTablesInterface) => {
   }
 };
 
-export const updateTTable = async (id: number, newData: TTablesInterface) => {
+export const updateTTable = async (id: number, newData: TableTypeInterface) => {
   try {
     const table_type = await TableTypeDB.update(newData, { where: { id } }); // Update by ID
     if (!table_type[0]) {

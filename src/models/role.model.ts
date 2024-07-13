@@ -6,10 +6,18 @@ const RoleModel = {
     autoIncrement: true,
     primaryKey: true,
   },
+  name: {
+    type: DataTypes.STRING(25),
+    allowNull: false,
+    unique: true,
+  },
+  deletedAt: {
+    type: DataTypes.DATE,
+  },
   status: {
-    type: DataTypes.VARCHAR,
-    default: true,
-  }
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  }, 
 };
 
 export { RoleModel };
