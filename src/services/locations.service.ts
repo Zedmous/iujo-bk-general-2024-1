@@ -1,20 +1,20 @@
-import { StaffDB } from "../config";
-import { StaffInterface } from "../interfaces";
+import { LocationDB } from "../config";
+import { LocationInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
+    /*const locations = await LocationDB.findAll({
         where: {
           status: true,
         },
       });*/
-    const staff = await StaffDB.findAll();
+    const locations = await LocationDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `Consulta de Ubicación exitosa`,
       status: 200,
       data: {
-        staff,
+        locations,
       },
     };
   } catch (error) {
@@ -26,26 +26,24 @@ export const getAll = async () => {
   }
 };
 
-
-
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (!staff) {
+    const locations = await LocationDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    if (locations === null) {
       console.log("No encontrado");
       return {
-        message: `Role no encontrado`,
+        message: `Ubicación no encontrada`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `Ubicación encontrada`,
         status: 200,
         data: {
-          staff,
+          locations,
         },
       };
     }
@@ -57,18 +55,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: StaffInterface) => {
+export const create = async (data: LocationInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.create({
+    const locations = await LocationDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Creacion de ubicación exitosa`,
       status: 200,
       data: {
-        staff,
+        locations,
       },
     };
   } catch (error) {
@@ -80,10 +78,10 @@ export const create = async (data: StaffInterface) => {
   }
 };
 
-export const update = async (id: number, data: StaffInterface) => {
+export const update = async (id: number, data: LocationInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const locations = await LocationDB.update(
       {
         ...data,
       },
@@ -96,10 +94,10 @@ export const update = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Actualización de ubicación exitosa`,
       status: 200,
       data: {
-        staff,
+        locations,
       },
     };
   } catch (error) {
@@ -110,10 +108,10 @@ export const update = async (id: number, data: StaffInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: StaffInterface) => {
+export const deleted = async (id: number, data: LocationInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const locations = await LocationDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +125,10 @@ export const deleted = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Eliminación del personal exitoso`,
+      message: `Eliminación de ubicación exitosa`,
       status: 200,
       data: {
-        staff,
+        locations,
       },
     };
   } catch (error) {

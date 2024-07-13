@@ -1,20 +1,15 @@
-import { StaffDB } from "../config";
-import { StaffInterface } from "../interfaces";
+import { AreaDB } from "../config";
+import { AreaInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const staff = await StaffDB.findAll();
+    
+    const Areas = await  AreaDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `Successful Areas connection`,
       status: 200,
       data: {
-        staff,
+        Areas,
       },
     };
   } catch (error) {
@@ -31,21 +26,21 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (!staff) {
+    const area = await  AreaDB.findOne({ where: { id } });
+    if (area === null) {
       console.log("No encontrado");
       return {
-        message: `Role no encontrado`,
+        message: `Areas not found`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `Areas found`,
         status: 200,
         data: {
-          staff,
+          area,
         },
       };
     }
@@ -57,18 +52,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: StaffInterface) => {
+
+export const create = async (data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.create({
+    const Areas = await  AreaDB.create({
       ...data,
     });
-
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Areas created`,
       status: 200,
       data: {
-        staff,
+        Areas,
       },
     };
   } catch (error) {
@@ -80,10 +75,10 @@ export const create = async (data: StaffInterface) => {
   }
 };
 
-export const update = async (id: number, data: StaffInterface) => {
+export const update = async (id: number, data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const Areas = await  AreaDB.update(
       {
         ...data,
       },
@@ -96,10 +91,10 @@ export const update = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Areas updated successfully`,
       status: 200,
       data: {
-        staff,
+        Areas,
       },
     };
   } catch (error) {
@@ -110,10 +105,11 @@ export const update = async (id: number, data: StaffInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: StaffInterface) => {
+
+export const deleted = async (id: number, data: AreaInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const Areas = await  AreaDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +123,10 @@ export const deleted = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Eliminación del personal exitoso`,
+      message: `Area Deleted`,
       status: 200,
       data: {
-        staff,
+        Areas,
       },
     };
   } catch (error) {

@@ -6,19 +6,18 @@ const StaffModel = {
     autoIncrement: true,
     primaryKey: true,
   },
+  identification_card: {
+    type: DataTypes.STRING(50),
+    unique: true,
+  },
   name: {
     type: DataTypes.STRING(50),
-    allowNull: false,
-    unique: true,
   },
   lastname: {
     type: DataTypes.STRING(50),
-    allowNull: false,
-    unique: true,
   },
   phone: {
-    type: DataTypes.NUMBER(),
-    unique: true,
+    type: DataTypes.STRING(20)
   },
   borndate: {
     type: DataTypes.DATE,
@@ -32,14 +31,13 @@ const StaffModel = {
     type: DataTypes.STRING(50),
     allowNull: false,
   },
-  personId: {
-    type: DataTypes.NUMBER(),
-    unique: true,
+  deletedAt: {
+    type: DataTypes.DATE,
   },
   status: {
     type: DataTypes.BOOLEAN,
     default: true,
-  }
+  },
 };
 
 export { StaffModel };

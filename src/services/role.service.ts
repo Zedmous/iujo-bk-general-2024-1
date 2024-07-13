@@ -1,20 +1,20 @@
-import { StaffDB } from "../config";
-import { StaffInterface } from "../interfaces";
+import { RoleDB } from "../config";
+import { RoleInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
+    /*const roles = await RoleDB.findAll({
         where: {
           status: true,
         },
       });*/
-    const staff = await StaffDB.findAll();
+    const roles = await RoleDB.findAll();
     return {
       message: `C de Rol exitoso`,
       status: 200,
       data: {
-        staff,
+        roles,
       },
     };
   } catch (error) {
@@ -31,8 +31,8 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (!staff) {
+    const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    if (role === null) {
       console.log("No encontrado");
       return {
         message: `Role no encontrado`,
@@ -45,7 +45,7 @@ export const getOne = async (id: number) => {
         message: `Role encontrado`,
         status: 200,
         data: {
-          staff,
+          role,
         },
       };
     }
@@ -57,10 +57,10 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: StaffInterface) => {
+export const create = async (data: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.create({
+    const role = await RoleDB.create({
       ...data,
     });
 
@@ -68,7 +68,7 @@ export const create = async (data: StaffInterface) => {
       message: `Creacion de Rol exitoso`,
       status: 200,
       data: {
-        staff,
+        role,
       },
     };
   } catch (error) {
@@ -80,10 +80,10 @@ export const create = async (data: StaffInterface) => {
   }
 };
 
-export const update = async (id: number, data: StaffInterface) => {
+export const update = async (id: number, data: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const role = await RoleDB.update(
       {
         ...data,
       },
@@ -99,7 +99,7 @@ export const update = async (id: number, data: StaffInterface) => {
       message: `Actualización del Rol exitoso`,
       status: 200,
       data: {
-        staff,
+        role,
       },
     };
   } catch (error) {
@@ -110,10 +110,10 @@ export const update = async (id: number, data: StaffInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: StaffInterface) => {
+export const deleted = async (id: number, data: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const role = await RoleDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,14 +127,13 @@ export const deleted = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Eliminación del personal exitoso`,
+      message: `Eliminación del Rol exitoso`,
       status: 200,
       data: {
-        staff,
+        role,
       },
     };
   } catch (error) {
-    console.log(error);
     return {
       message: `Contact the administrator: error`,
       status: 500,

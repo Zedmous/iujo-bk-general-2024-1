@@ -2,8 +2,8 @@ import { Router } from "express";
 import { validateFields } from "../middlewares";
 import { StaffController } from "../controllers";
 import { StaffValidator} from "../validators";
-const staffValidator = new StaffValidator();
 const router = Router();
+const staffValidator = new StaffValidator();
 const staffController=new StaffController();
 router.get("/", staffController.all);//http://localhost:3800/api/roles
 router.get("/:id", staffController.one);//http://localhost:3800/api/roles/1

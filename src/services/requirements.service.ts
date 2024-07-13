@@ -1,20 +1,14 @@
-import { StaffDB } from "../config";
-import { StaffInterface } from "../interfaces";
+import { RequirementDB } from "../config";
+import { RequirementInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const staff = await StaffDB.findAll();
+    const requirements = await RequirementDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `Lista de requerimientos`,
       status: 200,
       data: {
-        staff,
+        requirements,
       },
     };
   } catch (error) {
@@ -26,26 +20,24 @@ export const getAll = async () => {
   }
 };
 
-
-
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (!staff) {
+    const requirement = await RequirementDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    if (requirement === null) {
       console.log("No encontrado");
       return {
-        message: `Role no encontrado`,
+        message: `Requerimiento no encontrado`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `Requerimiento encontrado`,
         status: 200,
         data: {
-          staff,
+            requirement,
         },
       };
     }
@@ -57,18 +49,19 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: StaffInterface) => {
+
+export const create = async (data: RequirementInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.create({
+    const requirement = await RequirementDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Se a creado el requerimiento exitoso`,
       status: 200,
       data: {
-        staff,
+        requirement,
       },
     };
   } catch (error) {
@@ -80,10 +73,10 @@ export const create = async (data: StaffInterface) => {
   }
 };
 
-export const update = async (id: number, data: StaffInterface) => {
+export const update = async (id: number, data: RequirementInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const requirement = await RequirementDB.update(
       {
         ...data,
       },
@@ -96,10 +89,10 @@ export const update = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Actualización del Requerimiento exitoso`,
       status: 200,
       data: {
-        staff,
+        requirement,
       },
     };
   } catch (error) {
@@ -110,10 +103,11 @@ export const update = async (id: number, data: StaffInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: StaffInterface) => {
+
+export const deleted = async (id: number, data: RequirementInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const requirement = await RequirementDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +121,10 @@ export const deleted = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Eliminación del personal exitoso`,
+      message: `Eliminación del Requerimiento exitoso`,
       status: 200,
       data: {
-        staff,
+        requirement,
       },
     };
   } catch (error) {

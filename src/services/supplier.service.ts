@@ -1,5 +1,5 @@
-import { StaffDB } from "../config";
-import { StaffInterface } from "../interfaces";
+import { SupplierDB } from "../config";
+import { SupplierInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
@@ -9,12 +9,12 @@ export const getAll = async () => {
           status: true,
         },
       });*/
-    const staff = await StaffDB.findAll();
+    const suppliers = await SupplierDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `FindAll Supplier exitoso`,
       status: 200,
       data: {
-        staff,
+        suppliers,
       },
     };
   } catch (error) {
@@ -31,21 +31,21 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (!staff) {
+    const supplier = await SupplierDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    if (supplier === null) {
       console.log("No encontrado");
       return {
-        message: `Role no encontrado`,
+        message: `SupplierDB no encontrado`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `SupplierDB encontrado`,
         status: 200,
         data: {
-          staff,
+          supplier,
         },
       };
     }
@@ -57,18 +57,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: StaffInterface) => {
+export const create = async (data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.create({
+    const supplier = await SupplierDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Creacion de Supplier exitoso`,
       status: 200,
       data: {
-        staff,
+        supplier,
       },
     };
   } catch (error) {
@@ -80,10 +80,10 @@ export const create = async (data: StaffInterface) => {
   }
 };
 
-export const update = async (id: number, data: StaffInterface) => {
+export const update = async (id: number, data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const supplier = await SupplierDB.update(
       {
         ...data,
       },
@@ -96,10 +96,10 @@ export const update = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Actualización del Supplier exitoso`,
       status: 200,
       data: {
-        staff,
+        supplier,
       },
     };
   } catch (error) {
@@ -110,10 +110,10 @@ export const update = async (id: number, data: StaffInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: StaffInterface) => {
+export const deleted = async (id: number, data: SupplierInterface) => {
   try {
     //consultas a la base de datos van aca
-    const staff = await StaffDB.update(
+    const supplier = await SupplierDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +127,10 @@ export const deleted = async (id: number, data: StaffInterface) => {
     );
 
     return {
-      message: `Eliminación del personal exitoso`,
+      message: `Eliminación del Supplier exitoso`,
       status: 200,
       data: {
-        staff,
+        supplier,
       },
     };
   } catch (error) {
