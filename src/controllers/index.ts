@@ -1,5 +1,6 @@
 export * from './staff.controller';
 export * from './role.controller';
+export * from './table_type.controller';
 export * from './table.controller';
 export * from './area.controller';
 export * from './locations.controller';
@@ -11,4 +12,4 @@ export * from './requirements.controller';
 export * from './supplier.controller';
 export * from './user.controller';
 export * from './customer.controller';
-export * from './type_room.controller';
+export * from './room_type.controller';

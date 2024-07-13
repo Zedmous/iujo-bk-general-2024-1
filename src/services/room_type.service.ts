@@ -1,9 +1,9 @@
-import { TypeRoomDB } from "../config";
-import { TypeRoomInterface } from "../interfaces";
+import { RoomTypeDB } from "../config";
+import { RoomTypeInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    const troom = await TypeRoomDB.findAll();
+    const troom = await RoomTypeDB.findAll();
     return {
       message: `Type Room exitoso`,
       status: 200,
@@ -25,7 +25,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
  
-    const troom = await TypeRoomDB.findOne({ where: { id } }); // Busca el TRoom con id 'id'
+    const troom = await RoomTypeDB.findOne({ where: { id } }); // Busca el TRoom con id 'id'
     if (troom === null) {
       console.log("No encontrado");
       return {
@@ -51,10 +51,10 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: TypeRoomInterface) => {
+export const create = async (data: RoomTypeInterface) => {
   try {
     //consultas Crear TRomm
-    const troom = await TypeRoomDB.create({
+    const troom = await RoomTypeDB.create({
       ...data,
     });
 
@@ -74,10 +74,10 @@ export const create = async (data: TypeRoomInterface) => {
   }
 };
 
-export const update = async (id: number, data: TypeRoomInterface) => {
+export const update = async (id: number, data: RoomTypeInterface) => {
   try {
     //consultas Buscar TRoom
-    const troom = await TypeRoomDB.update(
+    const troom = await RoomTypeDB.update(
       {
         ...data,
       },
@@ -104,10 +104,10 @@ export const update = async (id: number, data: TypeRoomInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: TypeRoomInterface) => {
+export const deleted = async (id: number, data: RoomTypeInterface) => {
   try {
     //consultas Borrado logito T
-    const troom = await TypeRoomDB.update(
+    const troom = await RoomTypeDB.update(
       {
         status: false,
         deletedAt: new Date(),

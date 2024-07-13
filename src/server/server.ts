@@ -1,7 +1,22 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute,productCategoryRoute, inventoryRoute, customerRoute, typeRoomRoute,areaRoute,staffRoute,tableRoute  } from "../routes/index.route";
-
+import {
+  roleRoute,
+  requirementRoute,
+  locationRoute,
+  attractionStatusRoute,
+  conceptRoute,
+  supplierRoute,
+  userRoute,
+  productCategoryRoute,
+  inventoryRoute,
+  customerRoute,
+  areaRoute,
+  staffRoute,
+  tableRoute,
+  tableTypeRoute,
+  roomTypeRoute,
+} from "../routes/index.route";
 
 import { db } from "../config/sequelize.config";
 export class Server {
@@ -14,20 +29,21 @@ export class Server {
     this.port = process.env.PORT || 3880;
     this.pre = "/api";
     this.paths = {
-      roles: this.pre+ "/roles",
+      roles: this.pre + "/roles",
       areas: this.pre + "/areas",
-      requirements: this.pre+ "/requirements",
-      locations: this.pre+ "/locations",
-      suppliers: this.pre+ "/suppliers",
-      users: this.pre+ "/users",
+      requirements: this.pre + "/requirements",
+      locations: this.pre + "/locations",
+      suppliers: this.pre + "/suppliers",
+      users: this.pre + "/users",
       attractions_statuses: this.pre + "/attractions_statuses",
-      concepts: this.pre+ "/concepts",
-      product_categories: this.pre+ "/product_categories",
-      inventories: this.pre+ "/inventories",
-      customers: this.pre+ "/customers",
-      type_rooms: this.pre+ "/type_rooms",
-      staffs: this.pre+ "/staffs",
-      tables: this.pre+ "/tables",
+      concepts: this.pre + "/concepts",
+      product_categories: this.pre + "/product_categories",
+      inventories: this.pre + "/inventories",
+      customers: this.pre + "/customers",
+      type_rooms: this.pre + "/type_rooms",
+      staffs: this.pre + "/staffs",
+      tables: this.pre + "/tables",
+      table_types: this.pre + "/table_types",
     };
 
     this.connectDB();
@@ -40,9 +56,10 @@ export class Server {
     this.app.use(express.json());
     this.app.use(express.static("public"));
   }
-    
+
   routes() {
     this.app.use(this.paths.roles, roleRoute);
+    this.app.use(this.paths.table_types, tableTypeRoute);
     this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.requirements, requirementRoute);
     this.app.use(this.paths.locations, locationRoute);
@@ -53,16 +70,19 @@ export class Server {
     this.app.use(this.paths.product_categories, productCategoryRoute);
     this.app.use(this.paths.inventories, inventoryRoute);
     this.app.use(this.paths.customers, customerRoute);
-    this.app.use(this.paths.type_rooms, typeRoomRoute);
+    this.app.use(this.paths.type_rooms, roomTypeRoute);
     this.app.use(this.paths.areas, areaRoute);
     this.app.use(this.paths.staffs, staffRoute);
   }
   async connectDB() {
-    await db.authenticate().then(() => {
-      console.log("Conexión exitosa a la base de datos");
-    }).catch((error: any) => {
-      console.log("No se pudo conectar a la base de datos")
-    });
+    await db
+      .authenticate()
+      .then(() => {
+        console.log("Conexión exitosa a la base de datos");
+      })
+      .catch((error: any) => {
+        console.log("No se pudo conectar a la base de datos");
+      });
   }
 
   listen() {

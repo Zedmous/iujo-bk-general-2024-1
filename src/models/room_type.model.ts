@@ -1,13 +1,13 @@
 import { DataTypes } from "sequelize";
 
-const RoleModel = {
+const RoomTypeModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
   name: {
-    type: DataTypes.STRING(25),
+    type: DataTypes.STRING(50),
     allowNull: false,
     unique: true,
   },
@@ -16,8 +16,8 @@ const RoleModel = {
   },
   status: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true,
-  }, 
+    default: true,
+  }
 };
 
-export { RoleModel };
+export { RoomTypeModel };

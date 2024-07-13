@@ -11,10 +11,11 @@ import {
   InventoryModel,
   ProductCategoryModel,
   CustomerModel,
-  TypeRoomModel,
+  RoomTypeModel,
   AreaModel,
   StaffModel,
-  TableModel
+  TableModel,
+  TableTypeModel
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -24,13 +25,11 @@ const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : "";
 
-  //instanciamos el obejto sequelize
+// Instanciamos el objeto Sequelize
 const db = new Sequelize(dbName, "root", dbPassword, {
   dialect: "mysql",
   host: "localhost",
 });
-
-
 
 // CREAMOS LAS TABLAS
 const UserDB = db.define("users", UserModel);
@@ -46,10 +45,11 @@ const AttractionsStatusDB = db.define(
   AttractionsStatusModel
 );
 const CustomerDB = db.define("customers", CustomerModel);
-const TypeRoomDB = db.define("room_types", TypeRoomModel);
+const RoomTypeDB = db.define("room_types", RoomTypeModel);
 const AreaDB = db.define("areas", AreaModel);
 const StaffDB = db.define('staffs',StaffModel);
 const TableDB = db.define('tables',TableModel);
+const TableTypeDB = db.define("table_types", TableTypeModel);
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
@@ -58,14 +58,12 @@ UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
-    //await User.sync({ alter: true });
-    //await Role.sync({ alter: true });
+    
   } catch (error) {
     console.error(error);
   }
 };
 syncModels();
-
 export {
   UserDB,
   RoleDB,
@@ -77,9 +75,10 @@ export {
   ProductCategoryDB,
   InventoryDB,
   CustomerDB,
-  TypeRoomDB,
+  RoomTypeDB,
   AreaDB,
   StaffDB,
   TableDB,
+  TableTypeDB,
   db,
 };

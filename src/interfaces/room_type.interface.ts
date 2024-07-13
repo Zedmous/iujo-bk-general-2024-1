@@ -1,5 +1,4 @@
-
-export interface TypeRoomInterface{
+export interface RoomTypeInterface{
     id?:number;
     name:string;
     status?:boolean;

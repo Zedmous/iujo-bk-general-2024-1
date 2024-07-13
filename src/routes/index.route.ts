@@ -1,5 +1,9 @@
+
+
+
 import staffRoute from "./staff.route";
 import roleRoute from "./role.route";
+import tableTypeRoute from "./table_type.route";
 import tableRoute from "./table.route";
 import areaRoute from "./area.route";
 import locationRoute from "./locations.route";
@@ -11,7 +15,7 @@ import userRoute from "./user.route";
 import productCategoryRoute from "./product_category.route";
 import inventoryRoute from "./inventory.route";
 import customerRoute from "./customer.route";
-import typeRoomRoute from "./type_room.route";
+import roomTypeRoute from "./room_type.route";
 
 export {
     roleRoute,
@@ -24,10 +28,9 @@ export {
     productCategoryRoute,
     inventoryRoute,
     customerRoute,
-    typeRoomRoute,
+    roomTypeRoute,
     areaRoute,
     staffRoute,
-    tableRoute
+    tableRoute,
+    tableTypeRoute
 }
-    
-

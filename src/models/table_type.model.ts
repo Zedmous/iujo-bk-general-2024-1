@@ -1,23 +1,22 @@
 import { DataTypes } from "sequelize";
 
-const TypeRoomModel = {
+const TableTypeModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
   name: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-    unique: true,
+    type: DataTypes.STRING,
+    defaultValue: true,
   },
   deletedAt: {
     type: DataTypes.DATE,
   },
   status: {
     type: DataTypes.BOOLEAN,
-    default: true,
-  }
+    defaultValue: true,
+  },
 };
 
-export { TypeRoomModel };
+export { TableTypeModel };

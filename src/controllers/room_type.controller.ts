@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/type_room.service";
-export class TroomController {
+import { create, deleted, getAll, getOne, update } from "../services/room_type.service";
+export class RoomTypeController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {

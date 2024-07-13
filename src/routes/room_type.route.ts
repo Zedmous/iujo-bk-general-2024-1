@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { validateFields } from "../middlewares";
-import { TroomController } from "../controllers";
-import { TypeRoomValidator } from "../validators";
-const troomValidator = new TypeRoomValidator();
+import { RoomTypeController } from "../controllers";
+import { RoomTypeValidator } from "../validators";
+const troomValidator = new RoomTypeValidator();
 const router = Router();
-const troomController = new TroomController();
+const troomController = new RoomTypeController();
 router.get("/", troomController.all)
 router.get("/:id", troomController.one);
 router.post("/",troomValidator.validateTypeRoom,validateFields, troomController.createTroom);
