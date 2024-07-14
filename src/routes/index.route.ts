@@ -1,25 +1,13 @@
+import testRoute from "./test.route";
+import locationsRoute from "./locations.route";
 import roleRoute from "./role.route";
-import locationRoute from "./locations.route";
-import requirementRoute from "./requirements.route";
-import conceptRoute from "./concept.route";
-import attractionStatusRoute from "./attractions_status.route";
-import supplierRoute from "./supplier.route";
-import userRoute from "./user.route";
-import productCategoryRoute from "./product_category.route";
-import inventoryRoute from "./inventory.route";
-
-
+import troomRoute from "./troom.route";
+import RoomsRoute from "./rooms.route";
 
 export {
+    testRoute,
     roleRoute,
-    requirementRoute,
-    locationRoute,
-    supplierRoute,
-    userRoute,
-    conceptRoute,
-    attractionStatusRoute,
-    productCategoryRoute,
-    inventoryRoute
+    RoomsRoute,
+    troomRoute,
+    locationsRoute,
 }
-    
-

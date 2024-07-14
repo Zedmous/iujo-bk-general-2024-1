@@ -1,20 +1,14 @@
-import { Locations } from "../config/";
-import { LocationsInterface } from "../interfaces/locations.interface";
+import { Role, Troom } from "../config";
+import { TroomInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const locations = await Locations.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const locations = await Locations.findAll();
+    const troom = await Troom.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `Type Room exitoso`,
       status: 200,
       data: {
-        locations,
+        troom,
       },
     };
   } catch (error) {
@@ -30,22 +24,22 @@ export const getAll = async () => {
 
 export const getOne = async (id: number) => {
   try {
-    //consultas a la base de datos van aca
-    const locations = await Locations.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (locations === null) {
+ 
+    const troom = await Troom.findOne({ where: { id } }); // Busca el TRoom con id 'id'
+    if (troom === null) {
       console.log("No encontrado");
       return {
-        message: `Locations no encontrado`,
+        message: `Type Room encontrado`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Locations encontrado`,
+        message: `Type Room encontrado`,
         status: 200,
         data: {
-          locations,
+          troom,
         },
       };
     }
@@ -57,18 +51,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: LocationsInterface) => {
+export const create = async (data: TroomInterface) => {
   try {
-    //consultas a la base de datos van aca
-    const locations = await Locations.create({
+    //consultas Crear TRomm
+    const troom = await Troom.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Creacion de Type Room exitoso`,
       status: 200,
       data: {
-        locations,
+        troom,
       },
     };
   } catch (error) {
@@ -80,10 +74,10 @@ export const create = async (data: LocationsInterface) => {
   }
 };
 
-export const update = async (id: number, data: LocationsInterface) => {
+export const update = async (id: number, data: TroomInterface) => {
   try {
-    //consultas a la base de datos van aca
-    const locations = await Locations.update(
+    //consultas Buscar TRoom
+    const troom = await Troom.update(
       {
         ...data,
       },
@@ -96,10 +90,10 @@ export const update = async (id: number, data: LocationsInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Actualización del Type Room exitoso`,
       status: 200,
       data: {
-        locations,
+        
       },
     };
   } catch (error) {
@@ -110,10 +104,10 @@ export const update = async (id: number, data: LocationsInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: LocationsInterface) => {
+export const deleted = async (id: number, data: TroomInterface) => {
   try {
-    //consultas a la base de datos van aca
-    const locations = await Locations.update(
+    //consultas Borrado logito T
+    const troom = await Troom.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +121,10 @@ export const deleted = async (id: number, data: LocationsInterface) => {
     );
 
     return {
-      message: `Eliminación del Rol exitoso`,
+      message: `Eliminación del Type Room exitoso`,
       status: 200,
       data: {
-        locations,
+        
       },
     };
   } catch (error) {

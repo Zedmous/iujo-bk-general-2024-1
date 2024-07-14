@@ -1,9 +1,7 @@
 
-export interface LocationsInterface{
+export interface TroomInterface{
     id?:number;
     name:string;
-    latitude:number;
-    longitude:number;
     status?:boolean;
     createdAt:Date;
     updatedAt:Date;

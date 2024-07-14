@@ -1,15 +1,6 @@
 import { Sequelize } from "sequelize";
-
-import {
-  RoleModel,
-  UserModel,
-  SupplierModel,
-  RequirementModel,
-  LocationModel,
-  AttractionsStatusModel,
-  ConceptModel,
-  InventoryModel, ProductCategoryModel,
-} from "../models";
+import {locationsModel, RoleModel, UserModel, TroomModel} from "../models";
+import {RoomsModel} from "../models/rooms.models"
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -18,36 +9,47 @@ const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : "";
 
+  //instanciamos el obejto sequelize
 const db = new Sequelize(dbName, "root", dbPassword, {
   dialect: "mysql",
   host: "localhost",
 });
 
-//CREAMOS LAS TABLAS DE LA BASE DE DATOS
+// ... other code (database connection setup)
 
-const UserDB = db.define("users", UserModel);
-const RoleDB = db.define("roles", RoleModel);
-const ProductCategoryDB = db.define('product_categories',ProductCategoryModel);
-const InventoryDB = db.define('inventories',InventoryModel);
-const SupplierDB = db.define("supplier", SupplierModel);
-const RequirementDB = db.define("requirements", RequirementModel);
-const LocationDB = db.define("locations", LocationModel);
-const ConceptDB = db.define("concepts", ConceptModel);
-const AttractionsStatusDB = db.define("attractions_statuses",AttractionsStatusModel);
+const Locations = db.define('locations', locationsModel);
+
+// Sync the Locations model to create the table
+Locations.sync();
+
+const User = db.define('users',UserModel);
+const Role = db.define('roles',RoleModel);
+const Troom = db.define('troom',TroomModel);
+const Room = db.define('rooms',RoomsModel);
 // Relaciones
-RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
-UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
+Role.hasMany(User, { foreignKey: 'role_id' });
+User.belongsTo(Role, { foreignKey: 'role_id' });
+
+Troom.hasMany(Room, {foreignKey: 'type_id'});
+Room.belongsTo(Troom, {foreignKey: 'type_id'});
+
+Locations.hasMany(Room, {foreignKey: 'location_id'});
+Room.belongsTo(Locations, {foreignKey: 'location_id'});
+
 
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
+    //await User.sync({ alter: true });
+    //await Role.sync({ alter: true });
   } catch (error) {
     console.error(error);
   }
 };
+
 syncModels();
 //export default db;
 
-export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,ProductCategoryDB, InventoryDB, db };
+export  {Locations,User, Role, Troom, Room, db };
