@@ -17,7 +17,8 @@ import {
   tableTypeRoute,
   roomTypeRoute,
   transportTypeRoute,
-  productRoute
+  productRoute,
+  serviceRoute
 } from "../routes/index.route";
 
 import { db } from "../config/sequelize.config";
@@ -48,6 +49,7 @@ export class Server {
       table_types: this.pre + "/table_types",
       transport_types: this.pre+ "/transport_types",
       users: this.pre + "/users",
+      services: this.pre + "/services",
 
     };
 
@@ -80,6 +82,7 @@ export class Server {
     this.app.use(this.paths.table_types, tableTypeRoute);
     this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.users, userRoute);
+    this.app.use(this.paths.services,serviceRoute)
   }
   async connectDB() {
     await db

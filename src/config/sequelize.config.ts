@@ -18,7 +18,9 @@ import {
   StaffModel,
   TableModel,
   TableTypeModel,
-  TransportTypeModel
+  TransportTypeModel,
+  ServiceModel
+  
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -55,6 +57,8 @@ const TableDB = db.define('tables',TableModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
 const TransportTypeDB = db.define('transport_types',TransportTypeModel);
 const ProductDB = db.define('products',ProductModel);
+const Service = db.define('services',ServiceModel);
+
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
@@ -89,4 +93,5 @@ export {
   TransportTypeDB,
   ProductDB,
   db,
+  Service
 };
