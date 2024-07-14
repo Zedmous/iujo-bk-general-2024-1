@@ -15,6 +15,7 @@ export * from './transport_type.validators';
 export * from './table_type.validators'
 export * from './table.validators'
 export * from './user.validators';
+export * from './services.validators'
 
 
 

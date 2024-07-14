@@ -18,6 +18,7 @@ export * from './transport_type.model';
 export * from './table_type.model';
 export * from './table.model';
 export * from './user.model';
+export * from './supplier_service.model';
 
 
 

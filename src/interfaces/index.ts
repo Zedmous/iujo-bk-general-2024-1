@@ -15,6 +15,7 @@ export * from './table.interface'
 export * from './transport_type.interface'
 export * from './user.interface'
 export * from './location.interface'
+export * from './services.interfaces';
 
 
 
