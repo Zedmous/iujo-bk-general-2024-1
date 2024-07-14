@@ -1,9 +1,9 @@
-import { Schedules } from "../config";
+import { SchedulesDB } from "../config";
 import { SchedulesInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    const schedulesData = await Schedules.findAll();
+    const schedulesData = await SchedulesDB.findAll();
     return {
       message: `Lista de horarios`,
       status: 200,
@@ -23,7 +23,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     
-    const schedulesData = await Schedules.findOne({ where: { id } });
+    const schedulesData = await SchedulesDB.findOne({ where: { id } });
     if (schedulesData === null) {
       console.log("No se encontro el horario");
       return {
@@ -52,7 +52,7 @@ export const getOne = async (id: number) => {
 
 export const create = async (data: SchedulesInterface) => {
   try {
-      const schedulesData = await Schedules.create({
+      const schedulesData = await SchedulesDB.create({
           ...data,
       });
 
@@ -75,7 +75,7 @@ export const create = async (data: SchedulesInterface) => {
 export const update = async (id: number, data: SchedulesInterface) => {
   try {
     
-    const schedulesData = await Schedules.update(
+    const schedulesData = await SchedulesDB.update(
       {
         ...data,
       },
@@ -107,7 +107,7 @@ export const update = async (id: number, data: SchedulesInterface) => {
 
 export const deleted = async (id: number, data: SchedulesInterface) => {
   try {
-    const schedulesData = await Schedules.update(
+    const schedulesData = await SchedulesDB.update(
       {
         status: false,
         deletedAt: new Date(),
