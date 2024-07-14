@@ -1,20 +1,15 @@
-import { RoleDB } from "../config";
-import { RoleInterface } from "../interfaces";
+import { ProductCategoryDB } from "../config";
+import { ProductCategoryInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const roles = await RoleDB.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const roles = await RoleDB.findAll();
+    const categoryProducts = await ProductCategoryDB.findAll();
     return {
-      message: `C de Rol exitoso`,
+      message: `All categories successful`,
       status: 200,
       data: {
-        roles,
+        categoryProducts,
       },
     };
   } catch (error) {
@@ -31,21 +26,21 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (role === null) {
-      console.log("No encontrado");
+    const categoryProducts = await ProductCategoryDB.findOne({ where: { id } });
+    if (categoryProducts === null) {
+      console.log("Not Found");
       return {
-        message: `Role no encontrado`,
+        message: `Category product not found`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Role encontrado`,
+        message: `Category product found`,
         status: 200,
         data: {
-          role,
+          categoryProducts,
         },
       };
     }
@@ -57,18 +52,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: RoleInterface) => {
+export const create = async (data: ProductCategoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.create({
+    const categoryProducts = await ProductCategoryDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de Rol exitoso`,
+      message: `Category creation successful`,
       status: 200,
       data: {
-        role,
+        categoryProducts,
       },
     };
   } catch (error) {
@@ -80,10 +75,10 @@ export const create = async (data: RoleInterface) => {
   }
 };
 
-export const update = async (id: number, data: RoleInterface) => {
+export const update = async (id: number, data: ProductCategoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    const categoryProducts = await ProductCategoryDB.update(
       {
         ...data,
       },
@@ -96,10 +91,10 @@ export const update = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Actualización del Rol exitoso`,
+      message: `Successful category update`,
       status: 200,
       data: {
-        role,
+        categoryProducts,
       },
     };
   } catch (error) {
@@ -110,10 +105,10 @@ export const update = async (id: number, data: RoleInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: RoleInterface) => {
+export const deleted = async (id: number, data: ProductCategoryInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    const categoryProducts = await ProductCategoryDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -127,10 +122,10 @@ export const deleted = async (id: number, data: RoleInterface) => {
     );
 
     return {
-      message: `Eliminación del Rol exitoso`,
+      message: `Successful Category Deletion`,
       status: 200,
       data: {
-        role,
+        categoryProducts,
       },
     };
   } catch (error) {

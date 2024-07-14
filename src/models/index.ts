@@ -4,4 +4,7 @@ export * from './role.model';
 export * from './attractions_status.model';
 export * from './requirements.model';
 export * from './concept.model';
-export * from './tyrequest.models';
+export * from './supplier.model';
+export * from './product_category.model';
+export * from './inventory.model';
+export * from './requests_types.model';

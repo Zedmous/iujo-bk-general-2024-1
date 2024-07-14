@@ -1,5 +1,17 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel, TypeRequest, RequirementsModel,locationsModel,AttractionsStatusModel, ConceptModel } from "../models";
+
+import {
+  RoleModel,
+  UserModel,
+  SupplierModel,
+  RequirementModel,
+  LocationModel,
+  AttractionsStatusModel,
+  ConceptModel,
+  InventoryModel,
+  ProductCategoryModel,
+  RequestsTypesModel
+} from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -13,24 +25,32 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
-const User = db.define('users',UserModel);
-const Role = db.define('roles',RoleModel);
-const Concept = db.define('concepts',ConceptModel);
-const AttractionsStatus = db.define('attractions_status', AttractionsStatusModel)
-const Requirements = db.define('requirements', RequirementsModel);
-const Locations = db.define('locations', locationsModel);
+//CREAMOS LAS TABLAS DE LA BASE DE DATOS
 
-Role.hasMany(User, { foreignKey: 'role_id' });
-User.belongsTo(Role, { foreignKey: 'role_id' });
+const UserDB = db.define("users", UserModel);
+const RoleDB = db.define("roles", RoleModel);
+const ProductCategoryDB = db.define('product_categories',ProductCategoryModel);
+const InventoryDB = db.define('inventories',InventoryModel);
+const SupplierDB = db.define("supplier", SupplierModel);
+const RequirementDB = db.define("requirements", RequirementModel);
+const LocationDB = db.define("locations", LocationModel);
+const ConceptDB = db.define("concepts", ConceptModel);
+const AttractionsStatusDB = db.define("attractions_statuses",AttractionsStatusModel);
+const RequestsTypesDb = db.define("requests_types", { ...new RequestsTypesModel });
+// Relaciones
+RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
+UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
+
+// Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
-   
-  
   } catch (error) {
     console.error(error);
   }
 };
 syncModels();
-export  { User, Role,Locations, TypeRequest, Requirements,AttractionsStatus, Concept,db };
+//export default db;
+
+export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,ProductCategoryDB, InventoryDB, db, RequestsTypesDb };

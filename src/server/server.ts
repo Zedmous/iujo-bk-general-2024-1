@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, requirementsRoute,locationsRoute, attractionsStatusRoute,conceptsRoute  } from "../routes/index.route";
+import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,conceptRoute,supplierRoute,userRoute,productCategoryRoute, inventoryRoute, requestsTypesRoute } from "../routes/index.route";
+
+
 import { db } from "../config/sequelize.config";
 export class Server {
   private app: any;
@@ -12,11 +14,16 @@ export class Server {
     this.port = process.env.PORT || 3880;
     this.pre = "/api";
     this.paths = {
-      tests: this.pre + "/tests",
-      roles: this.pre + "/roles",
-      attractionStatus: this.pre + "/attractionstatus",
+      roles: this.pre+ "/roles",
       requirements: this.pre+ "/requirements",
       locations: this.pre+ "/locations",
+      suppliers: this.pre+ "/suppliers",
+      users: this.pre+ "/users",
+      attractionStatus: this.pre + "/attractionstatus",
+      concepts: this.pre+ "/concepts",
+      product_categories: this.pre+ "/product_categories",
+      inventories: this.pre+ "/inventories",
+      requestsTypes: this.pre + '/request_type'
     };
 
     this.connectDB();
@@ -29,12 +36,18 @@ export class Server {
     this.app.use(express.json());
     this.app.use(express.static("public"));
   }
-  routes() {   
-    this.app.use(this.paths.concept, conceptsRoute);
-    this.app.use(this.paths.locations, locationsRoute);
+    
+  routes() {
     this.app.use(this.paths.roles, roleRoute);
-    this.app.use(this.paths.attractionStatus, attractionsStatusRoute)
-    this.app.use(this.paths.requirements, requirementsRoute);
+    this.app.use(this.paths.locations, locationRoute);
+    this.app.use(this.paths.requirements, requirementRoute);
+    this.app.use(this.paths.suppliers, supplierRoute);
+    this.app.use(this.paths.users, userRoute);
+    this.app.use(this.paths.attractionStatus, attractionStatusRoute);
+    this.app.use(this.paths.concepts, conceptRoute);
+    this.app.use(this.paths.product_categories, productCategoryRoute);
+    this.app.use(this.paths.inventories, inventoryRoute);
+    this.app.use(this.paths.requestsTypes, requestsTypesRoute);
   }
   async connectDB() {
     await db.authenticate().then(() => {
