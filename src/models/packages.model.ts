@@ -13,6 +13,9 @@ const PackagesModel = {
         type: DataTypes.STRING(50),
         allownull: false,
     },
+    deletedAt: {
+        type: DataTypes.DATE,
+    },
 
     id_city: {
         type: DataTypes.INTEGER,
@@ -21,6 +24,12 @@ const PackagesModel = {
         //     key: 'id', 
         // },
     },
+
+    status: {
+        type: DataTypes.BOOLEAN,
+        default: true,
+    }
+
 };
 
 export {PackagesModel};
