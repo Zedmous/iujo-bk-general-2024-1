@@ -11,7 +11,7 @@ export const getAll = async () => {
       });*/
     const paquetes = await Packages.findAll();
     return {
-      message: `C de paquetes exitoso`,
+      message: `creacion de paquetes exitoso`,
       status: 200,
       data: {
         paquetes,
@@ -35,7 +35,7 @@ export const getOne = async (id: number) => {
     if (packages === null) {
       console.log("No encontrado");
       return {
-        message: `Role no encontrado`,
+        message: `paquete no encontrado`,
         status: 404,
         data: {
         },
