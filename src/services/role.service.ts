@@ -57,6 +57,39 @@ export const getOne = async (id: number) => {
     };
   }
 };
+export const findByName = async (name: string) => {
+  try {
+    //consultas a la base de datos van aca
+    const role = await RoleDB.findOne({ where: {
+      name,
+    }, });
+   
+    if (role === null) {
+      console.log("No encontrado");
+      return {
+        message: `Role no encontrado`,
+        status: 404,
+        data: {
+        },
+      };
+    } else {
+      return {
+        message: `Role encontrado`,
+        status: 200,
+        data: {
+          role,
+        },
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+
 export const create = async (data: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
