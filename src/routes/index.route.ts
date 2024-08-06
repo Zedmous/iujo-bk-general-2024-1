@@ -15,6 +15,7 @@ import transportTypeRoute from "./transport_type.route";
 import tableTypeRoute from "./table_type.route";
 import tableRoute from "./table.route";
 import userRoute from "./user.route";
+import orderRoute from "./order.route";
 
 
 export {
@@ -34,5 +35,6 @@ export {
     staffRoute,
     tableRoute,
     tableTypeRoute,
-    transportTypeRoute
+    transportTypeRoute,
+    orderRoute,
 }
