@@ -18,7 +18,8 @@ import {
   StaffModel,
   TableModel,
   TableTypeModel,
-  TransportTypeModel
+  TransportTypeModel,
+  OrderModel,
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -55,9 +56,16 @@ const TableDB = db.define('tables',TableModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
 const TransportTypeDB = db.define('transport_types',TransportTypeModel);
 const ProductDB = db.define('products',ProductModel);
+const OrderDB = db.define('orders', OrderModel);
+
+
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
+
+SupplierDB.hasOne(OrderDB, { foreignKey: "supplier_id" });
+
+
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
@@ -89,4 +97,5 @@ export {
   TransportTypeDB,
   ProductDB,
   db,
+  OrderDB,
 };
