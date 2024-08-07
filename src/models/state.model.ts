@@ -7,16 +7,9 @@ const StateModel = {
     primaryKey: true,
   },
   name: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING(45),
     allowNull: false,
     unique: true,
-  },
-  status: {
-    type: DataTypes.BOOLEAN,
-    default: true,
-  },
-  country_id: {
-    type: DataTypes.INTEGER,
   },
 };
 

@@ -16,3 +16,4 @@ export * from './customer.controller';
 export * from './room_type.controller';
 export * from './product.controller';
 export * from './order.controller';
+export * from './state.controller'

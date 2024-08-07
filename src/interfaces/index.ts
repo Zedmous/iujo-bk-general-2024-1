@@ -16,6 +16,7 @@ export * from './transport_type.interface'
 export * from './user.interface'
 export * from './location.interface'
 export * from './order.interface'
+export * from './state.interface'
 
 
 
