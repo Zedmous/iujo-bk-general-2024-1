@@ -7,3 +7,4 @@ export * from './supplier.validators'
 export * from './user.validators'
 export * from './product_category.validators';
 export * from './inventory.validators';
+export * from './city.validators'

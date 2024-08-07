@@ -7,3 +7,4 @@ export * from './attractions_status.controller';
 export * from './requirements.controller';
 export * from './supplier.controller';
 export * from './user.controller';
+export * from './city.controller'

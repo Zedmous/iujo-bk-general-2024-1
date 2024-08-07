@@ -9,6 +9,7 @@ import {
   AttractionsStatusModel,
   ConceptModel,
   InventoryModel, ProductCategoryModel,
+  CityModel
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -34,6 +35,7 @@ const RequirementDB = db.define("requirements", RequirementModel);
 const LocationDB = db.define("locations", LocationModel);
 const ConceptDB = db.define("concepts", ConceptModel);
 const AttractionsStatusDB = db.define("attractions_statuses",AttractionsStatusModel);
+const CityDB = db.define("city",CityModel);
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
@@ -50,4 +52,4 @@ const syncModels = async () => {
 syncModels();
 //export default db;
 
-export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,ProductCategoryDB, InventoryDB, db };
+export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,ProductCategoryDB, InventoryDB, CityDB, db };
