@@ -16,6 +16,7 @@ export * from './table_type.validators'
 export * from './table.validators'
 export * from './user.validators';
 export * from './order.validators';
+export * from './state.validators';
 
 
 
