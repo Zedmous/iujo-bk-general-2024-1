@@ -4,7 +4,7 @@ import { SupplierInterface } from "../interfaces";
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
+    /*const suppliers = await suppliers.findAll({
         where: {
           status: true,
         },

@@ -4,7 +4,7 @@ import { CityInterface } from "../interfaces";
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const roles = await Role.findAll({
+    /*const city = await City.findAll({
         where: {
           status: true,
         },
