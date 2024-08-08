@@ -1,11 +1,22 @@
-import { OrderDB, OrderDetailProductDB } from "../config";
+import { OrderDB, OrderDetailProductDB, ProductDB } from "../config";
 import { OrderInterface, OrderProductDetailInterface } from "../interfaces";
-import { OrderDetailProductModel } from "../models";
+
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    const orders = await OrderDB.findAll();
+    const orders = await OrderDB.findAll({
+      include: [
+        {
+          model: ProductDB,
+          as: 'order_products',
+          attributes: ['name', 'product_category_id', 'price', 'cost'], // Atributos específicos de ProductDB
+          through: {
+            attributes: ['price', 'amount', 'description'] // Atributos específicos de la tabla intermedia OrderDetailProduct
+          }
+        }
+      ],
+      attributes: ['id', 'supplier_id', 'status', 'createdAt'] // Atributos específicos de OrderDB 
+    });
     return {
       message: `All orders successful found`,
       status: 200,
@@ -27,7 +38,20 @@ export const getAll = async () => {
 export const getOne = async (id: number|string) => {
   try {
     //consultas a la base de datos van aca
-    const orders = await OrderDB.findOne({ where: { id } });
+    const orders = await OrderDB.findOne({ 
+      where: { id },
+      include: [
+        {
+          model: ProductDB,
+          as: 'order_products',
+          attributes: ['name', 'product_category_id', 'price', 'cost'], // Atributos específicos de ProductDB
+          through: {
+            attributes: ['price', 'amount', 'description'] // Atributos específicos de la tabla intermedia OrderDetailProduct
+          }
+        }
+      ],
+      attributes: ['id', 'supplier_id', 'status', 'createdAt'] // Atributos específicos de OrderDB 
+    }); 
     if (orders === null) {
       console.log("Not Found");
       return {

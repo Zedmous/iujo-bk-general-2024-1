@@ -67,8 +67,8 @@ UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
 SupplierDB.hasOne(OrderDB, { foreignKey: "supplier_id" });
 
-ProductDB.belongsToMany(OrderDB, { through: OrderDetailProductDB, as:'products', foreignKey: 'product_id' });
-OrderDB.belongsToMany(ProductDB, { through: OrderDetailProductDB, as:'orders', foreignKey: 'order_id' });
+ProductDB.belongsToMany(OrderDB, { through: OrderDetailProductDB, as:'productsOder', foreignKey: 'product_id' });
+OrderDB.belongsToMany(ProductDB, { through: OrderDetailProductDB, as:'order_products', foreignKey: 'order_id' });
 
 
 // Sincroniza los modelos con la base de datos

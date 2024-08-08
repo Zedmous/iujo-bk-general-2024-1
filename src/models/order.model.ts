@@ -1,5 +1,4 @@
 import { DataTypes, Model } from "sequelize";
-import { OrderInterface, OrderProductDetailInterface } from "../interfaces";
 
 const OrderModel = {
   id: {
