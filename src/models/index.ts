@@ -9,9 +9,11 @@ export * from './dish.model';
 export * from './inventory.model';
 export * from './locations.model';
 export * from './product_category.model';
+export * from './product.model';
 export * from './requirements.model';
 export * from './role.model';
 export * from './room_type.model';
+export * from './schedules.model';
 export * from './staff.model';
 export * from './states.model';
 export * from './supplier.model';
@@ -23,15 +25,3 @@ export * from './transport_type.model';
 export * from './transport.model';
 export * from './travel.model';
 export * from './user.model';
-
-
-
-
-
-
-
-
-
-
-
-

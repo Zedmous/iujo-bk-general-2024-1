@@ -1,6 +1,5 @@
 import { Sequelize } from "sequelize";
 
-
 import {
   AreaModel,
   AttractionsStatusModel,
@@ -13,9 +12,11 @@ import {
   InventoryModel,
   LocationModel,
   ProductCategoryModel,
+  ProductModel,
   RequirementModel,
   RoleModel,
   RoomTypeModel,
+  SchedulesModel,
   StaffModel,
   StateModel,
   SupplierModel,
@@ -42,9 +43,6 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
-
-
-
 // CREAMOS LAS TABLAS EN ORDEN ALFABETICO
 const AreaDB = db.define("areas", AreaModel);
 const AttractionsStatusDB = db.define(
@@ -60,9 +58,11 @@ const DishDB = db.define("dishes", DishModel);
 const InventoryDB = db.define("inventories", InventoryModel);
 const LocationDB = db.define("locations", LocationModel);
 const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
+const ProductDB = db.define("products", ProductModel);
 const RequirementDB = db.define("requirements", RequirementModel);
 const RoleDB = db.define("roles", RoleModel);
 const RoomTypeDB = db.define("room_types", RoomTypeModel);
+const SchedulesDB = db.define("schedules", SchedulesModel);
 const StaffDB = db.define('staffs',StaffModel);
 const StateDB = db.define('states',StateModel);
 const SupplierDB = db.define("suppliers", SupplierModel);
@@ -74,20 +74,20 @@ const TransportTypeDB = db.define('transport_types',TransportTypeModel);
 const TransportDB = db.define('transports',TransportModel);
 const TravelDB = db.define('travel',TravelModel);
 const UserDB = db.define("users", UserModel);
+
 // Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
-
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
-    
   } catch (error) {
     console.error(error);
   }
 };
 syncModels();
+
 export {
   AreaDB,
   AttractionsStatusDB,
@@ -100,9 +100,11 @@ export {
   InventoryDB,
   LocationDB,
   ProductCategoryDB,
+  ProductDB,
   RequirementDB,
   RoleDB,
   RoomTypeDB,
+  SchedulesDB,
   StaffDB,
   StateDB,
   SupplierDB,

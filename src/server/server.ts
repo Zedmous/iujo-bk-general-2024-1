@@ -1,22 +1,24 @@
 import express from "express";
 import cors from "cors";
 import {
-  roleRoute,
-  requirementRoute,
-  locationRoute,
   attractionStatusRoute,
-  conceptRoute,
-  supplierRoute,
-  userRoute,
-  productCategoryRoute,
-  inventoryRoute,
-  customerRoute,
   areaRoute,
+  conceptRoute,
+  customerRoute,
+  inventoryRoute,
+  locationRoute,
+  productCategoryRoute,
+  productRoute,
+  requirementRoute,
+  roleRoute,
+  roomTypeRoute,
+  schedulesRoute,
   staffRoute,
+  supplierRoute,
   tableRoute,
   tableTypeRoute,
-  roomTypeRoute,
-  transportTypeRoute
+  transportTypeRoute,
+  userRoute,
 } from "../routes/index.route";
 
 import { db } from "../config/sequelize.config";
@@ -30,22 +32,24 @@ export class Server {
     this.port = process.env.PORT || 3880;
     this.pre = "/api";
     this.paths = {
-      roles: this.pre + "/roles",
       areas: this.pre + "/areas",
-      requirements: this.pre + "/requirements",
-      locations: this.pre + "/locations",
-      suppliers: this.pre + "/suppliers",
-      users: this.pre + "/users",
       attractions_statuses: this.pre + "/attractions_statuses",
       concepts: this.pre + "/concepts",
-      product_categories: this.pre + "/product_categories",
-      inventories: this.pre + "/inventories",
       customers: this.pre + "/customers",
-      type_rooms: this.pre + "/type_rooms",
+      inventories: this.pre + "/inventories",
+      locations: this.pre + "/locations",
+      product_categories: this.pre + "/product_categories",
+      products: this.pre + "/products",
+      requirements: this.pre + "/requirements",
+      room_types: this.pre + "/room_types",
+      roles: this.pre + "/roles",
+      schedules: this.pre + "/schedules",
       staffs: this.pre + "/staffs",
+      suppliers: this.pre + "/suppliers",
       tables: this.pre + "/tables",
       table_types: this.pre + "/table_types",
-      transport_types: this.pre+ "/transport_types"
+      transport_types: this.pre + "/transport_types",
+      users: this.pre + "/users",
     };
 
     this.connectDB();
@@ -60,22 +64,24 @@ export class Server {
   }
 
   routes() {
+    this.app.use(this.paths.areas, areaRoute);
+    this.app.use(this.paths.attractions_statuses, attractionStatusRoute);
+    this.app.use(this.paths.concepts, conceptRoute);
+    this.app.use(this.paths.customers, customerRoute);
+    this.app.use(this.paths.inventories, inventoryRoute);
+    this.app.use(this.paths.locations, locationRoute);
+    this.app.use(this.paths.product_categories, productCategoryRoute);
+    this.app.use(this.paths.products, productRoute);
+    this.app.use(this.paths.requirements, requirementRoute);
     this.app.use(this.paths.roles, roleRoute);
+    this.app.use(this.paths.room_types, roomTypeRoute);
+    this.app.use(this.paths.schedules, schedulesRoute);
+    this.app.use(this.paths.staffs, staffRoute);
+    this.app.use(this.paths.suppliers, supplierRoute);
     this.app.use(this.paths.transport_types, transportTypeRoute);
     this.app.use(this.paths.table_types, tableTypeRoute);
     this.app.use(this.paths.tables, tableRoute);
-    this.app.use(this.paths.requirements, requirementRoute);
-    this.app.use(this.paths.locations, locationRoute);
-    this.app.use(this.paths.suppliers, supplierRoute);
     this.app.use(this.paths.users, userRoute);
-    this.app.use(this.paths.attractions_statuses, attractionStatusRoute);
-    this.app.use(this.paths.concepts, conceptRoute);
-    this.app.use(this.paths.product_categories, productCategoryRoute);
-    this.app.use(this.paths.inventories, inventoryRoute);
-    this.app.use(this.paths.customers, customerRoute);
-    this.app.use(this.paths.type_rooms, roomTypeRoute);
-    this.app.use(this.paths.areas, areaRoute);
-    this.app.use(this.paths.staffs, staffRoute);
   }
   async connectDB() {
     await db
