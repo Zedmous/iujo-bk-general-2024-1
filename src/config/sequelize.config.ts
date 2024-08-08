@@ -1,24 +1,33 @@
 import { Sequelize } from "sequelize";
 
 import {
-  RoleModel,
-  UserModel,
-  SupplierModel,
-  RequirementModel,
-  LocationModel,
-  AttractionsStatusModel,
-  ProductModel,
-  ConceptModel,
-  InventoryModel,
-  ProductCategoryModel,
-  CustomerModel,
-  RoomTypeModel,
   AreaModel,
-  StaffModel,
-  TableModel,
-  TableTypeModel,
-  TransportTypeModel,
+  AttractionsStatusModel,
+  CityModel,
+  ConceptModel,
+  CountryModel,
+  CustomerModel,
+  DishCategoryModel,
+  DishModel,
+  InventoryModel,
+  LocationModel,
+  ProductCategoryModel,
+  ProductModel,
+  RequirementModel,
+  RoleModel,
+  RoomTypeModel,
   SchedulesModel,
+  StaffModel,
+  StateModel,
+  SupplierModel,
+  TableOrderDetailModel,
+  TableOrderModel,
+  TableTypeModel,
+  TableModel,
+  TransportTypeModel,
+  TransportModel,
+  TravelModel,
+  UserModel,
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -34,29 +43,39 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
-// CREAMOS LAS TABLAS
-const UserDB = db.define("users", UserModel);
-const RoleDB = db.define("roles", RoleModel);
-const InventoryDB = db.define("inventories", InventoryModel);
-const SupplierDB = db.define("suppliers", SupplierModel);
-const RequirementDB = db.define("requirements", RequirementModel);
-const LocationDB = db.define("locations", LocationModel);
-const ConceptDB = db.define("concepts", ConceptModel);
+// CREAMOS LAS TABLAS EN ORDEN ALFABETICO
+const AreaDB = db.define("areas", AreaModel);
 const AttractionsStatusDB = db.define(
   "attractions_statuses",
   AttractionsStatusModel
 );
+const CityDB = db.define("cities", CityModel);
+const ConceptDB = db.define("concepts", ConceptModel);
+const CountryDB = db.define("countries", CountryModel);
 const CustomerDB = db.define("customers", CustomerModel);
-const RoomTypeDB = db.define("room_types", RoomTypeModel);
-const AreaDB = db.define("areas", AreaModel);
-const StaffDB = db.define("staffs", StaffModel);
-const TableDB = db.define("tables", TableModel);
-const TableTypeDB = db.define("table_types", TableTypeModel);
-const TransportTypeDB = db.define("transport_types", TransportTypeModel);
-const ProductDB = db.define("products", ProductModel);
+const DishCategoryDB = db.define("dish_categories", DishCategoryModel);
+const DishDB = db.define("dishes", DishModel);
+const InventoryDB = db.define("inventories", InventoryModel);
+const LocationDB = db.define("locations", LocationModel);
 const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
+const ProductDB = db.define("products", ProductModel);
+const RequirementDB = db.define("requirements", RequirementModel);
+const RoleDB = db.define("roles", RoleModel);
+const RoomTypeDB = db.define("room_types", RoomTypeModel);
 const SchedulesDB = db.define("schedules", SchedulesModel);
-// Relaciones
+const StaffDB = db.define('staffs',StaffModel);
+const StateDB = db.define('states',StateModel);
+const SupplierDB = db.define("suppliers", SupplierModel);
+const TableOrderDetailDB = db.define('table_order_details',TableOrderDetailModel);
+const TableOrderDB = db.define('table_orders',TableOrderModel);
+const TableTypeDB = db.define("table_types", TableTypeModel);
+const TableDB = db.define('tables',TableModel);
+const TransportTypeDB = db.define('transport_types',TransportTypeModel);
+const TransportDB = db.define('transports',TransportModel);
+const TravelDB = db.define('travel',TravelModel);
+const UserDB = db.define("users", UserModel);
+
+// Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 // Sincroniza los modelos con la base de datos
@@ -70,23 +89,32 @@ const syncModels = async () => {
 syncModels();
 
 export {
-  UserDB,
-  RoleDB,
-  SupplierDB,
-  LocationDB,
-  RequirementDB,
-  AttractionsStatusDB,
-  ConceptDB,
-  ProductCategoryDB,
-  InventoryDB,
-  CustomerDB,
-  RoomTypeDB,
   AreaDB,
-  StaffDB,
-  TableDB,
-  TableTypeDB,
-  TransportTypeDB,
+  AttractionsStatusDB,
+  CityDB,
+  ConceptDB,
+  CountryDB,
+  CustomerDB,
+  DishCategoryDB,
+  DishDB,
+  InventoryDB,
+  LocationDB,
+  ProductCategoryDB,
   ProductDB,
+  RequirementDB,
+  RoleDB,
+  RoomTypeDB,
   SchedulesDB,
+  StaffDB,
+  StateDB,
+  SupplierDB,
+  TableOrderDetailDB,
+  TableOrderDB,
+  TableTypeDB,
+  TableDB,
+  TransportTypeDB,
+  TransportDB,
+  TravelDB,
+  UserDB,
   db,
 };
