@@ -17,9 +17,8 @@ export * from './supplier.model';
 export * from './product_category.model';
 export * from './inventory.model';
 export * from './customer.model';
-export * from './table_customer.model';
-export * from './table_dish.model';
-export * from './table_location.model';
+
 export * from './table_order_detail.model';
 export * from './table_order.model';
-export * from './table_category.model';
+export * from './dish.model';
+export * from './dish_category.model';

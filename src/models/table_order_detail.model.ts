@@ -2,16 +2,16 @@ import { DataTypes } from "sequelize";
 
 // Order Detail Table
 const TableOrderDetailModel = {
-    orderDetailId: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    orderId: {
+    order_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    dishId: {
+    dish_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

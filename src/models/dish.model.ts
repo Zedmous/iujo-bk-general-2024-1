@@ -1,15 +1,16 @@
 import { DataTypes } from "sequelize";
 
 // Dish Table
-const TableDishModel = {
-    dishId: {
+const DishModel = {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    dishName: {
-      type: DataTypes.STRING(255),
+    name: {
+      type: DataTypes.STRING(50),
       allowNull: false,
+      unique: true,
     },
     price: {
       type: DataTypes.DECIMAL(10, 2),
@@ -19,10 +20,17 @@ const TableDishModel = {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    categoryId: {
+    category_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+    },
+    status: {
+      type: DataTypes.BOOLEAN,
+      default: true,
+    }
 };
 
-export { TableDishModel };
+export { DishModel };

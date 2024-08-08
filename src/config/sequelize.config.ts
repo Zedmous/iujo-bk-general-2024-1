@@ -18,10 +18,8 @@ import {
   TableModel,
   TableTypeModel,
   TransportTypeModel,
-  TableCategoryModel,
-  TableCustomerModel,
-  TableDishModel,
-  TableLocationModel,
+  DishCategoryModel,
+  DishModel,
   TableOrderDetailModel,
   TableOrderModel,
 } from "../models";
@@ -62,10 +60,9 @@ const StaffDB = db.define('staffs',StaffModel);
 const TableDB = db.define('tables',TableModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
 const TransportTypeDB = db.define('transport_types',TransportTypeModel);
-const TableCategoryDB = db.define("table_category", TableCategoryModel);
-const TableCustomerDB = db.define("table_customers", TableCustomerModel);
-const TableDishDB = db.define("table_dishes", TableDishModel);
-const TableLocationDB = db.define("table_locations", TableLocationModel);
+
+const DishCategoryDB = db.define("dish_categories", DishCategoryModel);
+const DishDB = db.define("dishes", DishModel);
 const TableOrderDetailDB = db.define("table_order_details", TableOrderDetailModel);
 const TableOrderDB = db.define("table_orders", TableOrderModel);
 // Relaciones
@@ -99,10 +96,8 @@ export {
   TableDB,
   TableTypeDB,
   TransportTypeDB,
-  TableCategoryDB,
-  TableCustomerDB,
-  TableDishDB,
-  TableLocationDB,
+  DishCategoryDB,
+  DishDB,
   TableOrderDetailDB,
   TableOrderDB,
   db,

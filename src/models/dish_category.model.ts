@@ -1,23 +1,16 @@
 import { DataTypes } from "sequelize";
 
-// Order Table
-const TableOrderModel = {
+
+const DishCategoryModel = {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    customer_id: {
-      type: DataTypes.INTEGER,
+    name: {
+      type: DataTypes.STRING(50),
       allowNull: false,
-    },
-    table_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    table_order_status_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+      unique: true,
     },
     deletedAt: {
       type: DataTypes.DATE,
@@ -26,7 +19,6 @@ const TableOrderModel = {
       type: DataTypes.BOOLEAN,
       default: true,
     }
-
 };
 
-export { TableOrderModel };
+export { DishCategoryModel };
