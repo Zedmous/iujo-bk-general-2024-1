@@ -1,4 +1,4 @@
-export interface OrderInterface{
+export interface PurchaseOrderInterface{
     id?:number;
     supplier_id:number;
     emitedAt:Date;

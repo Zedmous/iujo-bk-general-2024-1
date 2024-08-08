@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from '../services/order.service';
-export class OrderController {
+import { create, deleted, getAll, getOne, update } from "../services/schedules.service";
+export class SchedulesController {
   constructor() {}
 
-  allOrders = async (req: Request, res: Response) => {
+  all = async (req: Request, res: Response) => {
     const { status, message, data } = await getAll();
     return res.status(status).json({
       message,
@@ -11,7 +11,7 @@ export class OrderController {
     });
   };
 
-  oneOrder = async (req: Request, res: Response) => {
+  one = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await getOne(parseInt(id) as number);
     return res.status(status).json({
@@ -19,14 +19,14 @@ export class OrderController {
       data,
     });
   };
-  createOrder = async (req: Request, res: Response) => {
+  createSchedules = async (req: Request, res: Response) => {
     const { status, message, data } = await create(req.body);
     return res.status(status).json({
       message,
       data,
     });
   };
-  updateOrder = async (req: Request, res: Response) => {
+  updateSchedules = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await update(parseInt(id) as number,req.body);
     return res.status(status).json({
@@ -35,7 +35,7 @@ export class OrderController {
     });
   };
 
-  deleteOrder = async (req: Request, res: Response) => {
+  deleteSchedules = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await deleted(parseInt(id) as number,req.body);
     return res.status(status).json({
@@ -43,4 +43,5 @@ export class OrderController {
       data,
     });
   };
+  
 }

@@ -1,10 +1,10 @@
-import { OrderDB } from "../config";
-import { OrderInterface } from "../interfaces";
+import { PurchaseOrderDB } from "../config";
+import { PurchaseOrderInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    const orders = await OrderDB.findAll();
+    const orders = await PurchaseOrderDB.findAll();
     return {
       message: `All orders successful found`,
       status: 200,
@@ -26,7 +26,7 @@ export const getAll = async () => {
 export const getOne = async (id: number|string) => {
   try {
     //consultas a la base de datos van aca
-    const orders = await OrderDB.findOne({ where: { id } });
+    const orders = await PurchaseOrderDB.findOne({ where: { id } });
     if (orders === null) {
       console.log("Not Found");
       return {
@@ -52,10 +52,10 @@ export const getOne = async (id: number|string) => {
     };
   }
 };
-export const create = async (data: OrderInterface) => {
+export const create = async (data: PurchaseOrderInterface) => {
   try {
     //consultas a la base de datos van aca
-    const orders = await OrderDB.create({
+    const orders = await PurchaseOrderDB.create({
       ...data,
     });
 
@@ -75,10 +75,10 @@ export const create = async (data: OrderInterface) => {
   }
 };
 
-export const update = async (id: number|string, data: OrderInterface) => {
+export const update = async (id: number|string, data: PurchaseOrderInterface) => {
   try {
     //consultas a la base de datos van aca
-    const orders = await OrderDB.update(
+    const orders = await PurchaseOrderDB.update(
       {
         ...data,
       },
@@ -105,10 +105,10 @@ export const update = async (id: number|string, data: OrderInterface) => {
     };
   }
 };
-export const deleted = async (id: number|string, data: OrderInterface) => {
+export const deleted = async (id: number|string, data: PurchaseOrderInterface) => {
   try {
     //consultas a la base de datos van aca
-    const orders = await OrderDB.update(
+    const orders = await PurchaseOrderDB.update(
       {
         status: false,
         deletedAt: new Date(),
