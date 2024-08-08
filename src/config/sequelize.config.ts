@@ -24,6 +24,8 @@ import {
   TableTypeModel,
   TableModel,
   TransportTypeModel,
+  TransportModel,
+  TravelModel,
   UserModel,
 } from "../models";
 
@@ -49,7 +51,6 @@ const AttractionsStatusDB = db.define(
   "attractions_statuses",
   AttractionsStatusModel
 );
-
 const CityDB = db.define("cities", CityModel);
 const ConceptDB = db.define("concepts", ConceptModel);
 const CountryDB = db.define("countries", CountryModel);
@@ -70,9 +71,9 @@ const TableOrderDB = db.define('table_orders',TableOrderModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
 const TableDB = db.define('tables',TableModel);
 const TransportTypeDB = db.define('transport_types',TransportTypeModel);
+const TransportDB = db.define('transports',TransportModel);
+const TravelDB = db.define('travel',TravelModel);
 const UserDB = db.define("users", UserModel);
-
-
 // Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
@@ -89,7 +90,7 @@ const syncModels = async () => {
 syncModels();
 export {
   AreaDB,
-  AttractionsStatusModel,
+  AttractionsStatusDB,
   CityDB,
   ConceptDB,
   CountryDB,
@@ -110,6 +111,8 @@ export {
   TableTypeDB,
   TableDB,
   TransportTypeDB,
+  TransportDB,
+  TravelDB,
   UserDB,
   db,
 };
