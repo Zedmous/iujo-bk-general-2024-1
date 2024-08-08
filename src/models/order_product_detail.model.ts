@@ -1,23 +1,31 @@
 import { DataTypes } from "sequelize";
 
 const OrderDetailProductModel = {
-  id: {
+  order_id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true,
+    references: {
+      model: 'orders',
+      key: 'id'
+    }
   },
   product_id: {
     type: DataTypes.INTEGER,
+    primaryKey: true,
+    references: {
+      model: 'products',
+      key: 'id'
+    }
   },
   price: {
-    type: DataTypes.DATE,
+    type: DataTypes.INTEGER,
   },
   amount: {
-    type: DataTypes.DATE,
+    type: DataTypes.INTEGER,
   },
   description: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
   },
 };
 
-export { OrderDetailProductModel };
+export { OrderDetailProductModel};

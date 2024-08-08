@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-
+import {OrderIntance} from "../interfaces";
 
 import {
   RoleModel,
@@ -20,6 +20,7 @@ import {
   TableTypeModel,
   TransportTypeModel,
   OrderModel,
+  OrderDetailProductModel,
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -56,7 +57,8 @@ const TableDB = db.define('tables',TableModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
 const TransportTypeDB = db.define('transport_types',TransportTypeModel);
 const ProductDB = db.define('products',ProductModel);
-const OrderDB = db.define('orders', OrderModel);
+const OrderDB = db.define<OrderIntance>('orders', OrderModel);
+const OrderDetailProductDB = db.define('order_detail_products', OrderDetailProductModel);
 
 
 // Relaciones
@@ -64,6 +66,9 @@ RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
 SupplierDB.hasOne(OrderDB, { foreignKey: "supplier_id" });
+
+ProductDB.belongsToMany(OrderDB, { through: OrderDetailProductDB, as:'products', foreignKey: 'product_id' });
+OrderDB.belongsToMany(ProductDB, { through: OrderDetailProductDB, as:'orders', foreignKey: 'order_id' });
 
 
 // Sincroniza los modelos con la base de datos
@@ -98,4 +103,5 @@ export {
   ProductDB,
   db,
   OrderDB,
+  OrderDetailProductDB,
 };

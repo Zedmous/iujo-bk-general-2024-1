@@ -19,6 +19,7 @@ export * from './table_type.model';
 export * from './table.model';
 export * from './user.model';
 export * from './order.model';
+export * from './order_product_detail.model';
 
 
 
