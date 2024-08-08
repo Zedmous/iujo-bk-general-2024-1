@@ -6,6 +6,7 @@ export * from './inventory.validators';
 export * from './location.validators';
 export * from './product_category.validators';
 export * from './product.validators';
+export * from './purchase_order.validators';
 export * from './room_type.validators';
 export * from './requirements.validators';
 export * from './role.validators';
@@ -16,6 +17,7 @@ export * from './transport_type.validators';
 export * from './table_type.validators'
 export * from './table.validators'
 export * from './user.validators';
+
 
 
 

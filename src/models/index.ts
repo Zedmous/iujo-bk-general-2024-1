@@ -10,6 +10,7 @@ export * from './inventory.model';
 export * from './locations.model';
 export * from './product_category.model';
 export * from './product.model';
+export * from './purchase_order.model';
 export * from './requirements.model';
 export * from './role.model';
 export * from './room_type.model';

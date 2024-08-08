@@ -6,6 +6,7 @@ import inventoryRoute from "./inventory.route";
 import locationRoute from "./locations.route";
 import productCategoryRoute from "./product_category.route";
 import productRoute from "./product.route";
+import purchaseOrderRoute from "./purchase_order.route";
 import requirementRoute from "./requirements.route";
 import roomTypeRoute from "./room_type.route";
 import roleRoute from "./role.route";
@@ -18,6 +19,7 @@ import tableRoute from "./table.route";
 import userRoute from "./user.route";
 
 
+
 export {
     attractionStatusRoute,
     areaRoute,
@@ -27,6 +29,7 @@ export {
     locationRoute,
     productCategoryRoute,
     productRoute,
+    purchaseOrderRoute,
     requirementRoute,
     roleRoute,
     roomTypeRoute,

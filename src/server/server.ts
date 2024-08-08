@@ -7,6 +7,7 @@ import {
   customerRoute,
   inventoryRoute,
   locationRoute,
+  purchaseOrderRoute,
   productCategoryRoute,
   productRoute,
   requirementRoute,
@@ -19,6 +20,7 @@ import {
   tableTypeRoute,
   transportTypeRoute,
   userRoute,
+
 } from "../routes/index.route";
 
 import { db } from "../config/sequelize.config";
@@ -38,6 +40,7 @@ export class Server {
       customers: this.pre + "/customers",
       inventories: this.pre + "/inventories",
       locations: this.pre + "/locations",
+      purchase_orders: this.pre + "/purchase_orders",
       product_categories: this.pre + "/product_categories",
       products: this.pre + "/products",
       requirements: this.pre + "/requirements",
@@ -50,7 +53,8 @@ export class Server {
       table_types: this.pre + "/table_types",
       transport_types: this.pre + "/transport_types",
       users: this.pre + "/users",
-    };
+      
+  };
 
     this.connectDB();
     this.middlewares();
@@ -82,6 +86,7 @@ export class Server {
     this.app.use(this.paths.table_types, tableTypeRoute);
     this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.users, userRoute);
+    this.app.use(this.paths.purchase_orders, purchaseOrderRoute);
   }
   async connectDB() {
     await db

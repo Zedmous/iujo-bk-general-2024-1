@@ -13,6 +13,7 @@ import {
   LocationModel,
   ProductCategoryModel,
   ProductModel,
+  PurchaseOrderModel,
   RequirementModel,
   RoleModel,
   RoomTypeModel,
@@ -59,6 +60,7 @@ const InventoryDB = db.define("inventories", InventoryModel);
 const LocationDB = db.define("locations", LocationModel);
 const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
 const ProductDB = db.define("products", ProductModel);
+const PurchaseOrderDB = db.define('purchase_orders', PurchaseOrderModel);
 const RequirementDB = db.define("requirements", RequirementModel);
 const RoleDB = db.define("roles", RoleModel);
 const RoomTypeDB = db.define("room_types", RoomTypeModel);
@@ -76,8 +78,13 @@ const TravelDB = db.define('travel',TravelModel);
 const UserDB = db.define("users", UserModel);
 
 // Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
+
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
+
+SupplierDB.hasOne(PurchaseOrderDB, { foreignKey: "supplier_id" });
+
+
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
@@ -101,6 +108,7 @@ export {
   LocationDB,
   ProductCategoryDB,
   ProductDB,
+  PurchaseOrderDB,
   RequirementDB,
   RoleDB,
   RoomTypeDB,
