@@ -2,22 +2,29 @@ import { Sequelize } from "sequelize";
 
 
 import {
-  RoleModel,
-  UserModel,
-  SupplierModel,
-  RequirementModel,
-  LocationModel,
-  AttractionsStatusModel,
-  ConceptModel,
-  InventoryModel,
-  ProductCategoryModel,
-  CustomerModel,
-  RoomTypeModel,
   AreaModel,
+  AttractionsStatusModel,
+  CityModel,
+  ConceptModel,
+  CountryModel,
+  CustomerModel,
+  DishCategoryModel,
+  DishModel,
+  InventoryModel,
+  LocationModel,
+  ProductCategoryModel,
+  RequirementModel,
+  RoleModel,
+  RoomTypeModel,
   StaffModel,
-  TableModel,
+  StateModel,
+  SupplierModel,
+  TableOrderDetailModel,
+  TableOrderModel,
   TableTypeModel,
-  TransportTypeModel
+  TableModel,
+  TransportTypeModel,
+  UserModel,
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -36,27 +43,37 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 
 
 
-// CREAMOS LAS TABLAS
-const UserDB = db.define("users", UserModel);
-const RoleDB = db.define("roles", RoleModel);
-const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
-const InventoryDB = db.define("inventories", InventoryModel);
-const SupplierDB = db.define("suppliers", SupplierModel);
-const RequirementDB = db.define("requirements", RequirementModel);
-const LocationDB = db.define("locations", LocationModel);
-const ConceptDB = db.define("concepts", ConceptModel);
+// CREAMOS LAS TABLAS EN ORDEN ALFABETICO
+const AreaDB = db.define("areas", AreaModel);
 const AttractionsStatusDB = db.define(
   "attractions_statuses",
   AttractionsStatusModel
 );
+
+const CityDB = db.define("cities", CityModel);
+const ConceptDB = db.define("concepts", ConceptModel);
+const CountryDB = db.define("countries", CountryModel);
 const CustomerDB = db.define("customers", CustomerModel);
+const DishCategoryDB = db.define("dish_categories", DishCategoryModel);
+const DishDB = db.define("dishes", DishModel);
+const InventoryDB = db.define("inventories", InventoryModel);
+const LocationDB = db.define("locations", LocationModel);
+const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
+const RequirementDB = db.define("requirements", RequirementModel);
+const RoleDB = db.define("roles", RoleModel);
 const RoomTypeDB = db.define("room_types", RoomTypeModel);
-const AreaDB = db.define("areas", AreaModel);
 const StaffDB = db.define('staffs',StaffModel);
-const TableDB = db.define('tables',TableModel);
+const StateDB = db.define('states',StateModel);
+const SupplierDB = db.define("suppliers", SupplierModel);
+const TableOrderDetailDB = db.define('table_order_details',TableOrderDetailModel);
+const TableOrderDB = db.define('table_orders',TableOrderModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
+const TableDB = db.define('tables',TableModel);
 const TransportTypeDB = db.define('transport_types',TransportTypeModel);
-// Relaciones
+const UserDB = db.define("users", UserModel);
+
+
+// Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
@@ -71,21 +88,28 @@ const syncModels = async () => {
 };
 syncModels();
 export {
-  UserDB,
-  RoleDB,
-  SupplierDB,
-  LocationDB,
-  RequirementDB,
-  AttractionsStatusDB,
-  ConceptDB,
-  ProductCategoryDB,
-  InventoryDB,
-  CustomerDB,
-  RoomTypeDB,
   AreaDB,
+  AttractionsStatusModel,
+  CityDB,
+  ConceptDB,
+  CountryDB,
+  CustomerDB,
+  DishCategoryDB,
+  DishDB,
+  InventoryDB,
+  LocationDB,
+  ProductCategoryDB,
+  RequirementDB,
+  RoleDB,
+  RoomTypeDB,
   StaffDB,
-  TableDB,
+  StateDB,
+  SupplierDB,
+  TableOrderDetailDB,
+  TableOrderDB,
   TableTypeDB,
+  TableDB,
   TransportTypeDB,
+  UserDB,
   db,
 };
