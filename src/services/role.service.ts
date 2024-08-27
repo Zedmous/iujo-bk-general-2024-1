@@ -80,12 +80,12 @@ export const create = async (data: RoleInterface) => {
   }
 };
 
-export const update = async (id: number, data: RoleInterface) => {
+export const update = async (id: number, dat: RoleInterface) => {
   try {
-    //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    let role: RoleInterface | any = await RoleDB.update(
       {
-        ...data,
+        name: dat.name,
+        status: true,
       },
       {
         where: {
@@ -94,12 +94,12 @@ export const update = async (id: number, data: RoleInterface) => {
         returning: true,
       }
     );
-
+    const { data } = await getOne(id);
     return {
       message: `Actualización del Rol exitoso`,
       status: 200,
       data: {
-        role,
+        product: data?.role,
       },
     };
   } catch (error) {
