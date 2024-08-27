@@ -26,8 +26,6 @@ export const getAll = async () => {
   }
 };
 
-
-
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
@@ -37,8 +35,7 @@ export const getOne = async (id: number) => {
       return {
         message: `Role no encontrado`,
         status: 404,
-        data: {
-        },
+        data: {},
       };
     } else {
       return {
@@ -58,10 +55,11 @@ export const getOne = async (id: number) => {
   }
 };
 export const create = async (data: RoleInterface) => {
+  console.log("datos",data)
   try {
     //consultas a la base de datos van aca
     const role = await RoleDB.create({
-      ...data,
+      name: data.name,
     });
 
     return {
@@ -80,12 +78,12 @@ export const create = async (data: RoleInterface) => {
   }
 };
 
-export const update = async (id: number, data: RoleInterface) => {
+export const update = async (id: number, dat: RoleInterface) => {
   try {
-    //consultas a la base de datos van aca
-    const role = await RoleDB.update(
+    let role: RoleInterface | any = await RoleDB.update(
       {
-        ...data,
+        name: dat.name,
+        status: true,
       },
       {
         where: {
@@ -94,12 +92,12 @@ export const update = async (id: number, data: RoleInterface) => {
         returning: true,
       }
     );
-
+    const { data } = await getOne(id);
     return {
       message: `Actualización del Rol exitoso`,
       status: 200,
       data: {
-        role,
+        role: data?.role,
       },
     };
   } catch (error) {
@@ -134,6 +132,38 @@ export const deleted = async (id: number, data: RoleInterface) => {
       },
     };
   } catch (error) {
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+export const findRoleByName = async (name: string) => {
+  try {
+    //consultas a la base de datos van aca
+    const role = await RoleDB.findOne({
+      where: {
+        name: name,
+      },
+    });
+    
+    if (!role) {
+      return {
+        message: `Role no encontrado`,
+        status: 404,
+        data: {},
+      };
+    } else {
+      return {
+        message: `Role encontrado`,
+        status: 200,
+        data: {
+          role,
+        },
+      };
+    }
+  } catch (error) {
+    console.log(error);
     return {
       message: `Contact the administrator: error`,
       status: 500,
