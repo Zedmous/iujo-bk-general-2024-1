@@ -9,7 +9,8 @@ import {
   AttractionsStatusModel,
   ConceptModel,
   InventoryModel, ProductCategoryModel,
-  AttractionsModel,
+  AttractionsModel, SchedulesAttractionsModel,
+  AttractionsRequirementsModel
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -36,17 +37,13 @@ const LocationDB = db.define("locations", LocationModel);
 const ConceptDB = db.define("concepts", ConceptModel);
 const AttractionsStatusDB = db.define("attractions_statuses",AttractionsStatusModel);
 const AttractionsDB = db.define("attractions",  AttractionsModel);
+const SchedulesAttractionsDB = db.define("schedules_attractions", SchedulesAttractionsModel);
+const AttractionsRequierementsDB = db.define( "attractions_requierements", AttractionsRequirementsModel);
 
 // Relaciones
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
-// ATTRACTIONS
-AttractionsStatusDB.hasMany(AttractionsDB, { foreignKey: "id_attractions_status" });
-AttractionsDB.belongsTo(AttractionsStatusDB, { foreignKey: "id_attractions_status" });
-
-LocationDB.belongsTo(AttractionsDB, { foreignKey: "id_location" });
-AttractionsDB.belongsTo(LocationDB, { foreignKey: "id_location" });
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -59,4 +56,6 @@ const syncModels = async () => {
 syncModels();
 //export default db;
 
-export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,ProductCategoryDB, InventoryDB, AttractionsModel, db };
+export { UserDB, RoleDB, SupplierDB, LocationDB, RequirementDB,AttractionsStatusDB, ConceptDB,
+        ProductCategoryDB, InventoryDB, AttractionsModel, SchedulesAttractionsModel,
+        AttractionsRequirementsModel, db };

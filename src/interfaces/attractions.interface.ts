@@ -6,6 +6,8 @@ export interface AttractionsInterface{
     capacity:number;
     duration:string;
     price:number;
+    latitude:number;
+    longitude:number;
     id_attractions_status:number;
     id_location:number;
     status?:boolean;

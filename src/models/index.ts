@@ -8,3 +8,5 @@ export * from './supplier.model';
 export * from './product_category.model';
 export * from './inventory.model';
 export * from './attractions.models';
+export * from './schedules_attractions.model';
+export * from './attractions_requirements.model';

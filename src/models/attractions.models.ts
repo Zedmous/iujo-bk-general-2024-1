@@ -37,6 +37,16 @@ const AttractionsModel = {
         allowNull: false,
         unique: true,
     },
+    latitude: {
+        type: DataTypes.DECIMAL(10, 8), 
+        allowNull: false,
+        unique: true,
+    },
+    longitude: {
+        type: DataTypes.DECIMAL(11, 8), 
+        allowNull: false,
+        unique: true,
+    },
     id_attractions_status: {
         type: DataTypes.INTEGER,
     },

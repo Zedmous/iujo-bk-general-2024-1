@@ -14,10 +14,12 @@ const LocationModel = {
   latitude: {
     type: DataTypes.DECIMAL(10, 8), 
     allowNull: false,
+    unique: true,
   },
   longitude: {
     type: DataTypes.DECIMAL(11, 8), 
     allowNull: false,
+    unique: true,
   },
   deletedAt: {
     type: DataTypes.DATE,
