@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel, ConceptModel } from "../models";
+import { RoleModel, UserModel, ConceptModel, DepartmentModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -19,6 +19,7 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
 const concept = db.define('concept',ConceptModel);
+const department = db.define('department',DepartmentModel);
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
@@ -36,4 +37,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role,  db, concept };
+export  { User, Role,  db, concept, department };
