@@ -7,3 +7,6 @@ export * from './concept.model';
 export * from './supplier.model';
 export * from './product_category.model';
 export * from './inventory.model';
+export * from './areas.model';
+export * from './purchase_order_details.model';
+export * from './supplier_service_order_details.model';
