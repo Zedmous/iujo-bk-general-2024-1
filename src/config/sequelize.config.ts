@@ -30,6 +30,7 @@ import {
   TravelModel,
   UserModel,
 } from "../models";
+import { finanzaModel } from "../models/finanza.model";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -76,6 +77,7 @@ const TransportTypeDB = db.define('transport_types',TransportTypeModel);
 const TransportDB = db.define('transports',TransportModel);
 const TravelDB = db.define('travel',TravelModel);
 const UserDB = db.define("users", UserModel);
+const FinanzaDB = db.define("finanza", finanzaModel);
 
 // Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
 
@@ -124,5 +126,6 @@ export {
   TransportDB,
   TravelDB,
   UserDB,
+  FinanzaDB,
   db,
 };
