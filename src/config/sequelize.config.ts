@@ -29,8 +29,11 @@ import {
   TransportModel,
   TravelModel,
   UserModel,
+
 } from "../models";
 import { finanzaModel } from "../models/finanza.model";
+import { RequestModel } from "../models/request.model";
+import { financialBackgroundModel } from "../models/financialBackground.models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -78,6 +81,10 @@ const TransportDB = db.define('transports',TransportModel);
 const TravelDB = db.define('travel',TravelModel);
 const UserDB = db.define("users", UserModel);
 const FinanzaDB = db.define("finanza", finanzaModel);
+const requestDB = db.define("request", RequestModel );
+const financialBackgroundDB = db.define("financialBackground", financialBackgroundModel);
+
+
 
 // Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
 
@@ -127,5 +134,7 @@ export {
   TravelDB,
   UserDB,
   FinanzaDB,
+  requestDB,
+  financialBackgroundDB,
   db,
 };
