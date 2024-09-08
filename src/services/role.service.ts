@@ -179,6 +179,7 @@ export const reportToExcelRoles = async () => {
     let mappedReport = report.map((res: any) => {
       return [res.id, res.name]; // Mapea a un arreglo de arreglos
     });
+    
     const { status, message, data } = await exportExcelAtoA(
       ["id", "name"],
       mappedReport,
