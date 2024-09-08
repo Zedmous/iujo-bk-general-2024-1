@@ -1,4 +1,5 @@
 import { RoleDB } from "../config";
+import { exportExcelAtoA } from "../helpers";
 import { RoleInterface } from "../interfaces";
 
 export const getAll = async () => {
@@ -55,7 +56,7 @@ export const getOne = async (id: number) => {
   }
 };
 export const create = async (data: RoleInterface) => {
-  console.log("datos",data)
+  console.log("datos", data);
   try {
     //consultas a la base de datos van aca
     const role = await RoleDB.create({
@@ -146,7 +147,7 @@ export const findRoleByName = async (name: string) => {
         name: name,
       },
     });
-    
+
     if (!role) {
       return {
         message: `Role no encontrado`,
@@ -162,6 +163,32 @@ export const findRoleByName = async (name: string) => {
         },
       };
     }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+
+export const reportToExcelRoles = async () => {
+  try {
+    const roles: any = await RoleDB.findAll();
+    let report = roles.map((role: any) => role.dataValues); // Accede a dataValues de cada rol
+    let mappedReport = report.map((res: any) => {
+      return [res.id, res.name]; // Mapea a un arreglo de arreglos
+    });
+    const { status, message, data } = await exportExcelAtoA(
+      ["id", "name"],
+      mappedReport,
+      "datosTest"
+    );//usamos el helper para pasarle los parametros 
+    return {
+      message,
+      status,
+      data,
+    };
   } catch (error) {
     console.log(error);
     return {

@@ -5,6 +5,7 @@ import { RoleValidator } from "../validators";
 const router = Router();
 const roleValidator = new RoleValidator();
 const roleController = new RoleController();
+router.get("/report", roleController.reportExcel);
 router.get("/", roleController.all); 
 router.get("/:id", roleController.one); 
 router.post(
