@@ -15,6 +15,7 @@ import {
   requirementRoute,
   roleRoute,
   roomTypeRoute,
+  roomRoute,
   schedulesRoute,
   staffRoute,
   supplierRoute,
@@ -24,7 +25,6 @@ import {
   userRoute,
 
 } from "../routes/index.route";
-
 import { db } from "../config/sequelize.config";
 import { swaggerOptions } from "../config";
 export class Server {
@@ -47,8 +47,9 @@ export class Server {
       product_categories: this.pre + "/product_categories",
       products: this.pre + "/products",
       requirements: this.pre + "/requirements",
-      room_types: this.pre + "/room_types",
       roles: this.pre + "/roles",
+      room_types: this.pre + "/room_types",
+      rooms: this.pre + "/rooms",
       schedules: this.pre + "/schedules",
       staffs: this.pre + "/staffs",
       suppliers: this.pre + "/suppliers",
@@ -57,7 +58,6 @@ export class Server {
       transport_types: this.pre + "/transport_types",
       users: this.pre + "/users",
   };
-
     this.connectDB();
     this.middlewares();
     this.routes();
@@ -69,7 +69,6 @@ export class Server {
     this.app.use(express.json());
     this.app.use(express.static("src/public"));
   }
-
   routes() {
     this.app.use(this.paths.areas, areaRoute);
     this.app.use(this.paths.attractions_statuses, attractionStatusRoute);
@@ -82,6 +81,7 @@ export class Server {
     this.app.use(this.paths.requirements, requirementRoute);
     this.app.use(this.paths.roles, roleRoute);
     this.app.use(this.paths.room_types, roomTypeRoute);
+    this.app.use(this.paths.rooms, roomRoute);
     this.app.use(this.paths.schedules, schedulesRoute);
     this.app.use(this.paths.staffs, staffRoute);
     this.app.use(this.paths.suppliers, supplierRoute);

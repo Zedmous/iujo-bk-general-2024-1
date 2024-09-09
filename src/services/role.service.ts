@@ -4,15 +4,13 @@ import { RoleInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const roles = await RoleDB.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const roles = await RoleDB.findAll();
+    const roles = await RoleDB.findAll({
+      where: {
+        status: true,
+      },
+    });
     return {
-      message: `C de Rol exitoso`,
+      message: `Roles encontrados`,
       status: 200,
       data: {
         roles,
@@ -61,6 +59,7 @@ export const create = async (data: RoleInterface) => {
     //consultas a la base de datos van aca
     const role = await RoleDB.create({
       name: data.name,
+
     });
 
     return {
@@ -81,8 +80,8 @@ export const create = async (data: RoleInterface) => {
 
 export const update = async (id: number, dat: RoleInterface) => {
   try {
-    let role: RoleInterface | any = await RoleDB.update(
-      {
+    //consultas a la base de datos van aca
+    let role: RoleInterface | any = await RoleDB.update({
         name: dat.name,
         status: true,
       },

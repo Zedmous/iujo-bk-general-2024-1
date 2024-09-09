@@ -9,6 +9,7 @@ import productRoute from "./product.route";
 import purchaseOrderRoute from "./purchase_order.route";
 import requirementRoute from "./requirements.route";
 import roomTypeRoute from "./room_type.route";
+import roomRoute from "./room.route";
 import roleRoute from "./role.route";
 import schedulesRoute from "./schedules.route";
 import staffRoute from "./staff.route";
@@ -33,6 +34,7 @@ export {
     requirementRoute,
     roleRoute,
     roomTypeRoute,
+    roomRoute,
     schedulesRoute,
     staffRoute,
     supplierRoute,

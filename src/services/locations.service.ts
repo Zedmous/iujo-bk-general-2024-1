@@ -1,17 +1,17 @@
-import { LocationDB } from "../config";
-import { LocationInterface } from "../interfaces";
+import { LocationDB } from "../config/";
+import { LocationsInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const locations = await LocationDB.findAll({
+    /*const locations = await Locations.findAll({
         where: {
           status: true,
         },
       });*/
     const locations = await LocationDB.findAll();
     return {
-      message: `Consulta de Ubicación exitosa`,
+      message: `C de Rol exitoso`,
       status: 200,
       data: {
         locations,
@@ -26,6 +26,8 @@ export const getAll = async () => {
   }
 };
 
+
+
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
@@ -33,14 +35,14 @@ export const getOne = async (id: number) => {
     if (locations === null) {
       console.log("No encontrado");
       return {
-        message: `Ubicación no encontrada`,
+        message: `Locations no encontrado`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Ubicación encontrada`,
+        message: `Locations encontrado`,
         status: 200,
         data: {
           locations,
@@ -55,7 +57,7 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: LocationInterface) => {
+export const create = async (data: LocationsInterface) => {
   try {
     //consultas a la base de datos van aca
     const locations = await LocationDB.create({
@@ -63,7 +65,7 @@ export const create = async (data: LocationInterface) => {
     });
 
     return {
-      message: `Creacion de ubicación exitosa`,
+      message: `Creacion de Rol exitoso`,
       status: 200,
       data: {
         locations,
@@ -78,7 +80,7 @@ export const create = async (data: LocationInterface) => {
   }
 };
 
-export const update = async (id: number, data: LocationInterface) => {
+export const update = async (id: number, data: LocationsInterface) => {
   try {
     //consultas a la base de datos van aca
     const locations = await LocationDB.update(
@@ -94,7 +96,7 @@ export const update = async (id: number, data: LocationInterface) => {
     );
 
     return {
-      message: `Actualización de ubicación exitosa`,
+      message: `Actualización del Rol exitoso`,
       status: 200,
       data: {
         locations,
@@ -108,7 +110,7 @@ export const update = async (id: number, data: LocationInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: LocationInterface) => {
+export const deleted = async (id: number, data: LocationsInterface) => {
   try {
     //consultas a la base de datos van aca
     const locations = await LocationDB.update(
@@ -125,7 +127,7 @@ export const deleted = async (id: number, data: LocationInterface) => {
     );
 
     return {
-      message: `Eliminación de ubicación exitosa`,
+      message: `Eliminación del Rol exitoso`,
       status: 200,
       data: {
         locations,

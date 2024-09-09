@@ -1,5 +1,4 @@
 import { Sequelize } from "sequelize";
-
 import {
   AreaModel,
   AttractionsStatusModel,
@@ -17,6 +16,7 @@ import {
   RequirementModel,
   RoleModel,
   RoomTypeModel,
+  RoomModel,
   SchedulesModel,
   StaffModel,
   StateModel,
@@ -37,7 +37,6 @@ const dbName: string | undefined = process.env.DATABASE_NAME
 const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : "";
-
 // Instanciamos el objeto Sequelize
 const db = new Sequelize(dbName, "root", dbPassword, {
   dialect: "mysql",
@@ -64,6 +63,7 @@ const PurchaseOrderDB = db.define('purchase_orders', PurchaseOrderModel);
 const RequirementDB = db.define("requirements", RequirementModel);
 const RoleDB = db.define("roles", RoleModel);
 const RoomTypeDB = db.define("room_types", RoomTypeModel);
+const RoomDB = db.define("rooms", RoomModel);
 const SchedulesDB = db.define("schedules", SchedulesModel);
 const StaffDB = db.define('staffs',StaffModel);
 const StateDB = db.define('states',StateModel);
@@ -78,21 +78,20 @@ const TravelDB = db.define('travel',TravelModel);
 const UserDB = db.define("users", UserModel);
 
 // Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
-
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
-
-SupplierDB.hasOne(PurchaseOrderDB, { foreignKey: "supplier_id" });
-
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
+    //await User.sync({ alter: true });
+    //await Role.sync({ alter: true });
   } catch (error) {
     console.error(error);
   }
 };
+
 syncModels();
 
 export {
@@ -112,6 +111,7 @@ export {
   RequirementDB,
   RoleDB,
   RoomTypeDB,
+  RoomDB,
   SchedulesDB,
   StaffDB,
   StateDB,
