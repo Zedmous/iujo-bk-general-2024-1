@@ -18,7 +18,6 @@ const SupplierModel = {
   name: {
     type: DataTypes.STRING(50),
     allowNull: false,
-    unique: true,
   },
   telephone: {
     type: DataTypes.STRING(30),

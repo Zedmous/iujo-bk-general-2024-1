@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/role.service";
+import { create, deleted, getAll, getOne, reportToExcelRoles, update } from "../services/role.service";
 export class RoleController {
-  constructor() {}
+  constructor() {
+    
+  }
 
   all = async (req: Request, res: Response) => {
     const { status, message, data } = await getAll();
@@ -44,4 +46,11 @@ export class RoleController {
     });
   };
   
+  reportExcel = async (req: Request, res: Response) => {
+    const { status, message, data } = await reportToExcelRoles();
+    return res.status(status).json({
+      message,
+      data,
+    });
+  };
 }

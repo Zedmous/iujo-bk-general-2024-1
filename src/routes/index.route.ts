@@ -1,13 +1,45 @@
-import testRoute from "./test.route";
-import locationsRoute from "./locations.route";
+import areaRoute from "./area.route";
+import attractionStatusRoute from "./attractions_status.route";
+import conceptRoute from "./concept.route";
+import customerRoute from "./customer.route";
+import inventoryRoute from "./inventory.route";
+import locationRoute from "./locations.route";
+import productCategoryRoute from "./product_category.route";
+import productRoute from "./product.route";
+import purchaseOrderRoute from "./purchase_order.route";
+import requirementRoute from "./requirements.route";
+import roomTypeRoute from "./room_type.route";
+import roomRoute from "./room.route";
 import roleRoute from "./role.route";
-import troomRoute from "./troom.route";
-import RoomsRoute from "./rooms.route";
+import schedulesRoute from "./schedules.route";
+import staffRoute from "./staff.route";
+import supplierRoute from "./supplier.route";
+import transportTypeRoute from "./transport_type.route";
+import tableTypeRoute from "./table_type.route";
+import tableRoute from "./table.route";
+import userRoute from "./user.route";
+
+
 
 export {
-    testRoute,
+    attractionStatusRoute,
+    areaRoute,
+    conceptRoute,
+    customerRoute,
+    inventoryRoute,
+    locationRoute,
+    productCategoryRoute,
+    productRoute,
+    purchaseOrderRoute,
+    requirementRoute,
     roleRoute,
-    RoomsRoute,
-    troomRoute,
-    locationsRoute,
+    roomTypeRoute,
+    roomRoute,
+    schedulesRoute,
+    staffRoute,
+    supplierRoute,
+    tableRoute,
+    tableTypeRoute,
+    transportTypeRoute,
+    userRoute,
 }

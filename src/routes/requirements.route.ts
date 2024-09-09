@@ -1,12 +1,10 @@
 import { Router } from "express";
 import { validateFields } from "../middlewares";
-
 import { RequirementsController } from "../controllers";
 import { RequirementsValidator } from "../validators";
 
-
-const requirementsValidator = new RequirementsValidator();
 const router = Router();
+const requirementsValidator = new RequirementsValidator();
 const requirementsController=new RequirementsController();
 router.get("/", requirementsController.all);//http://localhost:3308/api/requirements
 router.get("/:id", requirementsController.one);//http://localhost:3308/api/requirements/1

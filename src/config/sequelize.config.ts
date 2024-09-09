@@ -1,6 +1,35 @@
 import { Sequelize } from "sequelize";
-import {locationsModel, RoleModel, UserModel, TroomModel} from "../models";
-import {RoomsModel} from "../models/rooms.models"
+import {
+  AreaModel,
+  AttractionsStatusModel,
+  CityModel,
+  ConceptModel,
+  CountryModel,
+  CustomerModel,
+  DishCategoryModel,
+  DishModel,
+  InventoryModel,
+  LocationModel,
+  ProductCategoryModel,
+  ProductModel,
+  PurchaseOrderModel,
+  RequirementModel,
+  RoleModel,
+  RoomTypeModel,
+  RoomModel,
+  SchedulesModel,
+  StaffModel,
+  StateModel,
+  SupplierModel,
+  TableOrderDetailModel,
+  TableOrderModel,
+  TableTypeModel,
+  TableModel,
+  TransportTypeModel,
+  TransportModel,
+  TravelModel,
+  UserModel,
+} from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -8,35 +37,49 @@ const dbName: string | undefined = process.env.DATABASE_NAME
 const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : "";
-
-  //instanciamos el obejto sequelize
+// Instanciamos el objeto Sequelize
 const db = new Sequelize(dbName, "root", dbPassword, {
   dialect: "mysql",
   host: "localhost",
 });
 
-// ... other code (database connection setup)
+// CREAMOS LAS TABLAS EN ORDEN ALFABETICO
+const AreaDB = db.define("areas", AreaModel);
+const AttractionsStatusDB = db.define(
+  "attractions_statuses",
+  AttractionsStatusModel
+);
+const CityDB = db.define("cities", CityModel);
+const ConceptDB = db.define("concepts", ConceptModel);
+const CountryDB = db.define("countries", CountryModel);
+const CustomerDB = db.define("customers", CustomerModel);
+const DishCategoryDB = db.define("dish_categories", DishCategoryModel);
+const DishDB = db.define("dishes", DishModel);
+const InventoryDB = db.define("inventories", InventoryModel);
+const LocationDB = db.define("locations", LocationModel);
+const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
+const ProductDB = db.define("products", ProductModel);
+const PurchaseOrderDB = db.define('purchase_orders', PurchaseOrderModel);
+const RequirementDB = db.define("requirements", RequirementModel);
+const RoleDB = db.define("roles", RoleModel);
+const RoomTypeDB = db.define("room_types", RoomTypeModel);
+const RoomDB = db.define("rooms", RoomModel);
+const SchedulesDB = db.define("schedules", SchedulesModel);
+const StaffDB = db.define('staffs',StaffModel);
+const StateDB = db.define('states',StateModel);
+const SupplierDB = db.define("suppliers", SupplierModel);
+const TableOrderDetailDB = db.define('table_order_details',TableOrderDetailModel);
+const TableOrderDB = db.define('table_orders',TableOrderModel);
+const TableTypeDB = db.define("table_types", TableTypeModel);
+const TableDB = db.define('tables',TableModel);
+const TransportTypeDB = db.define('transport_types',TransportTypeModel);
+const TransportDB = db.define('transports',TransportModel);
+const TravelDB = db.define('travel',TravelModel);
+const UserDB = db.define("users", UserModel);
 
-const Locations = db.define('locations', locationsModel);
-
-// Sync the Locations model to create the table
-Locations.sync();
-
-const User = db.define('users',UserModel);
-const Role = db.define('roles',RoleModel);
-const Troom = db.define('troom',TroomModel);
-const Room = db.define('rooms',RoomsModel);
-// Relaciones
-Role.hasMany(User, { foreignKey: 'role_id' });
-User.belongsTo(Role, { foreignKey: 'role_id' });
-
-Troom.hasMany(Room, {foreignKey: 'type_id'});
-Room.belongsTo(Troom, {foreignKey: 'type_id'});
-
-Locations.hasMany(Room, {foreignKey: 'location_id'});
-Room.belongsTo(Locations, {foreignKey: 'location_id'});
-
-
+// Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
+RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
+UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -50,6 +93,36 @@ const syncModels = async () => {
 };
 
 syncModels();
-//export default db;
 
-export  {Locations,User, Role, Troom, Room, db };
+export {
+  AreaDB,
+  AttractionsStatusDB,
+  CityDB,
+  ConceptDB,
+  CountryDB,
+  CustomerDB,
+  DishCategoryDB,
+  DishDB,
+  InventoryDB,
+  LocationDB,
+  ProductCategoryDB,
+  ProductDB,
+  PurchaseOrderDB,
+  RequirementDB,
+  RoleDB,
+  RoomTypeDB,
+  RoomDB,
+  SchedulesDB,
+  StaffDB,
+  StateDB,
+  SupplierDB,
+  TableOrderDetailDB,
+  TableOrderDB,
+  TableTypeDB,
+  TableDB,
+  TransportTypeDB,
+  TransportDB,
+  TravelDB,
+  UserDB,
+  db,
+};
