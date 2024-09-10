@@ -343,6 +343,7 @@ router.post(
 router.put(
   "/:id",
   roleValidator.validateRole,
+  roleValidator.validateIfIdExist,
   roleValidator.validateIfNameIsUse,
   validateFields,
   roleController.updateRole

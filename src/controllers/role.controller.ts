@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, reportToExcelRoles, update } from "../services/role.service";
+import { create, deleted, getAll, getOneRole, reportToExcelRoles, update } from "../services/role.service";
 export class RoleController {
   constructor() {
     
@@ -15,7 +15,7 @@ export class RoleController {
 
   one = async (req: Request, res: Response) => {
     const {id}=req.params
-    const { status, message, data } = await getOne(parseInt(id) as number);
+    const { status, message, data } = await getOneRole(parseInt(id) as number);
     return res.status(status).json({
       message,
       data,

@@ -25,7 +25,7 @@ export const getAll = async () => {
   }
 };
 
-export const getOne = async (id: number) => {
+export const getOneRole = async (id: number|any) => {
   try {
     //consultas a la base de datos van aca
     const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
@@ -59,7 +59,6 @@ export const create = async (data: RoleInterface) => {
     //consultas a la base de datos van aca
     const role = await RoleDB.create({
       name: data.name,
-
     });
 
     return {
@@ -92,7 +91,7 @@ export const update = async (id: number, dat: RoleInterface) => {
         returning: true,
       }
     );
-    const { data } = await getOne(id);
+    const { data } = await getOneRole(id);
     return {
       message: `Actualización del Rol exitoso`,
       status: 200,
