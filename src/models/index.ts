@@ -1,4 +1,6 @@
 export * from './area.model';
+export * from './attractions.models';
+export * from './attractions_requirements.model';
 export * from './attractions_status.model';
 export * from './city.model';
 export * from './concept.model';
@@ -15,6 +17,7 @@ export * from './requirements.model';
 export * from './role.model';
 export * from './room_type.model';
 export * from './room.model';
+export * from './schedules_attractions.model';
 export * from './schedules.model';
 export * from './staff.model';
 export * from './states.model';
@@ -27,4 +30,5 @@ export * from './transport_type.model';
 export * from './transport.model';
 export * from './travel.model';
 export * from './user.model';
+
 

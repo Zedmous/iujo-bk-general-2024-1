@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize";
 
 const AttractionsStatusModel = {
-    
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
