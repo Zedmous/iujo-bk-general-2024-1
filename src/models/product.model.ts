@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-const LocationModel = {
+const ProductModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -11,23 +11,26 @@ const LocationModel = {
     allowNull: false,
     unique: true,
   },
-  latitude: {
-    type: DataTypes.DECIMAL(10, 8), 
-    allowNull: false,
-    unique: true,
+  product_category_id: {
+    type: DataTypes.INTEGER,
   },
-  longitude: {
-    type: DataTypes.DECIMAL(11, 8), 
+  price: {
+    type: DataTypes.DECIMAL,
     allowNull: false,
-    unique: true,
+  },
+  cost: {
+    type: DataTypes.DECIMAL,
+  },
+  createdAt:{
+    type: DataTypes.DATE,
   },
   deletedAt: {
     type: DataTypes.DATE,
   },
   status: {
     type: DataTypes.BOOLEAN,
-    default: true,
-  }
-};
+    defaultValue: true,
+  },
+}
 
-export { LocationModel };
+export { ProductModel };

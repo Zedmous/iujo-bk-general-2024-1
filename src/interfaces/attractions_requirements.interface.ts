@@ -1,4 +1,5 @@
 export interface AttractionsRequirementsInterface{
-    id_attraction:number;
-    id_requirement:number;
+    id?:number;
+    attraction_id:number;
+    requirement_id:number;
 }

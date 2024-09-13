@@ -1,4 +1,5 @@
 export interface SchedulesAttractionsInterface{
-    id_attraction:number;
-    id_schedule:number;
+    id?:number;
+    attraction_id:number;
+    schedule_id:number;
 }

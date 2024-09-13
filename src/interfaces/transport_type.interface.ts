@@ -1,8 +1,6 @@
-export interface LocationInterface{
+export interface TransportTypeInterface{
     id?:number;
     name:string;
-    latitude:number;
-    longitude:number;
     status?:boolean;
     createdAt:Date;
     updatedAt:Date;

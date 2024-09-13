@@ -1,11 +1,15 @@
 import { DataTypes } from "sequelize";
 
 const AttractionsRequirementsModel = {
-    
-    id_attraction: {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    attraction_id: {
         type: DataTypes.INTEGER,
     },
-    id_requirement: {
+    requirement_id: {
         type: DataTypes.INTEGER
     }
 };

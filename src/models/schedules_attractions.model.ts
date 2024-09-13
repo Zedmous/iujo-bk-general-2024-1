@@ -1,11 +1,15 @@
 import { DataTypes } from "sequelize";
 
 const SchedulesAttractionsModel = {
-    
-    id_attraction: {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    attraction_id: {
         type: DataTypes.INTEGER,
     },
-    id_schedule: {
+    schedule_id: {
         type: DataTypes.INTEGER
     }
 };
