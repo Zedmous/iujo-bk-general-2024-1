@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from '../services/tickets_transport';
+import { create, deleted, getAll, getOneRole, update } from '../services/tickets_transport';
 
 export class ticketController {
     constructor() {}
@@ -14,7 +14,7 @@ export class ticketController {
   
     one = async (req: Request, res: Response) => {
       const {idboleto}=req.params
-      const { status, message, data } = await getOne(parseInt(idboleto) as number);
+      const { status, message, data } = await getOneRole(parseInt(idboleto) as number);
       return res.status(status).json({
         message,
         data,
