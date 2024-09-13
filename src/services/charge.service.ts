@@ -1,16 +1,16 @@
-import { department } from "../config";
-import { DepartmentInterface } from "../interfaces";
+import { charge } from "../config";
+import { ChargeInterface } from "../interfaces";
 
 export const getAll = async () => {
     try {
       //consultas a la base de datos van aca
 
-      const departments = await department.findAll();
+      const charges = await charge.findAll();
       return {
         message: `D de dapartamento exitoso`,
         status: 200,
         data: {
-          departments,
+          charges,
         },
       };
     } catch (error) {
@@ -24,8 +24,8 @@ export const getAll = async () => {
   export const getOne = async (id: number) => {
     try {
       //consultas a la base de datos van aca
-      const departments = await department.findOne({ where: { id } }); 
-      if (departments === null) {
+      const charges = await charge.findOne({ where: { id } }); 
+      if (charges === null) {
         console.log("No encontrado");
         return {
           message: `Departamento no encontrado`,
@@ -35,10 +35,10 @@ export const getAll = async () => {
         };
       } else {
         return {
-          message: `departamento encontrado`,
+          message: `Concepto encontrado`,
           status: 200,
           data: {
-            departments,
+            charges,
           },
         };
       }
@@ -50,18 +50,18 @@ export const getAll = async () => {
       };
     }
   };
-  export const create = async (data: DepartmentInterface) => {
+  export const create = async (data: ChargeInterface) => {
     try {
       //consultas a la base de datos van aca
-      const departements = await department.create({
+      const charges = await charge.create({
         ...data,
       });
   
       return {
-        message: `Creacion de departamento exitoso`,
+        message: `Creacion de concepto exitoso`,
         status: 200,
         data: {
-          departements,
+          charges,
         },
       };
     } catch (error) {
@@ -72,10 +72,10 @@ export const getAll = async () => {
       };
     }
   };
-  export const update = async (id: number, data: DepartmentInterface) => {
+  export const update = async (id: number, data: ChargeInterface) => {
     try {
       //consultas a la base de datos van aca
-      const departements = await department.update(
+      const charges = await charge.update(
         {
           ...data,
         },
@@ -88,10 +88,10 @@ export const getAll = async () => {
       );
   
       return {
-        message: `Actualización del departamento exitoso`,
+        message: `Actualización del cargo exitoso`,
         status: 200,
         data: {
-          departements,
+          charges,
         },
       };
     } catch (error) {
@@ -102,10 +102,10 @@ export const getAll = async () => {
       };
     }
   };
-  export const deleted = async (id: number, data: DepartmentInterface) => {
+  export const deleted = async (id: number, data: ChargeInterface) => {
     try {
       //consultas a la base de datos van aca
-      const departements = await department.update(
+      const charges = await charge.update(
         {
           status: false,
           deletedAt: new Date(),
@@ -119,10 +119,10 @@ export const getAll = async () => {
       );
   
       return {
-        message: `Eliminación del departamento exitoso`,
+        message: `Eliminación del cargo exitoso`,
         status: 200,
         data: {
-          departements,
+          charges,
         },
       };
     } catch (error) {
@@ -133,4 +133,3 @@ export const getAll = async () => {
       };
     }
   };
-  

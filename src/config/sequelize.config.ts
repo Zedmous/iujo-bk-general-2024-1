@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { RoleModel, UserModel, ConceptModel, DepartmentModel } from "../models";
+import { RoleModel, UserModel, ChargeModel, ConceptModel, DepartmentModel, DetailModel } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -19,10 +19,18 @@ const db = new Sequelize(dbName, "root", dbPassword, {
 const User = db.define('users',UserModel);
 const Role = db.define('roles',RoleModel);
 const concept = db.define('concept',ConceptModel);
+const charge = db.define('charge',ChargeModel);
 const department = db.define('department',DepartmentModel);
+const detail = db.define('detail',DetailModel);
 // Relaciones
 Role.hasMany(User, { foreignKey: 'role_id' });
 User.belongsTo(Role, { foreignKey: 'role_id' });
+department.hasMany(charge, { foreignKey: 'department_id' });
+charge.belongsTo(department, { foreignKey: 'department_id' });
+concept.hasMany(detail, { foreignKey: 'concept_id' });
+detail.belongsTo(concept, { foreignKey: 'concept_id' });
+detail.hasMany(concept, { foreignKey: 'detail_id' });
+concept.belongsTo(detail, { foreignKey: 'detail_id' });
 
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
@@ -37,4 +45,4 @@ const syncModels = async () => {
 
 syncModels();
 //export default db;
-export  { User, Role,  db, concept, department };
+export  { User, Role,  db, charge, concept, department, detail };

@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { roleRoute, testRoute, conceptRoute, departmentRoute } from "../routes/index.route";
+import { roleRoute, testRoute, chargeRoute , conceptRoute, departmentRoute } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
 
 
@@ -16,6 +16,7 @@ export class Server {
     this.paths = {
       tests: this.pre + "/tests",
       //users: this.pre+ "/users"
+      charge: this.pre + "/charge",
       concept: this.pre + "/concept",
       department: this.pre + "/department",
       roles: this.pre+ "/roles"
@@ -33,7 +34,7 @@ export class Server {
   }
   routes() {
     //const { testRoute, conceptRoute, roleRoute } = routes;
-    
+    this.app.use(this.paths.charge, chargeRoute);
     this.app.use(this.paths.concept, conceptRoute);
     this.app.use(this.paths.department, departmentRoute);
     //this.app.use(this.paths.tests, testRoute );

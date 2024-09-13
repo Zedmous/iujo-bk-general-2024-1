@@ -1,0 +1,13 @@
+import { Router } from "express";
+import { validateFields } from "../middlewares";
+import { ChargeController } from "../controllers";
+import { ChargeValidator } from "../validators";
+const chargeValidator = new ChargeValidator();
+const router = Router();
+const chargeController=new ChargeController();
+router.get("/", chargeController.all);
+router.get("/:id", chargeController.one);
+router.post("/",chargeValidator.validatecharge,validateFields, chargeController.createCharge);
+router.put("/:id",chargeValidator.validatecharge,validateFields, chargeController.updateCharge);
+router.delete("/:id", chargeController.deleteCharge);
+export default router;
