@@ -1,3 +1,4 @@
+import accountRoute from "./account.route";
 import areaRoute from "./area.route";
 import attractionStatusRoute from "./attractions_status.route";
 import conceptRoute from "./concept.route";
@@ -19,9 +20,8 @@ import tableTypeRoute from "./table_type.route";
 import tableRoute from "./table.route";
 import userRoute from "./user.route";
 
-
-
 export {
+    accountRoute,
     attractionStatusRoute,
     areaRoute,
     conceptRoute,
@@ -43,3 +43,4 @@ export {
     transportTypeRoute,
     userRoute,
 }
+

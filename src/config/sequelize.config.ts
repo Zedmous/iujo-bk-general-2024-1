@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import {
+  AccountModel,
   AreaModel,
   AttractionsRequirementsModel,
   AttractionsStatusModel,
@@ -42,11 +43,17 @@ const dbPassword: string | undefined = process.env.DATABASE_PASSWORD
   : "";
 // Instanciamos el objeto Sequelize
 const db = new Sequelize(dbName, "root", dbPassword, {
+
   dialect: "mysql",
   host: "localhost",
 });
 
+db.authenticate()
+  .then(() => console.log('Conexión establecida exitosamente.'))
+  .catch(err => console.error('No se pudo conectar a la base de datos:', err));
+
 // CREAMOS LAS TABLAS EN ORDEN ALFABETICO
+const Account = db.define('accounts', AccountModel);
 const AreaDB = db.define("areas", AreaModel);
 
 const CityDB = db.define("cities", CityModel);
@@ -97,6 +104,9 @@ const UserDB = db.define("users", UserModel);
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
+
+
+
 // Sincroniza los modelos con la base de datos
 const syncModels = async () => {
   await db.sync({ alter: true });
@@ -111,10 +121,13 @@ const syncModels = async () => {
 syncModels();
 
 export {
+  Account,
   AreaDB,
+  AttractionsDB,
   AttractionsRequirementsModel,
   AttractionsStatusDB,
   AttractionsModel,
+  AttractionsRequierementsDB,
   CityDB,
   ConceptDB,
   CountryDB,
@@ -131,6 +144,7 @@ export {
   RoomTypeDB,
   RoomDB,
   SchedulesAttractionsModel,
+  SchedulesAttractionsDB,
   SchedulesDB,
   StaffDB,
   StateDB,

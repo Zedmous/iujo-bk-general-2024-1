@@ -1,6 +1,6 @@
-
-export * from './attractions_status.controller';
+export * from './account.controller';
 export * from './area.controller';
+export * from './attractions_status.controller';
 export * from './concept.controller';
 export * from './customer.controller';
 export * from './inventory.controller';
@@ -19,4 +19,5 @@ export * from './transport_type.controller';
 export * from './table_type.controller';
 export * from './table.controller';
 export * from './user.controller';
+
 

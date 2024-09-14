@@ -1,3 +1,4 @@
+export * from './account.interface'
 export * from './area.interface'
 export * from './attractions_requirements.interface'
 export * from './attractions_status.interface'
@@ -14,7 +15,7 @@ export * from './role.interface'
 export * from './room_type.interface'
 export * from './room.interface'
 export * from './schedules_attractions.interface'
-export * from './schedules.interface';
+export * from './schedules.interface'
 export * from './staff.interface'
 export * from './supplier.interface'
 export * from './table_type.interface'

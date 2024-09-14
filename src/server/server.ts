@@ -3,6 +3,7 @@ import cors from "cors";
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import {
+  accountRoute,
   attractionStatusRoute,
   areaRoute,
   conceptRoute,
@@ -23,7 +24,6 @@ import {
   tableTypeRoute,
   transportTypeRoute,
   userRoute,
-
 } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
 import { swaggerOptions } from "../config";
@@ -37,6 +37,7 @@ export class Server {
     this.port = process.env.PORT || 3880;
     this.pre = "/api";
     this.paths = {
+      accounts: this.pre + "/accounts",
       areas: this.pre + "/areas",
       attractions_statuses: this.pre + "/attractions_statuses",
       concepts: this.pre + "/concepts",
@@ -57,7 +58,7 @@ export class Server {
       table_types: this.pre + "/table_types",
       transport_types: this.pre + "/transport_types",
       users: this.pre + "/users",
-  };
+    } 
     this.connectDB();
     this.middlewares();
     this.routes();
@@ -70,6 +71,7 @@ export class Server {
     this.app.use(express.static("src/public"));
   }
   routes() {
+    this.app.use(this.paths.accounts, accountRoute);
     this.app.use(this.paths.areas, areaRoute);
     this.app.use(this.paths.attractions_statuses, attractionStatusRoute);
     this.app.use(this.paths.concepts, conceptRoute);
@@ -78,6 +80,7 @@ export class Server {
     this.app.use(this.paths.locations, locationRoute);
     this.app.use(this.paths.product_categories, productCategoryRoute);
     this.app.use(this.paths.products, productRoute);
+    this.app.use(this.paths.purchase_orders, purchaseOrderRoute);
     this.app.use(this.paths.requirements, requirementRoute);
     this.app.use(this.paths.roles, roleRoute);
     this.app.use(this.paths.room_types, roomTypeRoute);
@@ -89,7 +92,7 @@ export class Server {
     this.app.use(this.paths.table_types, tableTypeRoute);
     this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.users, userRoute);
-    this.app.use(this.paths.purchase_orders, purchaseOrderRoute);
+ 
   }
   async connectDB() {
     await db

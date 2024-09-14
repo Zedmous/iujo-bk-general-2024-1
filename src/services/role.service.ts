@@ -53,6 +53,7 @@ export const getOneRole = async (id: number|any) => {
     };
   }
 };
+
 export const create = async (data: RoleInterface) => {
   console.log("datos", data);
   try {
