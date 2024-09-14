@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/role.service";
+import { create, deleted, getAll, getOneRole, reportToExcelRoles, update } from "../services/role.service";
 export class RoleController {
-  constructor() {}
+  constructor() {
+    
+  }
 
   all = async (req: Request, res: Response) => {
     const { status, message, data } = await getAll();
@@ -13,7 +15,7 @@ export class RoleController {
 
   one = async (req: Request, res: Response) => {
     const {id}=req.params
-    const { status, message, data } = await getOne(parseInt(id) as number);
+    const { status, message, data } = await getOneRole(parseInt(id) as number);
     return res.status(status).json({
       message,
       data,
@@ -44,4 +46,11 @@ export class RoleController {
     });
   };
   
+  reportExcel = async (req: Request, res: Response) => {
+    const { status, message, data } = await reportToExcelRoles();
+    return res.status(status).json({
+      message,
+      data,
+    });
+  };
 }
