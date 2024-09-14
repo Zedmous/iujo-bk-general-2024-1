@@ -140,3 +140,64 @@ export const deleted = async (id: number, data: TransportTypeInterface) => {
     };
   }
 };
+export const getOneRole = async (id: number|any) => {
+  try {
+    //consultas a la base de datos van aca
+    const role = await TransportTypeDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    if (role === null) {
+      console.log("No encontrado");
+      return {
+        message: `Tipo de Transporte no encontrado`,
+        status: 404,
+        data: {},
+      };
+    } else {
+      return {
+        message: `Tipo de Transporte encontrado`,
+        status: 200,
+        data: {
+          role,
+        },
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+export const findRoleByName = async (name: string) => {
+  try {
+    //consultas a la base de datos van aca
+    const role = await TransportTypeDB.findOne({
+      where: {
+        name: name,
+      },
+    });
+
+    if (!role) {
+      return {
+        message: `Tipo de Transporte no encontrado`,
+        status: 404,
+        data: {},
+      };
+    } else {
+      return {
+        message: `Tipo de Transporte encontrado`,
+        status: 200,
+        data: {
+          role,
+        },
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+
