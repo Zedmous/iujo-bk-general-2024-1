@@ -7,7 +7,7 @@ export const getAll = async () => {
 
       const charges = await charge.findAll();
       return {
-        message: `D de dapartamento exitoso`,
+        message: `C de cargo exitoso`,
         status: 200,
         data: {
           charges,
@@ -28,14 +28,14 @@ export const getAll = async () => {
       if (charges === null) {
         console.log("No encontrado");
         return {
-          message: `Departamento no encontrado`,
+          message: `Cargo no encontrado`,
           status: 404,
           data: {
           },
         };
       } else {
         return {
-          message: `Concepto encontrado`,
+          message: `Cargo encontrado`,
           status: 200,
           data: {
             charges,
@@ -58,7 +58,7 @@ export const getAll = async () => {
       });
   
       return {
-        message: `Creacion de concepto exitoso`,
+        message: `Creacion de cargo exitoso`,
         status: 200,
         data: {
           charges,
