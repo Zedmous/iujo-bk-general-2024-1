@@ -7,4 +7,4 @@ export * from './concept.model';
 export * from './supplier.model';
 export * from './product_category.model';
 export * from './inventory.model';
-export * from './requests_types.model';
+export * from './request_type.model';

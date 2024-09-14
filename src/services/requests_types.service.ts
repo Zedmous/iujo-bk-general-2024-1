@@ -1,10 +1,10 @@
-import { RequestsTypesDb } from './../config'
-import type { RequestsTypesInterface } from './../interfaces'
+import { RequestTypesDb } from './../config'
+import type { RequestTypeInterface} from './../interfaces'
 
 export default class RequestsTypesService {
   async findAll() {
     try {
-      const requestsTypes = await RequestsTypesDb.findAll()
+      const requestsTypes = await RequestTypesDb.findAll()
 
       return {
         message: 'OK',
@@ -21,7 +21,7 @@ export default class RequestsTypesService {
 
   async findOne(id: number) {
     try {
-      const requestType = await RequestsTypesDb.findOne({ where: { id } })
+      const requestType = await RequestTypesDb.findOne({ where: { id } })
 
       if (requestType === null) {
         return {
@@ -44,9 +44,9 @@ export default class RequestsTypesService {
     }
   }
 
-  async create(data: RequestsTypesInterface) {
+  async create(data: RequestTypeInterface) {
     try {
-      const requestType = await RequestsTypesDb.create({ ...data })
+      const requestType = await RequestTypesDb.create({ ...data })
 
       return {
         message: 'OK',
@@ -61,14 +61,14 @@ export default class RequestsTypesService {
     }
   }
 
-  async update(id: number, data: RequestsTypesInterface) {
+  async update(id: number, data: RequestTypeInterface) {
     try {
-      await RequestsTypesDb.update(
+      await RequestTypesDb.update(
         { ...data },
         { where: { id }, returning: true }
       )
 
-      const requestType = await RequestsTypesDb.findOne({ where: { id } })
+      const requestType = await RequestTypesDb.findOne({ where: { id } })
 
       if (requestType === null) {
         return {
@@ -93,7 +93,7 @@ export default class RequestsTypesService {
 
   async delete(id: number) {
     try {
-      const requestType = await RequestsTypesDb.findOne({ where: { id } })
+      const requestType = await RequestTypesDb.findOne({ where: { id } })
 
       if (requestType === null) {
         return {
@@ -102,7 +102,7 @@ export default class RequestsTypesService {
           data: null
         }
       } else {
-        await RequestsTypesDb.destroy({ where: { id } })
+        await RequestTypesDb.destroy({ where: { id } })
 
         return {
           message: 'OK',

@@ -23,7 +23,7 @@ export class Server {
       concepts: this.pre+ "/concepts",
       product_categories: this.pre+ "/product_categories",
       inventories: this.pre+ "/inventories",
-      requestsTypes: this.pre + '/request_type'
+      request_types: this.pre + '/request_types'
     };
 
     this.connectDB();
@@ -47,7 +47,7 @@ export class Server {
     this.app.use(this.paths.concepts, conceptRoute);
     this.app.use(this.paths.product_categories, productCategoryRoute);
     this.app.use(this.paths.inventories, inventoryRoute);
-    this.app.use(this.paths.requestsTypes, requestsTypesRoute);
+    this.app.use(this.paths.request_types, requestsTypesRoute);
   }
   async connectDB() {
     await db.authenticate().then(() => {
