@@ -30,5 +30,6 @@ export * from './transport_type.model';
 export * from './transport.model';
 export * from './travel.model';
 export * from './user.model';
+export * from './transport_manager.model';
 
 

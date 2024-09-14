@@ -21,4 +21,5 @@ export * from './table_type.interface'
 export * from './table.interface'
 export * from './transport_type.interface'
 export * from './user.interface'
+export * from './transport_manager.interface'
 

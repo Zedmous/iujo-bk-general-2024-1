@@ -32,6 +32,7 @@ import {
   TransportModel,
   TravelModel,
   UserModel,
+  TransportManagerModel,
 } from "../models";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
@@ -90,6 +91,7 @@ const TableTypeDB = db.define("table_types", TableTypeModel);
 const TableDB = db.define("tables", TableModel);
 const TransportTypeDB = db.define("transport_types", TransportTypeModel);
 const TransportDB = db.define("transports", TransportModel);
+const TransportManager = db.define('transportmanager',TransportManagerModel);
 const TravelDB = db.define("travel", TravelModel);
 const UserDB = db.define("users", UserModel);
 
@@ -143,5 +145,6 @@ export {
   TransportDB,
   TravelDB,
   UserDB,
+  TransportManager,
   db,
 };

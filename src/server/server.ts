@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import swaggerJsDoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
+//import swaggerJsDoc from 'swagger-jsdoc';
+//import swaggerUi from 'swagger-ui-express';
 import {
   attractionStatusRoute,
   areaRoute,
@@ -23,6 +23,7 @@ import {
   tableTypeRoute,
   transportTypeRoute,
   userRoute,
+  transportmanagerRoute,
 
 } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
@@ -57,11 +58,12 @@ export class Server {
       table_types: this.pre + "/table_types",
       transport_types: this.pre + "/transport_types",
       users: this.pre + "/users",
+      transportmanager: this.pre+ "/transportmanager"
   };
     this.connectDB();
     this.middlewares();
     this.routes();
-    this.swaggerSetup();
+    //this.swaggerSetup();
   }
 
   middlewares() {
@@ -90,6 +92,7 @@ export class Server {
     this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.users, userRoute);
     this.app.use(this.paths.purchase_orders, purchaseOrderRoute);
+    this.app.use(this.paths.transportmanager, transportmanagerRoute);
   }
   async connectDB() {
     await db
@@ -107,9 +110,9 @@ export class Server {
       console.log(`Servidor corriendo en localhost:${this.port}`);
     });
   }
-  swaggerSetup() {
+  /*swaggerSetup() {
     const swaggerDocs = swaggerJsDoc(swaggerOptions);
     this.app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
     
-  }
+  }*/
 }
