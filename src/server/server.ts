@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import swaggerJsDoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
+//import swaggerJsDoc from 'swagger-jsdoc';
+//import swaggerUi from 'swagger-ui-express';
 import {
   attractionStatusRoute,
   areaRoute,
@@ -63,7 +63,7 @@ export class Server {
     this.connectDB();
     this.middlewares();
     this.routes();
-    this.swaggerSetup();
+    //this.swaggerSetup();
   }
 
   middlewares() {
@@ -110,9 +110,9 @@ export class Server {
       console.log(`Servidor corriendo en localhost:${this.port}`);
     });
   }
-  swaggerSetup() {
+  /*swaggerSetup() {
     const swaggerDocs = swaggerJsDoc(swaggerOptions);
     this.app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
     
-  }
+  }*/
 }
