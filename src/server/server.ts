@@ -23,6 +23,7 @@ import {
   tableTypeRoute,
   transportTypeRoute,
   userRoute,
+  transportexitRoute,
 
 } from "../routes/index.route";
 import { db } from "../config/sequelize.config";
@@ -57,6 +58,7 @@ export class Server {
       table_types: this.pre + "/table_types",
       transport_types: this.pre + "/transport_types",
       users: this.pre + "/users",
+      transportexit: this.pre+ "/transportexit"
   };
     this.connectDB();
     this.middlewares();
@@ -90,6 +92,7 @@ export class Server {
     this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.users, userRoute);
     this.app.use(this.paths.purchase_orders, purchaseOrderRoute);
+    this.app.use(this.paths.transportexit, transportexitRoute);
   }
   async connectDB() {
     await db

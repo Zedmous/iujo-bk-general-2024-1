@@ -18,6 +18,7 @@ import transportTypeRoute from "./transport_type.route";
 import tableTypeRoute from "./table_type.route";
 import tableRoute from "./table.route";
 import userRoute from "./user.route";
+import transportexitRoute from "./transport_exit.route";
 
 
 
@@ -42,4 +43,5 @@ export {
     tableTypeRoute,
     transportTypeRoute,
     userRoute,
+    transportexitRoute,
 }

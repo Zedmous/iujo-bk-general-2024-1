@@ -19,4 +19,5 @@ export * from './transport_type.controller';
 export * from './table_type.controller';
 export * from './table.controller';
 export * from './user.controller';
+export * from './transport_exit.controller';
 

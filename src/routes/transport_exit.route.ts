@@ -1,0 +1,13 @@
+import { Router } from "express";
+import { validateFields } from "../middlewares";
+import { TransportExitController } from "../controllers";
+import { TransportExitValidator } from "../validators";
+const TransportexitValidator = new TransportExitValidator();
+const router = Router();
+const TransportexitController=new TransportExitController();
+router.get("/", TransportexitController.all);
+router.get("/:idExit", TransportexitController.one);
+router.post("/",TransportexitValidator.validatetiptransp,validateFields, TransportexitController.createTransportexit);
+router.put("/:id",TransportexitValidator.validatetiptransp,validateFields, TransportexitController.updateTransportexit);
+router.delete("/:id", TransportexitController.deleteTransportexit);
+export default router;
