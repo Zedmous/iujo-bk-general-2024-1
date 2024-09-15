@@ -1,4 +1,3 @@
-import { request } from "http";
 import { DataTypes } from "sequelize";
 
 const RequestModel = {

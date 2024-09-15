@@ -1,30 +1,27 @@
 import { DataTypes } from "sequelize";
 
-const finanzaModel = {
+const FinancialBackgroundModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  account_id: {
-    type: DataTypes.INTEGER,
+  name: {
+    type: DataTypes.STRING(20),
     allowNull: false
   },
-  record_type: {
-    type: DataTypes.ENUM,
+  description: {
+    type: DataTypes.STRING(20),
 
+  },
+  deletedAt: {
+    type: DataTypes.DATE, 
   },
   amount: {
      type: DataTypes.DECIMAL, 
      allowNull: false
   },
 
-  description: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-    unique: true,
-  }
 };
 
-export { finanzaModel };
-  
+export { FinancialBackgroundModel };

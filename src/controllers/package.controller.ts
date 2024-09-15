@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/requirements.service";
-export class RequirementsController {
+import {getAll, getOne, create, update, deleted} from "../services/package.service";
+export class PackagesController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {
@@ -19,14 +19,14 @@ export class RequirementsController {
       data,
     });
   };
-  createRequirement = async (req: Request, res: Response) => {
+  createPackage = async (req: Request, res: Response) => {
     const { status, message, data } = await create(req.body);
     return res.status(status).json({
       message,
       data,
     });
   };
-  updateRequirement = async (req: Request, res: Response) => {
+  updatePackage = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await update(parseInt(id) as number,req.body);
     return res.status(status).json({
@@ -35,7 +35,7 @@ export class RequirementsController {
     });
   };
 
-  deleteRequirement = async (req: Request, res: Response) => {
+  deletePackage = async (req: Request, res: Response) => {
     const {id}=req.params
     const { status, message, data } = await deleted(parseInt(id) as number,req.body);
     return res.status(status).json({

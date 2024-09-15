@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { body, validationResult } from "express-validator";
-import { findRoleByName } from "../services/role.service";
+import { body } from "express-validator";
+import { findRoleByName, getOneRole } from "../services/role.service";
 
 class RoleValidator {
   public validateRole = [
@@ -11,6 +11,35 @@ class RoleValidator {
   verifyId = (req: Request, res: Response, next: NextFunction) => {
     next();
   };
+  //un middleware en el caso de campo unico
+  public validateIfIdExist = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { id } = req.params;
+    const { status, message, data } = await getOneRole(id);
+    if (status == 500) {
+      return res.status(status).json({
+        message,
+      });
+    } else if (status == 404) {
+      if (id) {
+        return res.status(404).json({
+          errors: [
+            {
+              type: "field",
+              msg: `El parametro id : ${id}, no existe en la base de datos.`,
+              path: "id",
+              location: "param",
+            },
+          ],
+        });
+      }
+    }
+    next();
+  };
+  //un middleware en el caso de campo unico
   public validateIfNameIsUse = async (
     req: Request,
     res: Response,

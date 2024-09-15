@@ -1,20 +1,14 @@
-import { LocationDB } from "../config";
-import { LocationInterface } from "../interfaces";
+import { ComponentDB } from "../config";
+import { ComponentsInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const locations = await LocationDB.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const locations = await LocationDB.findAll();
+    const Component = await ComponentDB.findAll();
     return {
-      message: `Consulta de Ubicación exitosa`,
+      message: `Lista de Componentes`,
       status: 200,
       data: {
-        locations,
+        Component,
       },
     };
   } catch (error) {
@@ -29,21 +23,20 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const locations = await LocationDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (locations === null) {
+    const Component = await ComponentDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    if (Component === null) {
       console.log("No encontrado");
       return {
-        message: `Ubicación no encontrada`,
+        message: `Componente no encontrado`,
         status: 404,
-        data: {
-        },
+        data: {},
       };
     } else {
       return {
-        message: `Ubicación encontrada`,
+        message: `Componente encontrado`,
         status: 200,
         data: {
-          locations,
+          Component,
         },
       };
     }
@@ -55,18 +48,19 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: LocationInterface) => {
+
+export const create = async (data: ComponentsInterface) => {
   try {
     //consultas a la base de datos van aca
-    const locations = await LocationDB.create({
+    const Component = await ComponentDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de ubicación exitosa`,
+      message: `Se a creado el Componente exitoso`,
       status: 200,
       data: {
-        locations,
+        Component,
       },
     };
   } catch (error) {
@@ -78,10 +72,10 @@ export const create = async (data: LocationInterface) => {
   }
 };
 
-export const update = async (id: number, data: LocationInterface) => {
+export const update = async (id: number, data: ComponentsInterface) => {
   try {
     //consultas a la base de datos van aca
-    const locations = await LocationDB.update(
+    const Component = await ComponentDB.update(
       {
         ...data,
       },
@@ -94,10 +88,10 @@ export const update = async (id: number, data: LocationInterface) => {
     );
 
     return {
-      message: `Actualización de ubicación exitosa`,
+      message: `Actualización del Componente exitoso`,
       status: 200,
       data: {
-        locations,
+        Component,
       },
     };
   } catch (error) {
@@ -108,10 +102,11 @@ export const update = async (id: number, data: LocationInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: LocationInterface) => {
+
+export const deleted = async (id: number, data: ComponentsInterface) => {
   try {
     //consultas a la base de datos van aca
-    const locations = await LocationDB.update(
+    const Component = await ComponentDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -125,10 +120,10 @@ export const deleted = async (id: number, data: LocationInterface) => {
     );
 
     return {
-      message: `Eliminación de ubicación exitosa`,
+      message: `Eliminación del Componente exitoso`,
       status: 200,
       data: {
-        locations,
+        Component,
       },
     };
   } catch (error) {

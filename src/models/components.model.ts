@@ -1,23 +1,30 @@
 import { DataTypes } from "sequelize";
 
-const LocationModel = {
+const ComponentsModel = {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
+  description: {
     type: DataTypes.STRING(50),
     allowNull: false,
-    unique: true,
+   
   },
-  latitude: {
-    type: DataTypes.DECIMAL(10, 8), 
+  type: {
+    type: DataTypes.STRING(50),
     allowNull: false,
+   
   },
-  longitude: {
-    type: DataTypes.DECIMAL(11, 8), 
+  price: {
+    type: DataTypes.INTEGER,
     allowNull: false,
+   
+  },
+  repayment: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+   
   },
   deletedAt: {
     type: DataTypes.DATE,
@@ -28,4 +35,4 @@ const LocationModel = {
   }
 };
 
-export { LocationModel };
+export { ComponentsModel };
