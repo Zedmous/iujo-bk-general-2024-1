@@ -1,37 +1,47 @@
 import { Sequelize } from "sequelize";
 import {
   AccountModel,
+  AdvancementModel,
   AreaModel,
+  AttractionsModel,
   AttractionsRequirementsModel,
   AttractionsStatusModel,
-  AttractionsModel,
   CityModel,
+  ComponentPackageModel,
+  ComponentsModel,
   ConceptModel,
+  CountryCodeModel,
   CountryModel,
   CustomerModel,
+  CustomerPackageModel,
   DishCategoryModel,
   DishModel,
   InventoryModel,
+  LanguageModel,
   LocationModel,
+  PackageModel,
+  PermissionsModel,
   ProductCategoryModel,
-  SchedulesAttractionsModel,
   ProductModel,
   PurchaseOrderModel,
   RequestTypesModel,
   RequirementModel,
+  ReservationModel,
   RoleModel,
-  RoomTypeModel,
   RoomModel,
+  RoomTypeModel,
+  SchedulesAttractionsModel,
   SchedulesModel,
-  StaffModel,
+  SpecialAccessModel,
   StateModel,
+  StaffModel,
   SupplierModel,
+  TableModel,
   TableOrderDetailModel,
   TableOrderModel,
   TableTypeModel,
-  TableModel,
-  TransportTypeModel,
   TransportModel,
+  TransportTypeModel,
   TravelModel,
   UserModel,
 } from "../models";
@@ -49,60 +59,69 @@ const db = new Sequelize(dbName, "root", dbPassword, {
   host: "localhost",
 });
 
+// CREAMOS LAS TABLAS
+
 db.authenticate()
   .then(() => console.log('Conexión establecida exitosamente.'))
   .catch(err => console.error('No se pudo conectar a la base de datos:', err));
 
 // CREAMOS LAS TABLAS EN ORDEN ALFABETICO
-const Account = db.define('accounts', AccountModel);
+const AccountDB = db.define('accounts', AccountModel);
+const AdvancementsDB = db.define("advancements", AdvancementModel);
 const AreaDB = db.define("areas", AreaModel);
-
-const CityDB = db.define("cities", CityModel);
-const ConceptDB = db.define("concepts", ConceptModel);
+const AttractionsDB = db.define("attractions", AttractionsModel);
+const AttractionRequirementDB = db.define(
+  "attractions_requirements",
+  AttractionsRequirementsModel
+);
 const AttractionsStatusDB = db.define(
   "attractions_statuses",
   AttractionsStatusModel
 );
-const AttractionsDB = db.define("attractions", AttractionsModel);
+const CityDB = db.define("cities", CityModel);
+const ComponentDB = db.define("components", ComponentsModel);
+const ComponentPackageDB = db.define("component_packages", ComponentPackageModel);
+const ConceptDB = db.define("concepts", ConceptModel);
+const CountryCodeDB = db.define("country_codes", CountryCodeModel);
+const CountryDB = db.define("countries", CountryModel);
+const CustomerDB = db.define("customers", CustomerModel);
+const CustomerPackageDB = db.define("customer_packages", CustomerPackageModel);
+const DishCategoryDB = db.define("dish_categories", DishCategoryModel);
+const DishDB = db.define("dishes", DishModel);
+const InventoryDB = db.define("inventories", InventoryModel);
+const LanguageDB = db.define("languages", LanguageModel);
+const LocationDB = db.define("locations", LocationModel);
+const PackageDB = db.define("packages", PackageModel);
+const PermissionDB = db.define("permissions", PermissionsModel);
+const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
+const ProductDB = db.define("products", ProductModel);
+const PurchaseOrderDB = db.define("purchase_orders", PurchaseOrderModel);
+const RequestTypeDB = db.define("request_types", RequestTypesModel);
+const RequirementDB = db.define("requirements", RequirementModel);
+const ReservationDB = db.define("reservations", ReservationModel);
+const RoleDB = db.define("roles", RoleModel);
+const RoomDB = db.define("rooms", RoomModel);
+const RoomTypeDB = db.define("room_types", RoomTypeModel);
 const SchedulesAttractionsDB = db.define(
   "schedules_attractions",
   SchedulesAttractionsModel
 );
-const AttractionsRequierementsDB = db.define(
-  "attractions_requierements",
-  AttractionsRequirementsModel
-);
-const CountryDB = db.define("countries", CountryModel);
-const CustomerDB = db.define("customers", CustomerModel);
-const DishCategoryDB = db.define("dish_categories", DishCategoryModel);
-const DishDB = db.define("dishes", DishModel);
-const InventoryDB = db.define("inventories", InventoryModel);
-const LocationDB = db.define("locations", LocationModel);
-const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
-const ProductDB = db.define("products", ProductModel);
-const PurchaseOrderDB = db.define("purchase_orders", PurchaseOrderModel);
-const RequestTypeDB = db.define("request_type", RequestTypesModel);
-const RequirementDB = db.define("requirements", RequirementModel);
-const RoleDB = db.define("roles", RoleModel);
-const RoomTypeDB = db.define("room_types", RoomTypeModel);
-const RoomDB = db.define("rooms", RoomModel);
 const SchedulesDB = db.define("schedules", SchedulesModel);
-const StaffDB = db.define("staffs", StaffModel);
+const SpecialAccessDB = db.define("special_access", SpecialAccessModel);
 const StateDB = db.define("states", StateModel);
+const StaffDB = db.define("staffs", StaffModel);
 const SupplierDB = db.define("suppliers", SupplierModel);
+const TableDB = db.define("tables", TableModel);
+const TableOrderDB = db.define("table_orders", TableOrderModel);
 const TableOrderDetailDB = db.define(
   "table_order_details",
   TableOrderDetailModel
 );
-const TableOrderDB = db.define("table_orders", TableOrderModel);
 const TableTypeDB = db.define("table_types", TableTypeModel);
-const TableDB = db.define("tables", TableModel);
-const TransportTypeDB = db.define("transport_types", TransportTypeModel);
 const TransportDB = db.define("transports", TransportModel);
+const TransportTypeDB = db.define("transport_types", TransportTypeModel);
 const TravelDB = db.define("travel", TravelModel);
 const UserDB = db.define("users", UserModel);
-
-// Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
@@ -121,41 +140,48 @@ const syncModels = async () => {
 syncModels();
 
 export {
-  Account,
+  AccountDB,
+  AdvancementsDB,
   AreaDB,
   AttractionsDB,
-  AttractionsRequirementsModel,
+  AttractionRequirementDB,
   AttractionsStatusDB,
-  AttractionsModel,
-  AttractionsRequierementsDB,
   CityDB,
+  ComponentDB,
+  ComponentPackageDB,
   ConceptDB,
+  CountryCodeDB,
   CountryDB,
   CustomerDB,
+  CustomerPackageDB,
   DishCategoryDB,
   DishDB,
   InventoryDB,
+  LanguageDB,
   LocationDB,
+  PackageDB,
+  PermissionDB,
   ProductCategoryDB,
   ProductDB,
   PurchaseOrderDB,
   RequestTypeDB,
   RequirementDB,
+  ReservationDB,
   RoleDB,
-  RoomTypeDB,
   RoomDB,
-  SchedulesAttractionsModel,
+  RoomTypeDB,
   SchedulesAttractionsDB,
   SchedulesDB,
-  StaffDB,
+  SpecialAccessDB,
   StateDB,
+  StaffDB,
   SupplierDB,
-  TableOrderDetailDB,
-  TableOrderDB,
-  TableTypeDB,
   TableDB,
-  TransportTypeDB,
+  TableOrderDB,
+  TableOrderDetailDB,
+  TableTypeDB,
   TransportDB,
+  TransportTypeDB,
   TravelDB,
   UserDB,
   db,

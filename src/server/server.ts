@@ -1,25 +1,26 @@
 import express from "express";
 import cors from "cors";
-
-import swaggerJsDoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
+import swaggerJsDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 
 import {
   accountRoute,
-  attractionStatusRoute,
   areaRoute,
+  attractionStatusRoute,
+  componentsRoute,
   conceptRoute,
   customerRoute,
   inventoryRoute,
   locationRoute,
-  purchaseOrderRoute,
+  packagesRoute,
   productCategoryRoute,
   productRoute,
+  purchaseOrderRoute,
   requestsTypesRoute,
   requirementRoute,
   roleRoute,
-  roomTypeRoute,
   roomRoute,
+  roomTypeRoute,
   schedulesRoute,
   staffRoute,
   supplierRoute,
@@ -43,14 +44,16 @@ export class Server {
       accounts: this.pre + "/accounts",
       areas: this.pre + "/areas",
       attractions_statuses: this.pre + "/attractions_statuses",
+      components: this.pre + "/components",
       concepts: this.pre + "/concepts",
       customers: this.pre + "/customers",
       inventories: this.pre + "/inventories",
       locations: this.pre + "/locations",
-      purchase_orders: this.pre + "/purchase_orders",
+      packages: this.pre + "/packages",
       product_categories: this.pre + "/product_categories",
       products: this.pre + "/products",
-      request_types: this.pre + '/request_types',
+      purchase_orders: this.pre + "/purchase_orders",
+      request_types: this.pre + "/request_types",
       requirements: this.pre + "/requirements",
       roles: this.pre + "/roles",
       room_types: this.pre + "/room_types",
@@ -61,8 +64,9 @@ export class Server {
       tables: this.pre + "/tables",
       table_types: this.pre + "/table_types",
       transport_types: this.pre + "/transport_types",
+      type_rooms: this.pre + "/type_rooms",
       users: this.pre + "/users",
-    }
+    };
     this.connectDB();
     this.middlewares();
     this.routes();
@@ -74,15 +78,17 @@ export class Server {
     this.app.use(express.json());
     this.app.use(express.static("src/public"));
   }
-    
+
   routes() {
     this.app.use(this.paths.accounts, accountRoute);
     this.app.use(this.paths.areas, areaRoute);
     this.app.use(this.paths.attractions_statuses, attractionStatusRoute);
+    this.app.use(this.paths.components, componentsRoute);
     this.app.use(this.paths.concepts, conceptRoute);
     this.app.use(this.paths.customers, customerRoute);
     this.app.use(this.paths.inventories, inventoryRoute);
     this.app.use(this.paths.locations, locationRoute);
+    this.app.use(this.paths.packages, packagesRoute);
     this.app.use(this.paths.product_categories, productCategoryRoute);
     this.app.use(this.paths.products, productRoute);
     this.app.use(this.paths.purchase_orders, purchaseOrderRoute);
@@ -94,9 +100,9 @@ export class Server {
     this.app.use(this.paths.schedules, schedulesRoute);
     this.app.use(this.paths.staffs, staffRoute);
     this.app.use(this.paths.suppliers, supplierRoute);
-    this.app.use(this.paths.transport_types, transportTypeRoute);
     this.app.use(this.paths.table_types, tableTypeRoute);
     this.app.use(this.paths.tables, tableRoute);
+    this.app.use(this.paths.transport_types, transportTypeRoute);
     this.app.use(this.paths.users, userRoute);
   }
   async connectDB() {
@@ -118,6 +124,5 @@ export class Server {
   swaggerSetup() {
     const swaggerDocs = swaggerJsDoc(swaggerOptions);
     this.app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-    
   }
 }

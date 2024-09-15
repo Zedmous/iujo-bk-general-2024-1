@@ -1,10 +1,10 @@
-import { Account  } from "../config";
+import { AccountDB  } from "../config";
 import { AccountInterface } from "../interfaces";
 
 export const getAll = async () => 
 {
     try {
-        const accounts = await Account.findAll();
+        const accounts = await AccountDB.findAll();
         return {
         message: `Account All Successful`,
         status: 200,
@@ -28,7 +28,7 @@ export const getOne = async (id: number) =>
 {
     try 
     {
-        const account = await Account.findOne({ where: { id } }); // Find Account with id
+        const account = await AccountDB.findOne({ where: { id } }); // Find Account with id
         if (account === null) 
         {
             console.log("Not found");
@@ -66,7 +66,7 @@ export const create = async (data: AccountInterface) =>
 {
     try 
     {
-        const account = await Account.create({...data});
+        const account = await AccountDB.create({...data});
         return {
         message: `Account created successfully`,
         status: 200,
@@ -90,7 +90,7 @@ export const update = async (id: number, data: AccountInterface) =>
 {
     try 
     {
-        const account = await Account.update(data, { where: { id } });
+        const account = await AccountDB.update(data, { where: { id } });
         return {
         message: `Account updated successfully`,
         status: 200,
@@ -114,7 +114,7 @@ export const deleted = async (id: number) =>
 {
     try 
     {
-        const account = await Account.destroy({ where: { id } });
+        const account = await AccountDB.destroy({ where: { id } });
         return {
         message: `Account deleted successfully`,
         status: 200,
