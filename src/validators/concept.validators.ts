@@ -8,4 +8,4 @@ class ConceptValidator {
     body("type").isString().withMessage("The type must be string."),
   ];
 }
-export {ConceptValidator};
+export { ConceptValidator };

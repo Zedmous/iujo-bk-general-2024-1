@@ -3,6 +3,7 @@ import { body } from "express-validator";
 class SupplierValidator {
   public validateSupplier = [
     body("code").notEmpty().withMessage("Code is required"),
+    body("code").isString().withMessage("Code must be string"),
     body("name").notEmpty().withMessage("Name is required"),
     body("name").isString().withMessage("Name must be string"),
     body("telephone").notEmpty().withMessage("Telephone is required"),

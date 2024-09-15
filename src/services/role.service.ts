@@ -1,17 +1,16 @@
 import { RoleDB } from "../config";
+import { exportExcelAtoA } from "../helpers";
 import { RoleInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
-    //consultas a la base de datos van aca
-    /*const roles = await RoleDB.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const roles = await RoleDB.findAll();
+    const roles = await RoleDB.findAll({
+      where: {
+        status: true,
+      },
+    });
     return {
-      message: `C de Rol exitoso`,
+      message: `Roles encontrados`,
       status: 200,
       data: {
         roles,
@@ -26,9 +25,7 @@ export const getAll = async () => {
   }
 };
 
-
-
-export const getOne = async (id: number) => {
+export const getOneRole = async (id: number|any) => {
   try {
     //consultas a la base de datos van aca
     const role = await RoleDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
@@ -37,8 +34,7 @@ export const getOne = async (id: number) => {
       return {
         message: `Role no encontrado`,
         status: 404,
-        data: {
-        },
+        data: {},
       };
     } else {
       return {
@@ -57,11 +53,13 @@ export const getOne = async (id: number) => {
     };
   }
 };
+
 export const create = async (data: RoleInterface) => {
+  console.log("datos", data);
   try {
     //consultas a la base de datos van aca
     const role = await RoleDB.create({
-      ...data,
+     ...data,
     });
 
     return {
@@ -80,12 +78,12 @@ export const create = async (data: RoleInterface) => {
   }
 };
 
-export const update = async (id: number, data: RoleInterface) => {
+export const update = async (id: number, dat: RoleInterface) => {
   try {
     //consultas a la base de datos van aca
-    const role = await RoleDB.update(
-      {
-        ...data,
+    let role: RoleInterface | any = await RoleDB.update({
+        name: dat.name,
+        status: true,
       },
       {
         where: {
@@ -94,12 +92,12 @@ export const update = async (id: number, data: RoleInterface) => {
         returning: true,
       }
     );
-
+    const { data } = await getOneRole(id);
     return {
       message: `Actualización del Rol exitoso`,
       status: 200,
       data: {
-        role,
+        role: data?.role,
       },
     };
   } catch (error) {
@@ -132,6 +130,64 @@ export const deleted = async (id: number, data: RoleInterface) => {
       data: {
         role,
       },
+    };
+  } catch (error) {
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+export const findRoleByName = async (name: string) => {
+  try {
+    //consultas a la base de datos van aca
+    const role = await RoleDB.findOne({
+      where: {
+        name: name,
+      },
+    });
+
+    if (!role) {
+      return {
+        message: `Role no encontrado`,
+        status: 404,
+        data: {},
+      };
+    } else {
+      return {
+        message: `Role encontrado`,
+        status: 200,
+        data: {
+          role,
+        },
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+
+export const reportToExcelRoles = async () => {
+  try {
+    const roles: any = await RoleDB.findAll();
+    let report = roles.map((role: any) => role.dataValues); // Accede a dataValues de cada rol
+    let mappedReport = report.map((res: any) => {
+      return [res.id, res.name]; // Mapea a un arreglo de arreglos
+    });
+    
+    const { status, message, data } = await exportExcelAtoA(
+      ["id", "name"],
+      mappedReport,
+      "datosTest"
+    );//usamos el helper para pasarle los parametros 
+    return {
+      message,
+      status,
+      data,
     };
   } catch (error) {
     console.log(error);

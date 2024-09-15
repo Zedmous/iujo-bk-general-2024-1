@@ -1,10 +1,10 @@
-import { RequestTypesDb } from './../config'
+import { RequestTypeDB} from './../config'
 import type { RequestTypeInterface} from './../interfaces'
 
 export default class RequestsTypesService {
   async findAll() {
     try {
-      const requestsTypes = await RequestTypesDb.findAll()
+      const requestsTypes = await RequestTypeDB.findAll()
 
       return {
         message: 'OK',
@@ -21,7 +21,7 @@ export default class RequestsTypesService {
 
   async findOne(id: number) {
     try {
-      const requestType = await RequestTypesDb.findOne({ where: { id } })
+      const requestType = await RequestTypeDB.findOne({ where: { id } })
 
       if (requestType === null) {
         return {
@@ -46,7 +46,7 @@ export default class RequestsTypesService {
 
   async create(data: RequestTypeInterface) {
     try {
-      const requestType = await RequestTypesDb.create({ ...data })
+      const requestType = await RequestTypeDB.create({ ...data })
 
       return {
         message: 'OK',
@@ -63,12 +63,12 @@ export default class RequestsTypesService {
 
   async update(id: number, data: RequestTypeInterface) {
     try {
-      await RequestTypesDb.update(
+      await RequestTypeDB.update(
         { ...data },
         { where: { id }, returning: true }
       )
 
-      const requestType = await RequestTypesDb.findOne({ where: { id } })
+      const requestType = await RequestTypeDB.findOne({ where: { id } })
 
       if (requestType === null) {
         return {
@@ -93,7 +93,7 @@ export default class RequestsTypesService {
 
   async delete(id: number) {
     try {
-      const requestType = await RequestTypesDb.findOne({ where: { id } })
+      const requestType = await RequestTypeDB.findOne({ where: { id } })
 
       if (requestType === null) {
         return {
@@ -102,7 +102,7 @@ export default class RequestsTypesService {
           data: null
         }
       } else {
-        await RequestTypesDb.destroy({ where: { id } })
+        await RequestTypeDB.destroy({ where: { id } })
 
         return {
           message: 'OK',
