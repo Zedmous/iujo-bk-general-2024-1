@@ -14,6 +14,7 @@ export * from './location.model';
 export * from './product_category.model';
 export * from './product.model';
 export * from './purchase_order.model';
+export * from './request_type.model';
 export * from './requirements.model';
 export * from './role.model';
 export * from './room_type.model';
@@ -31,4 +32,5 @@ export * from './transport_type.model';
 export * from './transport.model';
 export * from './travel.model';
 export * from './user.model';
-export * from './role.model';
+
+

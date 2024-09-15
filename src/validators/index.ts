@@ -7,6 +7,7 @@ export * from './location.validators';
 export * from './product_category.validators';
 export * from './product.validators';
 export * from './purchase_order.validators';
+export * from './requests_types.validators';
 export * from './requirements.validators';
 export * from './role.validators';
 export * from './room_type.validators';

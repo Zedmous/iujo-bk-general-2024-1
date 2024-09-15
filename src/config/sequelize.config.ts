@@ -17,6 +17,7 @@ import {
   SchedulesAttractionsModel,
   ProductModel,
   PurchaseOrderModel,
+  RequestTypesModel,
   RequirementModel,
   RoleModel,
   RoomTypeModel,
@@ -80,6 +81,7 @@ const LocationDB = db.define("locations", LocationModel);
 const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
 const ProductDB = db.define("products", ProductModel);
 const PurchaseOrderDB = db.define("purchase_orders", PurchaseOrderModel);
+const RequestTypeDB = db.define("request_type", RequestTypesModel);
 const RequirementDB = db.define("requirements", RequirementModel);
 const RoleDB = db.define("roles", RoleModel);
 const RoomTypeDB = db.define("room_types", RoomTypeModel);
@@ -111,8 +113,6 @@ UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 const syncModels = async () => {
   await db.sync({ alter: true });
   try {
-    //await User.sync({ alter: true });
-    //await Role.sync({ alter: true });
   } catch (error) {
     console.error(error);
   }
@@ -139,6 +139,7 @@ export {
   ProductCategoryDB,
   ProductDB,
   PurchaseOrderDB,
+  RequestTypeDB,
   RequirementDB,
   RoleDB,
   RoomTypeDB,

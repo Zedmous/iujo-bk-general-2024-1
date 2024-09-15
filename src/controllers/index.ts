@@ -8,6 +8,7 @@ export * from './locations.controller';
 export * from './product_category.controller';
 export * from './product.controller';
 export * from './purchase_order.controller';
+export * from './requests_types.controller';
 export * from './requirements.controller';
 export * from './role.controller';
 export * from './room_type.controller';

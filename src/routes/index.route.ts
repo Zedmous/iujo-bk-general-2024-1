@@ -8,6 +8,7 @@ import locationRoute from "./locations.route";
 import productCategoryRoute from "./product_category.route";
 import productRoute from "./product.route";
 import purchaseOrderRoute from "./purchase_order.route";
+import requestsTypesRoute from './requests_types.route'
 import requirementRoute from "./requirements.route";
 import roomTypeRoute from "./room_type.route";
 import roomRoute from "./room.route";
@@ -31,6 +32,7 @@ export {
     productCategoryRoute,
     productRoute,
     purchaseOrderRoute,
+    requestsTypesRoute,
     requirementRoute,
     roleRoute,
     roomTypeRoute,
@@ -43,4 +45,3 @@ export {
     transportTypeRoute,
     userRoute,
 }
-

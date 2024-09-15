@@ -1,10 +1,10 @@
 import { LocationDB } from "../config/";
-import { LocationsInterface } from "../interfaces";
+import { LocationInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const locations = await Locations.findAll({
+    /*const locations = await LocationDB.findAll({
         where: {
           status: true,
         },
@@ -57,7 +57,7 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: LocationsInterface) => {
+export const create = async (data: LocationInterface) => {
   try {
     //consultas a la base de datos van aca
     const locations = await LocationDB.create({
@@ -80,7 +80,7 @@ export const create = async (data: LocationsInterface) => {
   }
 };
 
-export const update = async (id: number, data: LocationsInterface) => {
+export const update = async (id: number, data: LocationInterface) => {
   try {
     //consultas a la base de datos van aca
     const locations = await LocationDB.update(
@@ -110,7 +110,7 @@ export const update = async (id: number, data: LocationsInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: LocationsInterface) => {
+export const deleted = async (id: number, data: LocationInterface) => {
   try {
     //consultas a la base de datos van aca
     const locations = await LocationDB.update(

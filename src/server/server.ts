@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
+
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+
 import {
   accountRoute,
   attractionStatusRoute,
@@ -13,6 +15,7 @@ import {
   purchaseOrderRoute,
   productCategoryRoute,
   productRoute,
+  requestsTypesRoute,
   requirementRoute,
   roleRoute,
   roomTypeRoute,
@@ -47,6 +50,7 @@ export class Server {
       purchase_orders: this.pre + "/purchase_orders",
       product_categories: this.pre + "/product_categories",
       products: this.pre + "/products",
+      request_types: this.pre + '/request_types',
       requirements: this.pre + "/requirements",
       roles: this.pre + "/roles",
       room_types: this.pre + "/room_types",
@@ -58,7 +62,7 @@ export class Server {
       table_types: this.pre + "/table_types",
       transport_types: this.pre + "/transport_types",
       users: this.pre + "/users",
-    } 
+    }
     this.connectDB();
     this.middlewares();
     this.routes();
@@ -70,6 +74,7 @@ export class Server {
     this.app.use(express.json());
     this.app.use(express.static("src/public"));
   }
+    
   routes() {
     this.app.use(this.paths.accounts, accountRoute);
     this.app.use(this.paths.areas, areaRoute);
@@ -81,6 +86,7 @@ export class Server {
     this.app.use(this.paths.product_categories, productCategoryRoute);
     this.app.use(this.paths.products, productRoute);
     this.app.use(this.paths.purchase_orders, purchaseOrderRoute);
+    this.app.use(this.paths.request_types, requestsTypesRoute);
     this.app.use(this.paths.requirements, requirementRoute);
     this.app.use(this.paths.roles, roleRoute);
     this.app.use(this.paths.room_types, roomTypeRoute);
@@ -92,7 +98,6 @@ export class Server {
     this.app.use(this.paths.table_types, tableTypeRoute);
     this.app.use(this.paths.tables, tableRoute);
     this.app.use(this.paths.users, userRoute);
- 
   }
   async connectDB() {
     await db
