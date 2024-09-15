@@ -1,9 +1,14 @@
-import testRoute from "./test.route";
-import roleRoute from "./role.route";
+import componentsRoute from "./components.route";
+import locationsRoute from "./locations.route";
 import packagesRoute from "./packages.routes";
+import requirementsRoute from "./requirements.route";
+import roleRoute from "./role.route";
+
 
 export {
-    testRoute,
     roleRoute,
-    packagesRoute
+    packagesRoute,
+    requirementsRoute,
+    locationsRoute,
+    componentsRoute
 }
