@@ -1,4 +1,6 @@
+import { NextFunction, Request, Response } from "express";
 import { body } from "express-validator";
+import { getOneRole } from "../services/role.service";
 
 class UserValidator {
   public validateUser = [
@@ -17,5 +19,35 @@ class UserValidator {
     body("password").notEmpty().withMessage("Passowrd is required"),
     body("password").isString().withMessage("Passowrd must be string"),
   ];
+
+  //un middleware en el caso de campo unico
+  public validateRoleId = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const{ role_id } = req.body;
+    const { status, message, data } = await getOneRole(role_id);
+    if (status == 500) {
+      return res.status(status).json({
+        message,
+      });
+    } else if (status == 404) {
+      
+          return res.status(400).json({
+            errors: [
+              {
+                type: "field",
+                msg: `El role id : ${role_id}, no existe`,
+                path: "role_id",
+                location: "body",
+              },
+            ],
+          })
+       
+      
+    }
+    next();
+  };
 }
 export { UserValidator };

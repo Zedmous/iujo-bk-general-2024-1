@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/locations.service";
+import { create, deleted, getAll, getOne, update } from "../services/location.service";
 export class LocationController {
   constructor() {}
 

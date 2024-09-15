@@ -1,20 +1,15 @@
-import { LocationDB } from "../config";
-import { LocationInterface } from "../interfaces";
+import { PurchaseOrderDB } from "../config";
+import { PurchaseOrderInterface } from "../interfaces";
 
 export const getAll = async () => {
   try {
     //consultas a la base de datos van aca
-    /*const locations = await LocationDB.findAll({
-        where: {
-          status: true,
-        },
-      });*/
-    const locations = await LocationDB.findAll();
+    const orders = await PurchaseOrderDB.findAll();
     return {
-      message: `Consulta de Ubicación exitosa`,
+      message: `All orders successful found`,
       status: 200,
       data: {
-        locations,
+        orders,
       },
     };
   } catch (error) {
@@ -26,24 +21,26 @@ export const getAll = async () => {
   }
 };
 
-export const getOne = async (id: number) => {
+
+
+export const getOne = async (id: number|string) => {
   try {
     //consultas a la base de datos van aca
-    const locations = await LocationDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
-    if (locations === null) {
-      console.log("No encontrado");
+    const orders = await PurchaseOrderDB.findOne({ where: { id } });
+    if (orders === null) {
+      console.log("Not Found");
       return {
-        message: `Ubicación no encontrada`,
+        message: `Order not found`,
         status: 404,
         data: {
         },
       };
     } else {
       return {
-        message: `Ubicación encontrada`,
+        message: `Order found`,
         status: 200,
         data: {
-          locations,
+          orders,
         },
       };
     }
@@ -55,18 +52,18 @@ export const getOne = async (id: number) => {
     };
   }
 };
-export const create = async (data: LocationInterface) => {
+export const create = async (data: PurchaseOrderInterface) => {
   try {
     //consultas a la base de datos van aca
-    const locations = await LocationDB.create({
+    const orders = await PurchaseOrderDB.create({
       ...data,
     });
 
     return {
-      message: `Creacion de ubicación exitosa`,
+      message: `Order creation successful`,
       status: 200,
       data: {
-        locations,
+        orders,
       },
     };
   } catch (error) {
@@ -78,10 +75,10 @@ export const create = async (data: LocationInterface) => {
   }
 };
 
-export const update = async (id: number, data: LocationInterface) => {
+export const update = async (id: number|string, data: PurchaseOrderInterface) => {
   try {
     //consultas a la base de datos van aca
-    const locations = await LocationDB.update(
+    const orders = await PurchaseOrderDB.update(
       {
         ...data,
       },
@@ -94,10 +91,10 @@ export const update = async (id: number, data: LocationInterface) => {
     );
 
     return {
-      message: `Actualización de ubicación exitosa`,
+      message: `Successful order updated`,
       status: 200,
       data: {
-        locations,
+        orders,
       },
     };
   } catch (error) {
@@ -108,10 +105,10 @@ export const update = async (id: number, data: LocationInterface) => {
     };
   }
 };
-export const deleted = async (id: number, data: LocationInterface) => {
+export const deleted = async (id: number|string, data: PurchaseOrderInterface) => {
   try {
     //consultas a la base de datos van aca
-    const locations = await LocationDB.update(
+    const orders = await PurchaseOrderDB.update(
       {
         status: false,
         deletedAt: new Date(),
@@ -125,10 +122,10 @@ export const deleted = async (id: number, data: LocationInterface) => {
     );
 
     return {
-      message: `Eliminación de ubicación exitosa`,
+      message: `Successful order deleted`,
       status: 200,
       data: {
-        locations,
+        orders,
       },
     };
   } catch (error) {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {getAll, getOne, create, update, deleted} from "../services/packages.service";
+import {getAll, getOne, create, update, deleted} from "../services/package.service";
 export class PackagesController {
   constructor() {}
 

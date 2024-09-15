@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { create, deleted, getAll, getOne, update } from "../services/requirements.service";
+import { create, deleted, getAll, getOne, update } from "../services/requirement.service";
 export class RequirementsController {
   constructor() {}
 
