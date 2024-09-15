@@ -1,7 +1,7 @@
 import { body } from "express-validator";
 
-class LocationsValidator {
-  public validateLocations = [
+class LocationValidator {
+  public validateLocation= [
     body("name").notEmpty().withMessage("Locations Name is required"),
     body("name").isString().withMessage("Locations Name must be string"),
     body("latitude").notEmpty().withMessage("Latitude is required"),
@@ -10,4 +10,4 @@ class LocationsValidator {
     body("longitude").isNumeric().withMessage("Longitude must be a number")
   ];
 }
-export { LocationsValidator };
+export { LocationValidator };

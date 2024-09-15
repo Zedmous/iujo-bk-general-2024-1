@@ -2,8 +2,8 @@ import { Router } from "express";
 import { validateFields } from "../middlewares";
 import { RoleController } from "../controllers";
 import { RoleValidator } from "../validators";
-const roleValidator = new RoleValidator();
 const router = Router();
+const roleValidator = new RoleValidator();
 const roleController=new RoleController();
 router.get("/", roleController.all);//http://localhost:3800/api/roles
 router.get("/:id", roleController.one);//http://localhost:3800/api/roles/1

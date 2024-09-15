@@ -1,4 +1,4 @@
-import { Packages } from "../config";
+import { PackageDB } from "../config";
 import { PackagesInterface } from "../interfaces";
 
 export const getAll = async () => {
@@ -9,7 +9,7 @@ export const getAll = async () => {
           status: true,
         },
       });*/
-    const paquetes = await Packages.findAll();
+    const paquetes = await PackageDB.findAll();
     return {
       message: `creacion de paquetes exitoso`,
       status: 200,
@@ -31,7 +31,7 @@ export const getAll = async () => {
 export const getOne = async (id: number) => {
   try {
     //consultas a la base de datos van aca
-    const packages = await Packages.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
+    const packages = await PackageDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
     if (packages === null) {
       console.log("No encontrado");
       return {
@@ -60,7 +60,7 @@ export const getOne = async (id: number) => {
 export const create = async (data: PackagesInterface) => {
   try {
     //consultas a la base de datos van aca
-    const packages = await Packages.create({
+    const packages = await PackageDB.create({
       ...data,
     });
 
@@ -83,7 +83,7 @@ export const create = async (data: PackagesInterface) => {
 export const update = async (id: number, data: PackagesInterface) => {
   try {
     //consultas a la base de datos van aca
-    const packages = await Packages.update(
+    const packages = await PackageDB.update(
       {
         ...data,
       },
@@ -113,7 +113,7 @@ export const update = async (id: number, data: PackagesInterface) => {
 export const deleted = async (id: number, data: PackagesInterface) => {
   try {
     //consultas a la base de datos van aca
-    const packages = await Packages.update(
+    const packages = await PackageDB.update(
       {
         status: false,
         deletedAt: new Date(),
