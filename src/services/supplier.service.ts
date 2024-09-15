@@ -28,7 +28,7 @@ export const getAll = async () => {
 
 
 
-export const getOne = async (id: number) => {
+export const getOne = async (id: number|any) => {
   try {
     //consultas a la base de datos van aca
     const supplier = await SupplierDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
@@ -79,6 +79,41 @@ export const create = async (data: SupplierInterface) => {
     };
   }
 };
+
+export const findSupplierByName = async (name: string) => {
+  try {
+    //consultas a la base de datos van aca
+    const supplier = await SupplierDB.findOne({
+      where: {
+        name: name,
+      },
+    });
+
+    if (!supplier) {
+      return {
+        message: `Supplier no encontrado`,
+        status: 404,
+        data: {},
+      };
+    } else {
+      return {
+        message: `Supplier encontrado`,
+        status: 200,
+        data: {
+          supplier,
+        },
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+
+
 
 export const update = async (id: number, data: SupplierInterface) => {
   try {
@@ -140,4 +175,6 @@ export const deleted = async (id: number, data: SupplierInterface) => {
       status: 500,
     };
   }
+
+
 };
