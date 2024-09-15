@@ -14,6 +14,8 @@ export * from './customer.model';
 export * from './customer_package.model';
 export * from './dish.model';
 export * from './dish_category.model';
+export * from './finance.model';
+export * from './financial_background.models';
 export * from './inventory.model';
 export * from './language.model';
 export * from './location.model';

@@ -44,7 +44,11 @@ import {
   TransportTypeModel,
   TravelModel,
   UserModel,
+  FinanceModel,
+  FinancialBackgroundModel,
+
 } from "../models";
+import { RequestModel } from "../models/request.model";
 
 const dbName: string | undefined = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
@@ -88,6 +92,8 @@ const CustomerDB = db.define("customers", CustomerModel);
 const CustomerPackageDB = db.define("customer_packages", CustomerPackageModel);
 const DishCategoryDB = db.define("dish_categories", DishCategoryModel);
 const DishDB = db.define("dishes", DishModel);
+const FinanceDB = db.define("finance", FinanceModel);
+const FinancialBackgroundDB = db.define("financial_backgrounds", FinancialBackgroundModel);
 const InventoryDB = db.define("inventories", InventoryModel);
 const LanguageDB = db.define("languages", LanguageModel);
 const LocationDB = db.define("locations", LocationModel);
@@ -97,6 +103,7 @@ const ProductCategoryDB = db.define("product_categories", ProductCategoryModel);
 const ProductDB = db.define("products", ProductModel);
 const PurchaseOrderDB = db.define("purchase_orders", PurchaseOrderModel);
 const RequestTypeDB = db.define("request_types", RequestTypesModel);
+const RequestDB = db.define("requests", RequestModel );
 const RequirementDB = db.define("requirements", RequirementModel);
 const ReservationDB = db.define("reservations", ReservationModel);
 const RoleDB = db.define("roles", RoleModel);
@@ -122,6 +129,13 @@ const TransportDB = db.define("transports", TransportModel);
 const TransportTypeDB = db.define("transport_types", TransportTypeModel);
 const TravelDB = db.define("travel", TravelModel);
 const UserDB = db.define("users", UserModel);
+
+
+
+
+
+
+// Relaciones iMPORTA ES EL ORDEN DE LA JERARQUIA
 RoleDB.hasMany(UserDB, { foreignKey: "role_id" });
 UserDB.belongsTo(RoleDB, { foreignKey: "role_id" });
 
@@ -156,6 +170,8 @@ export {
   CustomerPackageDB,
   DishCategoryDB,
   DishDB,
+  FinanceModel,
+  FinancialBackgroundDB,
   InventoryDB,
   LanguageDB,
   LocationDB,
@@ -165,6 +181,7 @@ export {
   ProductDB,
   PurchaseOrderDB,
   RequestTypeDB,
+  RequestDB,
   RequirementDB,
   ReservationDB,
   RoleDB,
@@ -184,5 +201,6 @@ export {
   TransportTypeDB,
   TravelDB,
   UserDB,
+  
   db,
 };
