@@ -18,6 +18,8 @@ export * from './schedules.validators';
 export * from './staff.validators';
 export * from './supplier.validators';
 export * from './table.validators';
+export * from './table_order.validators';
+export * from './table_order_detail.validators';
 export * from './table_type.validators';
 export * from './transport_type.validators';
 export * from './user.validators';
