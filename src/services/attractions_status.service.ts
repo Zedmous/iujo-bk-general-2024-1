@@ -21,7 +21,7 @@ export const getAll = async () => {
 };
 
 
-export const getOne = async (id: number) => {
+export const getOne = async (id: number|any) => {
     try {
         const attractionsStatus = await AttractionsStatusDB.findOne({ where: { id } });
         if (attractionsStatus === null) {
@@ -122,6 +122,38 @@ export const deleted = async (id: number, data: AttractionsStatusInterface) => {
                 attractionsStatus,
             },
         };
+    } catch (error) {
+        console.log(error);
+        return {
+            message: `Contact the administrator: error`,
+            status: 500,
+        };
+    }
+};
+
+export const findByName = async (name: string) => {
+    try {
+        const attracctionsStatus = await AttractionsStatusDB.findOne({
+            where: {
+                name: name,
+            },
+        });
+
+        if (!attracctionsStatus) {
+            return {
+                message: `Estado de atracción no encontrado`,
+                status: 404,
+                data: {},
+            };
+        } else {
+            return {
+                message: `Estado de atracción encontrado`,
+                status: 200,
+                data: {
+                    attracctionsStatus,
+                },
+            };
+        }
     } catch (error) {
         console.log(error);
         return {
