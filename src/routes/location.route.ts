@@ -10,4 +10,24 @@ router.get("/:id", locationsController.one);//http://localhost:3800/api/location
 router.post("/",locationsValidator.validateLocation,validateFields, locationsController.createLocations);//http://localhost:3800/api/locations
 router.put("/:id",locationsValidator.validateLocation,validateFields, locationsController.updateLocations);//http://localhost:3800/api/locations/1
 router.delete("/:id", locationsController.deleteLocations);//http://localhost:3800/api/locations/1
+
+router.post(
+    "/",
+    locationsValidator.validateLocation,
+    locationsValidator.validateIfNameIsUse,
+    validateFields,
+    locationsController.createLocations
+  );
+
+  router.put(
+    "/:id",
+    locationsValidator.validateLocation,
+    locationsValidator.validateIfIdExist,
+    locationsValidator.validateIfNameIsUse,
+    validateFields,
+    locationsController.updateLocations
+  );
+
+
+
 export default router;
