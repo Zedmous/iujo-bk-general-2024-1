@@ -19,6 +19,8 @@ export * from './schedules.controller';
 export * from './staff.controller';
 export * from './supplier.controller';
 export * from './table.controller';
+export * from './table_order.controller';
+export * from './table_order_detail.controller';
 export * from './table_type.controller';
 export * from './transport_type.controller';
 export * from './user.controller';
