@@ -25,6 +25,8 @@ import {
   staffRoute,
   supplierRoute,
   tableRoute,
+  tableOrderRoute,
+  tableOrderDetailRoute,
   tableTypeRoute,
   transportTypeRoute,
   userRoute,
@@ -62,6 +64,8 @@ export class Server {
       staffs: this.pre + "/staffs",
       suppliers: this.pre + "/suppliers",
       tables: this.pre + "/tables",
+      order: this.pre + "/order",
+      order_detail: this.pre + "/order_detail",
       table_types: this.pre + "/table_types",
       transport_types: this.pre + "/transport_types",
       type_rooms: this.pre + "/type_rooms",
@@ -88,6 +92,8 @@ export class Server {
     this.app.use(this.paths.customers, customerRoute);
     this.app.use(this.paths.inventories, inventoryRoute);
     this.app.use(this.paths.locations, locationRoute);
+    this.app.use(this.paths.order, tableOrderRoute);
+    this.app.use(this.paths.order_detail, tableOrderRoute);
     this.app.use(this.paths.packages, packagesRoute);
     this.app.use(this.paths.product_categories, productCategoryRoute);
     this.app.use(this.paths.products, productRoute);
