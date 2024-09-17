@@ -19,6 +19,8 @@ import schedulesRoute from "./schedules.route";
 import staffRoute from "./staff.route";
 import supplierRoute from "./supplier.route";
 import tableRoute from "./table.route";
+import tableOrderRoute from "./table_order.route";
+import tableOrderDetailRoute from "./table_order_detail.route";
 import tableTypeRoute from "./table_type.route";
 import transportTypeRoute from "./transport_type.route";
 import userRoute from "./user.route";
@@ -45,6 +47,8 @@ export {
   staffRoute,
   supplierRoute,
   tableRoute,
+  tableOrderRoute,
+  tableOrderDetailRoute,
   tableTypeRoute,
   transportTypeRoute,
   userRoute,
