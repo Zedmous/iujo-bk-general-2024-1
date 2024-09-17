@@ -26,9 +26,7 @@ export const getAll = async () => {
   }
 };
 
-
-
-export const getOne = async (id: number) => {
+export const getOne = async (id: number|any) => {
   try {
     //consultas a la base de datos van aca
     const locations = await LocationDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
@@ -133,6 +131,41 @@ export const deleted = async (id: number, data: LocationInterface) => {
         locations,
       },
     };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+
+export const findlocationsByName = async (name: string, latitude:number, longitude:number) => {
+  try {
+    //consultas a la base de datos van aca
+    const locations = await LocationDB.findOne({
+      where: {
+        name: name,
+        latitude: latitude,
+        longitude: longitude,
+      },
+    });
+
+    if (!locations) {
+      return {
+        message: `Role no encontrado`,
+        status: 404,
+        data: {},
+      };
+    } else {
+      return {
+        message: `Role encontrado`,
+        status: 200,
+        data: {
+          locations,
+        },
+      };
+    }
   } catch (error) {
     console.log(error);
     return {

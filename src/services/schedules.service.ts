@@ -1,4 +1,5 @@
 import { SchedulesDB } from "../config";
+
 import { SchedulesInterface } from "../interfaces";
 
 export const getAll = async () => {
@@ -20,7 +21,7 @@ export const getAll = async () => {
   }
 };
 
-export const getOne = async (id: number) => {
+export const getOne = async (id: number|any) => {
   try {
     
     const schedulesData = await SchedulesDB.findOne({ where: { id } });

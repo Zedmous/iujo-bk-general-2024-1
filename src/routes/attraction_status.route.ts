@@ -13,4 +13,21 @@ router.post("/", attractionsStatusValidator.validateStatus,validateFields, attra
 router.put("/:id",attractionsStatusValidator.validateStatus,validateFields, attractionsStatusController.updateStatus);//http://localhost:3800/api//attractionstatus/1
 router.delete("/:id", attractionsStatusController.deleteStatus);//http://localhost:3800/api//attractionstatus/1
 
+router.post(
+    "/",
+    attractionsStatusValidator.validateStatus,
+    attractionsStatusValidator.validateIfNameIsUse,
+    validateFields,
+    attractionsStatusController.createStatus
+);
+
+router.put(
+    "/:id",
+    attractionsStatusValidator.validateStatus,
+    attractionsStatusValidator.validateIfIdExist,
+    attractionsStatusValidator.validateIfNameIsUse,
+    validateFields,
+    attractionsStatusController.updateStatus
+);
+
 export default router;

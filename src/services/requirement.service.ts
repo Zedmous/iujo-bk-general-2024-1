@@ -1,4 +1,5 @@
 import { RequirementDB } from "../config";
+import { exportExcelAtoA } from "../helpers";
 import { RequirementInterface } from "../interfaces";
 
 export const getAll = async () => {
@@ -20,7 +21,7 @@ export const getAll = async () => {
   }
 };
 
-export const getOne = async (id: number) => {
+export const getOne = async (id: number|any) => {
   try {
     //consultas a la base de datos van aca
     const requirement = await RequirementDB.findOne({ where: { id } }); // Busca el proyecto con título 'Mi Título'
@@ -126,6 +127,66 @@ export const deleted = async (id: number, data: RequirementInterface) => {
       data: {
         requirement,
       },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+
+export const findByName = async (name: string) => {
+  try {
+    //consultas a la base de datos van aca
+    const requirement = await RequirementDB.findOne({
+      where: {
+        name: name,
+      },
+    });
+
+    if (!requirement) {
+      return {
+        message: `Requerimiento no encontrado`,
+        status: 404,
+        data: {},
+      };
+    } else {
+      return {
+        message: `Requerimiento encontrado`,
+        status: 200,
+        data: {
+          requirement,
+        },
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: `Contact the administrator: error`,
+      status: 500,
+    };
+  }
+};
+
+export const reportToExcel = async () => {
+  try {
+    const roles: any = await RequirementDB.findAll();
+    let report = roles.map((role: any) => role.dataValues); // Accede a dataValues de cada rol
+    let mappedReport = report.map((res: any) => {
+      return [res.id, res.name]; // Mapea a un arreglo de arreglos
+    });
+    
+    const { status, message, data } = await exportExcelAtoA(
+      ["id", "name"],
+      mappedReport,
+      "datosTest"
+    );//usamos el helper para pasarle los parametros 
+    return {
+      message,
+      status,
+      data,
     };
   } catch (error) {
     console.log(error);
