@@ -22,6 +22,8 @@ export * from './schedules_attractions.interface';
 export * from './staff.interface';
 export * from './supplier.interface';
 export * from './table.interface';
+export * from './table_order.interface';
+export * from './table_order_detail.interface';
 export * from './table_type.interface';
 export * from './transport_type.interface';
 export * from './user.interface';
