@@ -4,6 +4,9 @@ import { roleRoute, requirementRoute,locationRoute, attractionStatusRoute,concep
 
 
 import { db } from "../config/sequelize.config";
+import { serve, setup } from "swagger-ui-express";
+import swaggerOutput from "../swagger_documentation.json";
+
 export class Server {
   private app: any;
   private port: string | number;
@@ -38,6 +41,7 @@ export class Server {
   }
     
   routes() {
+    this.app.use("/api-docs", serve, setup(swaggerOutput));
     this.app.use(this.paths.roles, roleRoute);
     this.app.use(this.paths.locations, locationRoute);
     this.app.use(this.paths.requirements, requirementRoute);
