@@ -1,25 +1,55 @@
-import roleRoute from "./role.route";
-import locationRoute from "./locations.route";
-import requirementRoute from "./requirements.route";
+import accountRoute from "./account.route";
+import areaRoute from "./area.route";
+import attractionStatusRoute from "./attraction_status.route";
+import componentsRoute from "./component.route";
 import conceptRoute from "./concept.route";
-import attractionStatusRoute from "./attractions_status.route";
-import supplierRoute from "./supplier.route";
-import userRoute from "./user.route";
-import productCategoryRoute from "./product_category.route";
+import customerRoute from "./customer.route";
 import inventoryRoute from "./inventory.route";
-
-
+import locationRoute from "./location.route";
+import packagesRoute from "./packages.routes";
+import productCategoryRoute from "./product_category.route";
+import productRoute from "./product.route";
+import purchaseOrderRoute from "./purchase_order.route";//dassd
+import requestsTypesRoute from "./requests_types.route";
+import requirementRoute from "./requirement.route";
+import roleRoute from "./role.route";
+import roomRoute from "./room.route";
+import roomTypeRoute from "./room_type.route";
+import schedulesRoute from "./schedules.route";
+import staffRoute from "./staff.route";
+import supplierRoute from "./supplier.route";
+import tableRoute from "./table.route";
+import tableOrderRoute from "./table_order.route";
+import tableOrderDetailRoute from "./table_order_detail.route";
+import tableTypeRoute from "./table_type.route";
+import transportTypeRoute from "./transport_type.route";
+import userRoute from "./user.route";
 
 export {
-    roleRoute,
-    requirementRoute,
-    locationRoute,
-    supplierRoute,
-    userRoute,
-    conceptRoute,
-    attractionStatusRoute,
-    productCategoryRoute,
-    inventoryRoute
-}
-    
-
+  accountRoute,
+  areaRoute,
+  attractionStatusRoute,
+  componentsRoute,
+  conceptRoute,
+  customerRoute,
+  inventoryRoute,
+  locationRoute,
+  packagesRoute,
+  productCategoryRoute,
+  productRoute,
+  purchaseOrderRoute,
+  requestsTypesRoute,
+  requirementRoute,
+  roleRoute,
+  roomRoute,
+  roomTypeRoute,
+  schedulesRoute,
+  staffRoute,
+  supplierRoute,
+  tableRoute,
+  tableOrderRoute,
+  tableOrderDetailRoute,
+  tableTypeRoute,
+  transportTypeRoute,
+  userRoute,
+};
