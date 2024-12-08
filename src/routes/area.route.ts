@@ -1,0 +1,13 @@
+import { Router } from "express";
+import { validateFields } from "../middlewares";
+import { AreaController } from "../controllers";
+import { AreaValidator } from "../validators";
+const router = Router();
+const areaValidator = new AreaValidator();
+const areaController=new AreaController();
+router.get("/", areaController.all);
+router.get("/:id", areaController.one);
+router.post("/",areaValidator.validateArea,validateFields, areaController.createArea);
+router.put("/:id",areaValidator.validateArea,validateFields, areaController.updateArea);
+router.delete("/:id", areaController.deleteArea);
+export default router;

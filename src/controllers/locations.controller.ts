@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { create, deleted, getAll, getOne, update } from "../services/locations.service";
-export class LocationsController {
+export class LocationController {
   constructor() {}
 
   all = async (req: Request, res: Response) => {

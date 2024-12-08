@@ -134,7 +134,6 @@ export const deleted = async (id: number, data: RoleInterface) => {
       },
     };
   } catch (error) {
-    console.log(error);
     return {
       message: `Contact the administrator: error`,
       status: 500,
